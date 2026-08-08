@@ -1,13 +1,42 @@
 # PROJECT: Fitness Plamen GYM Sunny Beach
 
 ## Repository state (read this first)
-This repository is **pre-scaffold**. As of now it contains only this file and a
-placeholder `README.md` — no `package.json`, no `src/`, no Next.js app yet.
-There is nothing to "explore" in a codebase-archaeology sense; instead, treat
-this file as the spec the codebase must be built to conform to. The build is
-sequenced into phases (see **Development workflow** below) — do not jump ahead
-and scaffold everything at once. Once Phase 0 lands, update this section to
-describe what actually exists (routes, key files, how to run it locally).
+**Phase 0 (scaffold) is done.** Phases 1–6 are not — there is no design
+system, no page content, no i18n copy, no SEO/schema, no motion yet. Treat
+the rest of this file as the spec the remaining phases must be built to
+conform to. Do not jump ahead and start Phase 2+ work unprompted.
+
+What exists right now:
+- Next.js 15 (App Router) + TypeScript + Tailwind CSS v3 + ESLint, scaffolded
+  into `src/`, no Turbopack.
+- `src/app/[locale]/` — `layout.tsx` sets `<html lang>` per locale, wraps
+  children in `NextIntlClientProvider`, loads the Sofia Sans / Sofia Sans
+  Condensed font variables. `page.tsx` is a stub (`return null`) — no UI yet,
+  by design (that's Phase 2).
+- `src/i18n/routing.ts` — next-intl `defineRouting`, locales
+  `['bg','en','ru','de']`, default `bg`.
+- `src/i18n/request.ts` — next-intl `getRequestConfig`, loads
+  `messages/{locale}.json`.
+- `src/middleware.ts` — next-intl middleware, locale detection +
+  `NEXT_LOCALE` cookie persistence, matcher excludes `api`/`_next`/files.
+- `src/lib/fonts.ts` — `next/font/google` for Sofia Sans (400/600) and Sofia
+  Sans Condensed (800), latin + cyrillic subsets, self-hosted at build time.
+- `messages/{bg,en,ru,de}.json` — all empty `{}` for now (Phase 3 fills these).
+- `tailwind.config.ts` — palette tokens (`ink`, `black`, `charcoal`, `steel`,
+  `bone`, `white`, `blood`, `blood.hi`) and `font-sans`/`font-condensed`
+  mapped to the Sofia Sans CSS variables. Tailwind v3 (config-file-based),
+  not v4 — chosen so the palette lives in one typed `tailwind.config.ts`
+  rather than a CSS `@theme` block.
+- `public/` is currently empty — the default create-next-app SVG placeholders
+  were removed since nothing references them and this project doesn't use
+  placeholder imagery (see **Photography** below).
+
+Run locally: `npm install`, then `npm run dev` (or `npm run build && npm run
+start` to check the production build). `npm run build` and `npx eslint .`
+both pass as of this phase. `/`, `/bg`, `/en`, `/ru`, `/de` all resolve;
+`/` 307-redirects to `/bg` and sets the `NEXT_LOCALE` cookie.
+
+Update this section again after each phase lands.
 
 ## What this is
 A 4-language (BG / EN / RU / DE) marketing site for a real, operating gym in
