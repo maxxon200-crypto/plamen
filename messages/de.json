@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Fitnessstudio Sonnenstrand — Fitness Plamen GYM | Geöffnet 09:00–21:00 Uhr",
+    "description": "Old-School-Eisenstudio im Zentrum von Sonnenstrand. Kurzhanteln bis 55 kg, Calisthenics-Bereich, Boxbereich und Klimaanlage. Tages-, Wochen- und Monatskarten — anrufen oder einfach vorbeikommen."
+  },
   "hero": {
     "eyebrow": "Old-School-Eisenstudio",
     "headingPlain": "Eiserner",
@@ -97,6 +101,40 @@
     "houseRules": "Eine kleine Bitte, damit es für alle angenehm bleibt: Scheiben und Hanteln nach dem Training zurückräumen und die Bank abwischen. Danke.",
     "ctaMaps": "In Google Maps öffnen",
     "ctaCall": "Anrufen"
+  },
+  "faq": {
+    "eyebrow": "Fragen",
+    "heading": "Häufig gestellte Fragen",
+    "items": [
+      {
+        "question": "Gibt es ein Fitnessstudio in Sonnenstrand?",
+        "answer": "Ja, das Fitness Plamen GYM liegt im Zentrum von Sonnenstrand. Es ist ein Old-School-Eisenstudio mit Langhanteln, Kurzhanteln und vom Inhaber selbst gebauten Geräten — täglich von 09:00 bis 21:00 Uhr geöffnet."
+      },
+      {
+        "question": "Verkaufen Sie Tageskarten?",
+        "answer": "Ja, es gibt Tages-, Wochen- und Monatskarten. Rufen Sie die unten stehende Nummer an oder kommen Sie einfach vorbei — wir erklären Ihnen vor Ort alles zu den Karten, ganz ohne Buchung oder Papierkram."
+      },
+      {
+        "question": "Wie sind die Öffnungszeiten?",
+        "answer": "Das Fitness Plamen GYM ist täglich von 09:00 bis 21:00 Uhr geöffnet, ohne Ruhetag. Sie können jederzeit innerhalb dieser Zeit vorbeikommen."
+      },
+      {
+        "question": "Wo genau liegt das Studio?",
+        "answer": "Das Studio liegt im Zentrum von Sonnenstrand, nur wenige Gehminuten vom Strand entfernt. Öffnen Sie die Adresse direkt über den Link „Anfahrt“ auf dieser Seite in Google Maps für die genaue Route."
+      },
+      {
+        "question": "Gibt es schwere Kurzhanteln?",
+        "answer": "Ja, die Kurzhanteln gehen bis 55 kg. Außerdem gibt es eine Beinpresse, eine Hackenschmidt-Maschine, Kabelzüge und ein volles Krafttrainings-Sortiment — die vollständige Liste finden Sie oben im Abschnitt Ausstattung."
+      },
+      {
+        "question": "Gibt es eine Klimaanlage?",
+        "answer": "Ja, das Studio hat eine Klimaanlage. Gäste erwähnen regelmäßig, wie angenehm frisch die Luft selbst in den heißesten Sommermonaten ist."
+      },
+      {
+        "question": "Wann ist im Studio am wenigsten los?",
+        "answer": "Der Vormittag ist in der Regel ruhiger als die stark frequentierten Abendstunden, wenn die meisten Gäste nach dem Strand kommen. Wer mehr Platz an den Geräten möchte, kommt am besten früher am Tag."
+      }
+    ]
   },
   "footer": {
     "name": "Fitness Plamen GYM Sunny Beach",

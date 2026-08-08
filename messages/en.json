@@ -1,4 +1,8 @@
 {
+  "meta": {
+    "title": "Gym in Sunny Beach — Fitness Plamen GYM | Open 09:00–21:00",
+    "description": "Old-school iron gym in the centre of Sunny Beach. Dumbbells up to 55 kg, a calisthenics park, a boxing area and air conditioning. Day, week and month passes — call or walk in."
+  },
   "hero": {
     "eyebrow": "Old-school iron gym",
     "headingPlain": "Iron",
@@ -97,6 +101,40 @@
     "houseRules": "One small request, so it stays good for everyone: rack your plates and dumbbells and wipe down the bench when you're done. Thanks.",
     "ctaMaps": "Open in Google Maps",
     "ctaCall": "Call"
+  },
+  "faq": {
+    "eyebrow": "Questions",
+    "heading": "Frequently asked questions",
+    "items": [
+      {
+        "question": "Is there a gym in Sunny Beach?",
+        "answer": "Yes, Fitness Plamen GYM is in the centre of Sunny Beach. It's an old-school iron gym with barbells, dumbbells and owner-built machines, open every day from 09:00 to 21:00."
+      },
+      {
+        "question": "Do you sell day passes?",
+        "answer": "Yes, day, week and month passes are all available. Call the number below or come by in person — we'll walk you through the passes on the spot, no booking or paperwork needed."
+      },
+      {
+        "question": "What are the opening hours?",
+        "answer": "Fitness Plamen GYM is open every day from 09:00 to 21:00, with no closing day. You can walk in at any point during those hours."
+      },
+      {
+        "question": "Where exactly is the gym?",
+        "answer": "The gym is in the centre (Tsentar) of Sunny Beach, a few minutes' walk from the beach. Open the address directly in Google Maps via the \"Find us\" link on this page for exact directions."
+      },
+      {
+        "question": "Do you have heavy dumbbells?",
+        "answer": "Yes, dumbbells go up to 55 kg. There's also a leg press, hack squat, cable machines and a full set of strength equipment — see the Equipment section above for the full list."
+      },
+      {
+        "question": "Is there air conditioning?",
+        "answer": "Yes, the gym has air conditioning. Guests regularly mention how clean and comfortable the air feels inside, even during the hottest summer months."
+      },
+      {
+        "question": "When is the gym least busy?",
+        "answer": "Mornings tend to be quieter than the busier evening hours, when most guests come in after the beach. If you'd rather have more space around the machines, try coming earlier in the day."
+      }
+    ]
   },
   "footer": {
     "name": "Fitness Plamen GYM Sunny Beach",
