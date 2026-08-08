@@ -1,19 +1,19 @@
 # PROJECT: Fitness Plamen GYM Sunny Beach
 
 ## Repository state (read this first)
-**Phases 0–3 (scaffold, design foundation, Bulgarian MVP, i18n) are done.**
-Phases 4–6 are not — there is no SEO/schema, no motion yet. Treat the rest
-of this file as the spec the remaining phases must be built to conform to.
-Do not jump ahead and start Phase 4+ work unprompted. See `PHASES.md` for
-the full per-phase runbook.
+**Phases 0–4 (scaffold, design foundation, Bulgarian MVP, i18n, SEO/schema)
+are done.** Phases 5–6 are not — there is no motion yet, and it hasn't been
+deployed. Treat the rest of this file as the spec the remaining phases must
+be built to conform to. Do not jump ahead and start Phase 5+ work
+unprompted. See `PHASES.md` for the full per-phase runbook.
 
 What exists right now:
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS v3 + ESLint, scaffolded
   into `src/`, no Turbopack.
-- `src/app/[locale]/` — `layout.tsx` sets `<html lang>` per locale, wraps
+- `src/app/[locale]/layout.tsx` — sets `<html lang>` per locale, wraps
   children in `NextIntlClientProvider`, loads the Sofia Sans / Sofia Sans
-  Condensed font variables. `page.tsx` is a stub (`return null`) — no
-  marketing content yet, by design (that's Phase 2).
+  Condensed font variables, and exports `generateMetadata()` (Phase 4 —
+  see below).
 - `src/i18n/routing.ts` — next-intl `defineRouting`, locales
   `['bg','en','ru','de']`, default `bg`.
 - `src/i18n/request.ts` — next-intl `getRequestConfig`, loads
@@ -69,6 +69,30 @@ What exists right now:
   Deutsch), `aria-current` on the active locale, persists via the existing
   middleware's `NEXT_LOCALE` cookie handling (no extra client-side cookie
   code needed).
+- `src/lib/site.ts` — `SITE_URL` is a **placeholder domain**
+  (`https://fitnessplamen.bg`) since no real production domain is
+  configured yet; every canonical/OG/sitemap/robots URL derives from this
+  one constant, so swap it here before deploy (Phase 6). Also `SITE_NAME`
+  and locale-URL/OG-locale helpers.
+- `src/lib/schema.ts` — `buildExerciseGymSchema()` and `buildFaqSchema()`
+  JSON-LD builders. **No `aggregateRating` field, ever** — hard prohibition,
+  the ~4.4–4.5/~149 rating stays visible text only in `ProofBar`. `image` is
+  intentionally omitted (no real photography yet).
+- `messages/{bg,en,ru,de}.json` also carry two more namespaces since Phase
+  4: `meta` (per-locale title/description targeting real search phrasing)
+  and `faq` (7 Q&A pairs, answer-first, structurally identical across all
+  four locales same as every other namespace).
+- `src/app/[locale]/_sections/FAQ.tsx` — new section (added before
+  `Footer`), renders the FAQ copy plus a mirrored `FAQPage` JSON-LD block.
+  The "when is it least busy" answer is honest and general (mornings
+  quieter than evenings), not a fabricated specific hour range.
+- `src/app/[locale]/page.tsx` also renders the `ExerciseGym` JSON-LD block
+  (kept out of `layout.tsx` so it doesn't leak onto `/styleguide`).
+- `src/app/robots.ts` — allows `GPTBot`/`ClaudeBot`/`PerplexityBot`/
+  `OAI-SearchBot` plus general crawlers, disallows `/styleguide` and
+  `/*/styleguide`. No `llms.txt` — deliberately skipped per CLAUDE.md.
+- `src/app/sitemap.ts` — all four locale homepages with full hreflang
+  alternates including `x-default` → `/bg`.
 
 Run locally: `npm install`, then `npm run dev` (or `npm run build && npm run
 start` to check the production build). `npm run build` and `npx eslint .`
