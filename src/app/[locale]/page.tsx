@@ -1,6 +1,7 @@
 import { hasLocale } from "next-intl";
 import { notFound } from "next/navigation";
 import Rule from "@/components/ui/Rule";
+import Reveal from "@/components/Reveal";
 import { routing } from "@/i18n/routing";
 import { buildExerciseGymSchema } from "@/lib/schema";
 import type { Locale } from "@/lib/site";
@@ -44,16 +45,30 @@ export default async function Home({
         <Hero />
       </header>
       <main>
-        <ProofBar />
-        <TheGym />
+        <Reveal>
+          <ProofBar />
+        </Reveal>
+        <Reveal>
+          <TheGym />
+        </Reveal>
         <Rule />
-        <Equipment />
-        <Passes />
-        <Reviews />
+        <Reveal>
+          <Equipment />
+        </Reveal>
+        <Reveal>
+          <Passes />
+        </Reveal>
+        <Reveal>
+          <Reviews />
+        </Reveal>
         <Rule />
-        <FindUs />
+        <Reveal>
+          <FindUs />
+        </Reveal>
         <Rule />
-        <FAQ />
+        <Reveal>
+          <FAQ />
+        </Reveal>
       </main>
       <Footer />
     </>

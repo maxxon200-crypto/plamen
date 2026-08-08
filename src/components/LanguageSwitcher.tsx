@@ -31,7 +31,7 @@ export default function LanguageSwitcher() {
               href={pathname}
               locale={locale}
               aria-current={locale === activeLocale ? "true" : undefined}
-              className={`inline-flex min-h-11 min-w-11 items-center justify-center px-2 hover:text-white ${
+              className={`inline-flex min-h-11 min-w-11 items-center justify-center px-2 outline-none hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
                 locale === activeLocale ? "text-white" : ""
               }`}
             >

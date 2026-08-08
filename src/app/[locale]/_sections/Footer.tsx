@@ -18,7 +18,10 @@ export default async function Footer() {
             <p className="font-condensed text-h3 uppercase text-white">{name}</p>
             <p className="mt-2">{t("address")}</p>
             <p className="mt-1">
-              <a href={TEL_HREF} className="underline underline-offset-2">
+              <a
+                href={TEL_HREF}
+                className="underline underline-offset-2 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
                 {PHONE_DISPLAY}
               </a>
             </p>
@@ -26,7 +29,7 @@ export default async function Footer() {
               href={FACEBOOK_HREF}
               target="_blank"
               rel="noopener noreferrer"
-              className="mt-3 inline-block underline underline-offset-2"
+              className="mt-3 inline-block underline underline-offset-2 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
             >
               {t("facebook")}
             </a>

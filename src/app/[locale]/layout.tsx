@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { sofiaSans, sofiaSansCondensed } from "@/lib/fonts";
 import { SITE_NAME, SITE_URL, localeUrl, ogLocale, type Locale } from "@/lib/site";
+import SmoothScroll from "@/components/SmoothScroll";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -80,6 +81,7 @@ export default async function LocaleLayout({
       className={`${sofiaSans.variable} ${sofiaSansCondensed.variable}`}
     >
       <body className="font-sans bg-ink text-white">
+        <SmoothScroll />
         <NextIntlClientProvider>{children}</NextIntlClientProvider>
       </body>
     </html>

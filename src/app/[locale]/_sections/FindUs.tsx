@@ -38,7 +38,10 @@ export default async function FindUs() {
           <div>
             <dt className="inline text-white">{t("phoneLabel")} </dt>
             <dd className="inline">
-              <a href={TEL_HREF} className="underline underline-offset-2">
+              <a
+                href={TEL_HREF}
+                className="underline underline-offset-2 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+              >
                 {TEL_DISPLAY}
               </a>
             </dd>

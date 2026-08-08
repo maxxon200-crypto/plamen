@@ -2,6 +2,7 @@ import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
+import HeroBackground from "@/components/HeroBackground";
 
 const TEL_HREF = "tel:+359878821115";
 const MAPS_HREF =
@@ -20,13 +21,7 @@ export default async function Hero() {
   return (
     <section className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-ink">
       <div className="absolute inset-0">
-        {/*
-          TODO(photography): replace this div with a real <Image> of the gym
-          floor (B&W + grain, or duotone-blood) once the owner supplies
-          photography. Do not fill with a stock/AI placeholder in the
-          meantime — CLAUDE.md bans both.
-        */}
-        <div className="h-full w-full bg-charcoal texture-grain" />
+        <HeroBackground />
       </div>
       {/* Dark scrim so hero copy stays legible once a real photo lands here */}
       <div className="absolute inset-0 bg-ink/70" aria-hidden="true" />

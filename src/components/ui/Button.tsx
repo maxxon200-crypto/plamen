@@ -8,7 +8,7 @@ const variantClasses: Record<Variant, string> = {
 };
 
 const baseClasses =
-  "inline-flex min-h-11 min-w-11 items-center justify-center px-6 py-3 font-condensed text-body uppercase tracking-[0.02em] transition-colors";
+  "inline-flex min-h-11 min-w-11 items-center justify-center px-6 py-3 font-condensed text-body uppercase tracking-[0.02em] transition-colors outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white";
 
 interface LinkButtonProps extends AnchorHTMLAttributes<HTMLAnchorElement> {
   href: string;
