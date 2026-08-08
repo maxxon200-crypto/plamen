@@ -1,11 +1,12 @@
 # PROJECT: Fitness Plamen GYM Sunny Beach
 
 ## Repository state (read this first)
-**Phases 0–4 (scaffold, design foundation, Bulgarian MVP, i18n, SEO/schema)
-are done.** Phases 5–6 are not — there is no motion yet, and it hasn't been
-deployed. Treat the rest of this file as the spec the remaining phases must
-be built to conform to. Do not jump ahead and start Phase 5+ work
-unprompted. See `PHASES.md` for the full per-phase runbook.
+**Phases 0–5 (scaffold, design foundation, Bulgarian MVP, i18n, SEO/schema,
+motion) are done.** Phase 6 (verification and deploy) is not — the site
+hasn't shipped anywhere yet, `SITE_URL` is still a placeholder domain. Treat
+the rest of this file as the spec the remaining phase must be built to
+conform to. Do not jump ahead and start Phase 6 work unprompted. See
+`PHASES.md` for the full per-phase runbook.
 
 What exists right now:
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS v3 + ESLint, scaffolded
@@ -93,6 +94,40 @@ What exists right now:
   `/*/styleguide`. No `llms.txt` — deliberately skipped per CLAUDE.md.
 - `src/app/sitemap.ts` — all four locale homepages with full hreflang
   alternates including `x-default` → `/bg`.
+- `src/components/SmoothScroll.tsx` — Lenis, mounted once in the locale
+  layout. Independently checks `prefers-reduced-motion` via `matchMedia`
+  before ever constructing a Lenis instance (the CSS kill-switch alone
+  doesn't stop Lenis's JS scroll hijacking).
+- `src/components/Reveal.tsx` — the one scroll fade+rise, wrapping
+  `ProofBar`/`TheGym`/`Equipment`/`Passes`/`Reviews`/`FindUs`/`FAQ` in
+  `page.tsx` (`Hero` and `Footer` excluded). **The GSAP-visibility-without-
+  JS guarantee, load-bearing for CLAUDE.md's motion hard rule:** the
+  server-rendered wrapper `<div>` carries zero className/style — a no-JS
+  visitor gets the section exactly as it rendered, fully visible. GSAP's
+  `fromTo()` only ever applies its "from" values via JS inside a mounted
+  `useEffect`, gated behind its own reduced-motion check, so a hidden-
+  before-visible state never exists in markup. Verified by curling the
+  raw SSR'd HTML for all four locales and grepping for `opacity:0`/
+  `opacity-0`/inline opacity styles — zero matches. Any future change to
+  this component must preserve that property; re-verify with curl+grep,
+  don't just trust that it looks right in a browser.
+- `src/components/HeroBackground.tsx` — same visibility guarantee, subtle
+  scroll-tied scale on the Hero's still-`TODO`-labelled background
+  placeholder only (no real photography yet). No text animation.
+- `src/app/icon.tsx`, `src/app/opengraph-image.tsx` — code-generated
+  favicon/OG image via `next/og`'s `ImageResponse`, palette tokens only
+  (`ink`/`blood`/`white`/`steel`), nothing fetched externally, no
+  photography. Caught during review: an earlier draft had `color: blood`
+  text directly on the `ink` background for "Plamen Gym" — the same red-
+  text-on-black violation as the Hero/TheGym fix in Phase 2. Fixed to a
+  blood-background/white-text chip; watch for this exact mistake recurring
+  anywhere blood is used near ink/black.
+- `src/middleware.ts` — matcher also excludes `icon`/`opengraph-image` now
+  (they have no file extension in their URL, so without this they'd get
+  caught by the locale-prefix redirect and 404).
+- Focus-visible rings (`outline`/`outline-offset`, white on dark) added to
+  every interactive element: `Button`, `LanguageSwitcher`, and the tel/
+  maps/Facebook links in `FindUs`/`Footer`.
 
 Run locally: `npm install`, then `npm run dev` (or `npm run build && npm run
 start` to check the production build). `npm run build` and `npx eslint .`
