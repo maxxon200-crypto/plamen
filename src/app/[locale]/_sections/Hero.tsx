@@ -1,0 +1,56 @@
+import Container from "@/components/ui/Container";
+import Button from "@/components/ui/Button";
+import Eyebrow from "@/components/ui/Eyebrow";
+
+const TEL_HREF = "tel:+359878821115";
+const MAPS_HREF =
+  "https://www.google.com/maps/search/?api=1&query=Fitness+Plamen+GYM&query_place_id=ChIJIxshlPafpkARpBnO0sV6nrc";
+
+/**
+ * Full-bleed hero. No real gym photography exists yet — CLAUDE.md
+ * "Outstanding decisions" #2 blocks the photography sections on the owner
+ * supplying at least 10 real shots. Per CLAUDE.md's Photography rule, a
+ * missing photo gets a labelled empty slot with a TODO comment, never a
+ * stock/AI placeholder image.
+ */
+export default function Hero() {
+  return (
+    <section className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-ink">
+      <div className="absolute inset-0">
+        {/*
+          TODO(photography): replace this div with a real <Image> of the gym
+          floor (B&W + grain, or duotone-blood) once the owner supplies
+          photography. Do not fill with a stock/AI placeholder in the
+          meantime — CLAUDE.md bans both.
+        */}
+        <div className="h-full w-full bg-charcoal texture-grain" />
+      </div>
+      {/* Dark scrim so hero copy stays legible once a real photo lands here */}
+      <div className="absolute inset-0 bg-ink/70" aria-hidden="true" />
+
+      <Container className="relative z-10 pb-10 pt-28 sm:pb-14 sm:pt-36">
+        <Eyebrow>Старошколска желязна зала</Eyebrow>
+        <h1 className="mt-3 font-condensed text-display uppercase text-white">
+          Желязен <span className="bg-blood px-2 text-white">Храм</span>
+        </h1>
+        <div className="mt-6 space-y-1 font-sans text-body text-steel">
+          <p>Отворено 09:00–21:00 · всеки ден</p>
+          <p>Център, Слънчев бряг</p>
+        </div>
+        <div className="mt-8 flex flex-col gap-4 sm:flex-row">
+          <Button href={TEL_HREF} variant="filled">
+            Обади се
+          </Button>
+          <Button
+            href={MAPS_HREF}
+            variant="outline"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Намери ни
+          </Button>
+        </div>
+      </Container>
+    </section>
+  );
+}
