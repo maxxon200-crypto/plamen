@@ -1,18 +1,19 @@
 # PROJECT: Fitness Plamen GYM Sunny Beach
 
 ## Repository state (read this first)
-**Phase 0 (scaffold) is done.** Phases 1–6 are not — there is no design
-system, no page content, no i18n copy, no SEO/schema, no motion yet. Treat
+**Phases 0–1 (scaffold, design foundation) are done.** Phases 2–6 are not —
+there is no page content, no i18n copy, no SEO/schema, no motion yet. Treat
 the rest of this file as the spec the remaining phases must be built to
-conform to. Do not jump ahead and start Phase 2+ work unprompted.
+conform to. Do not jump ahead and start Phase 2+ work unprompted. See
+`PHASES.md` for the full per-phase runbook.
 
 What exists right now:
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS v3 + ESLint, scaffolded
   into `src/`, no Turbopack.
 - `src/app/[locale]/` — `layout.tsx` sets `<html lang>` per locale, wraps
   children in `NextIntlClientProvider`, loads the Sofia Sans / Sofia Sans
-  Condensed font variables. `page.tsx` is a stub (`return null`) — no UI yet,
-  by design (that's Phase 2).
+  Condensed font variables. `page.tsx` is a stub (`return null`) — no
+  marketing content yet, by design (that's Phase 2).
 - `src/i18n/routing.ts` — next-intl `defineRouting`, locales
   `['bg','en','ru','de']`, default `bg`.
 - `src/i18n/request.ts` — next-intl `getRequestConfig`, loads
@@ -24,17 +25,31 @@ What exists right now:
 - `messages/{bg,en,ru,de}.json` — all empty `{}` for now (Phase 3 fills these).
 - `tailwind.config.ts` — palette tokens (`ink`, `black`, `charcoal`, `steel`,
   `bone`, `white`, `blood`, `blood.hi`) and `font-sans`/`font-condensed`
-  mapped to the Sofia Sans CSS variables. Tailwind v3 (config-file-based),
-  not v4 — chosen so the palette lives in one typed `tailwind.config.ts`
-  rather than a CSS `@theme` block.
+  mapped to the Sofia Sans CSS variables, plus a `fontSize` scale
+  (`display`/`h2`/`h3`/`body`/`caption`) for the condensed-caps type system.
+  Tailwind v3 (config-file-based), not v4 — chosen so the palette lives in
+  one typed `tailwind.config.ts` rather than a CSS `@theme` block.
+- `src/app/globals.css` — the same palette tokens mirrored as CSS custom
+  properties, a `texture-grain` utility (SVG fractal-noise overlay, opacity
+  0.06), a `duotone-blood` utility (ink→blood mix-blend overlay — apply to
+  real gym photography only, never stock/AI imagery), and a global
+  `prefers-reduced-motion` kill switch for animation/transition durations.
+- `src/components/ui/` — `Section`, `Container`, `Rule`, `Button` (renders a
+  real `<a>` when given `href`, otherwise a real `<button>` — never a dead
+  CTA), `Eyebrow`. All Server Components, no client JS.
+- `src/app/[locale]/styleguide/` — temporary locale-aware route rendering
+  every palette swatch, type-scale sample, primitive, and texture utility.
+  For human/design review only; remove once Phase 2+ pages validate the
+  system in real content. Not linked from the public site.
 - `public/` is currently empty — the default create-next-app SVG placeholders
   were removed since nothing references them and this project doesn't use
   placeholder imagery (see **Photography** below).
 
 Run locally: `npm install`, then `npm run dev` (or `npm run build && npm run
 start` to check the production build). `npm run build` and `npx eslint .`
-both pass as of this phase. `/`, `/bg`, `/en`, `/ru`, `/de` all resolve;
-`/` 307-redirects to `/bg` and sets the `NEXT_LOCALE` cookie.
+both pass as of this phase. `/`, `/bg`, `/en`, `/ru`, `/de`, and
+`/{locale}/styleguide` all resolve; `/` 307-redirects to `/bg` and sets the
+`NEXT_LOCALE` cookie.
 
 Update this section again after each phase lands.
 
