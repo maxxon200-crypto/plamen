@@ -1,3 +1,96 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/**
+ * Design tokens — mirrors tailwind.config.ts theme.colors exactly.
+ * Kept as CSS custom properties so the palette is usable outside Tailwind
+ * utility classes (e.g. inline SVG fills, custom filters below).
+ * Do not add colours here that are not in CLAUDE.md.
+ */
+:root {
+  --ink: #0a0a0a;
+  --black: #000000;
+  --charcoal: #1a1a1a;
+  --steel: #b3b3b3;
+  --bone: #ededed;
+  --white: #ffffff;
+  --blood: #b10000;
+  --blood-hi: #e02020;
+
+  /* Base type scale — mirrors tailwind.config.ts theme.fontSize. */
+  --text-display: clamp(3rem, 1rem + 6vw, 7rem);
+  --text-h2: clamp(2rem, 1rem + 4vw, 3.5rem);
+  --text-h3: clamp(1.5rem, 0.9rem + 2vw, 2.25rem);
+  --text-body: 1rem;
+  --text-caption: 0.75rem;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@layer utilities {
+  /**
+   * Grain texture overlay — SVG fractal-noise, opacity capped at 0.06.
+   * Apply to a `relative` ancestor; renders as a full-bleed ::before layer
+   * so it never interferes with pointer events or document flow.
+   */
+  .texture-grain {
+    position: relative;
+  }
+
+  .texture-grain::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0.06;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    background-repeat: repeat;
+  }
+
+  /**
+   * Duotone image filter — maps shadows to ink, highlights to blood.
+   * Usage: wrap an image or a coloured block with `relative overflow-hidden`
+   * and add this class; it desaturates the content then tints it via a
+   * mix-blend-mode overlay. Never use on stock or AI-generated imagery —
+   * real gym photography only, per CLAUDE.md.
+   */
+  .duotone-blood {
+    position: relative;
+    filter: grayscale(1) contrast(1.1);
+  }
+
+  .duotone-blood::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(160deg, var(--ink), var(--blood));
+    mix-blend-mode: color;
+  }
+}
+
+/**
+ * Motion — hard rule (CLAUDE.md). Content is visible by default; motion is
+ * an enhancement only. Under reduced-motion, kill all animation/transition
+ * globally with no exceptions.
+ */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  html {
+    scroll-behavior: auto;
+  }
+}
