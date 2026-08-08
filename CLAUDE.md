@@ -1,12 +1,11 @@
 # PROJECT: Fitness Plamen GYM Sunny Beach
 
 ## Repository state (read this first)
-**Phases 0–2 (scaffold, design foundation, Bulgarian MVP) are done.**
-Phases 3–6 are not — there is no i18n copy on `/en`/`/ru`/`/de` (they
-currently render the same hardcoded Bulgarian page as `/bg`), no SEO/schema,
-no motion yet. Treat the rest of this file as the spec the remaining phases
-must be built to conform to. Do not jump ahead and start Phase 3+ work
-unprompted. See `PHASES.md` for the full per-phase runbook.
+**Phases 0–3 (scaffold, design foundation, Bulgarian MVP, i18n) are done.**
+Phases 4–6 are not — there is no SEO/schema, no motion yet. Treat the rest
+of this file as the spec the remaining phases must be built to conform to.
+Do not jump ahead and start Phase 4+ work unprompted. See `PHASES.md` for
+the full per-phase runbook.
 
 What exists right now:
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS v3 + ESLint, scaffolded
@@ -23,7 +22,13 @@ What exists right now:
   `NEXT_LOCALE` cookie persistence, matcher excludes `api`/`_next`/files.
 - `src/lib/fonts.ts` — `next/font/google` for Sofia Sans (400/600) and Sofia
   Sans Condensed (800), latin + cyrillic subsets, self-hosted at build time.
-- `messages/{bg,en,ru,de}.json` — all empty `{}` for now (Phase 3 fills these).
+- `messages/{bg,en,ru,de}.json` — real, structurally-identical copy under
+  nine namespaces (`hero`, `proofBar`, `theGym`, `equipment`, `passes`,
+  `reviews`, `findUs`, `footer`, `languages`). `bg.json` is the source of
+  truth; `en`/`ru`/`de` are adaptations, not literal translations, in each
+  language's real gym vocabulary. `reviews.items[].quote`/`.author` are
+  byte-identical English text across all four files by design (real Google
+  review quotes are never translated — only `.meta`'s date format adapts).
 - `tailwind.config.ts` — palette tokens (`ink`, `black`, `charcoal`, `steel`,
   `bone`, `white`, `blood`, `blood.hi`) and `font-sans`/`font-condensed`
   mapped to the Sofia Sans CSS variables, plus a `fontSize` scale
@@ -45,18 +50,25 @@ What exists right now:
 - `public/` is currently empty — the default create-next-app SVG placeholders
   were removed since nothing references them and this project doesn't use
   placeholder imagery (see **Photography** below).
-- `src/app/[locale]/page.tsx` — the single-page MVP, hardcoded Bulgarian
-  copy (extraction into `messages/{locale}.json` is Phase 3, not done yet),
-  built from eight section components under `src/app/[locale]/_sections/`:
+- `src/app/[locale]/page.tsx` — the single-page MVP, built from eight
+  section components under `src/app/[locale]/_sections/`, each an `async`
+  Server Component pulling its copy via `getTranslations` (next-intl/server):
   `Hero` (labelled `TODO` photo slot, no real photography yet, hours/
   location/tel+maps CTAs above the fold), `ProofBar` (rating/review count/
   proof points — no "20 години" claim, that founding year is still
   unverified per **Outstanding decisions**), `TheGym`, `Equipment` (all 16
-  items verbatim), `Passes` (day/week/month, no prices), `Reviews` (three
-  of the five approved quotes, verbatim/untranslated), `FindUs`, `Footer`
-  (NAP block, Facebook link, working `/bg /en /ru /de` nav — those three
-  routes currently render the same Bulgarian content until Phase 3).
-  No animation, no `'use client'` anywhere — fully static Server Components.
+  items verbatim per locale), `Passes` (day/week/month, no prices),
+  `Reviews` (three of the five approved quotes, verbatim/untranslated in
+  every locale), `FindUs`, `Footer` (NAP block, Facebook link, real
+  `LanguageSwitcher`). No animation, no `'use client'` in any section —
+  fully static Server Components; only the switcher is a client component.
+- `src/i18n/navigation.ts` — next-intl `createNavigation(routing)`,
+  exporting locale-aware `Link`/`usePathname`/`useRouter`/`getPathname`.
+- `src/components/LanguageSwitcher.tsx` — client component, real working
+  links to all four locales (own-script labels: Български/English/Русский/
+  Deutsch), `aria-current` on the active locale, persists via the existing
+  middleware's `NEXT_LOCALE` cookie handling (no extra client-side cookie
+  code needed).
 
 Run locally: `npm install`, then `npm run dev` (or `npm run build && npm run
 start` to check the production build). `npm run build` and `npx eslint .`
