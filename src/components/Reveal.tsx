@@ -53,6 +53,19 @@ export default function Reveal({ children }: RevealProps) {
           y: 0,
           duration: 0.9,
           ease: "power2.out",
+          // fromTo() applies its "from" values the instant the tween is
+          // created by default (immediateRender: true) — for a
+          // scrollTrigger-driven tween that means every section below the
+          // fold sits at opacity 0.4 from first paint until it's scrolled
+          // into view, not just during its own reveal. Confirmed via a real
+          // browser check: a fresh page load left this element at inline
+          // `opacity: 0.4` indefinitely pre-scroll, which is a real
+          // washed-out-content bug (and explains a Lighthouse color-contrast
+          // failure), not just a cosmetic nit. immediateRender: false defers
+          // applying "from" until the ScrollTrigger actually starts the
+          // tween, so content stays at its natural full-opacity state until
+          // the moment it begins animating in.
+          immediateRender: false,
           scrollTrigger: {
             trigger: el,
             start: "top 85%",
