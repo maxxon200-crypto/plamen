@@ -1,11 +1,12 @@
 # PROJECT: Fitness Plamen GYM Sunny Beach
 
 ## Repository state (read this first)
-**Phases 0–1 (scaffold, design foundation) are done.** Phases 2–6 are not —
-there is no page content, no i18n copy, no SEO/schema, no motion yet. Treat
-the rest of this file as the spec the remaining phases must be built to
-conform to. Do not jump ahead and start Phase 2+ work unprompted. See
-`PHASES.md` for the full per-phase runbook.
+**Phases 0–2 (scaffold, design foundation, Bulgarian MVP) are done.**
+Phases 3–6 are not — there is no i18n copy on `/en`/`/ru`/`/de` (they
+currently render the same hardcoded Bulgarian page as `/bg`), no SEO/schema,
+no motion yet. Treat the rest of this file as the spec the remaining phases
+must be built to conform to. Do not jump ahead and start Phase 3+ work
+unprompted. See `PHASES.md` for the full per-phase runbook.
 
 What exists right now:
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS v3 + ESLint, scaffolded
@@ -44,6 +45,18 @@ What exists right now:
 - `public/` is currently empty — the default create-next-app SVG placeholders
   were removed since nothing references them and this project doesn't use
   placeholder imagery (see **Photography** below).
+- `src/app/[locale]/page.tsx` — the single-page MVP, hardcoded Bulgarian
+  copy (extraction into `messages/{locale}.json` is Phase 3, not done yet),
+  built from eight section components under `src/app/[locale]/_sections/`:
+  `Hero` (labelled `TODO` photo slot, no real photography yet, hours/
+  location/tel+maps CTAs above the fold), `ProofBar` (rating/review count/
+  proof points — no "20 години" claim, that founding year is still
+  unverified per **Outstanding decisions**), `TheGym`, `Equipment` (all 16
+  items verbatim), `Passes` (day/week/month, no prices), `Reviews` (three
+  of the five approved quotes, verbatim/untranslated), `FindUs`, `Footer`
+  (NAP block, Facebook link, working `/bg /en /ru /de` nav — those three
+  routes currently render the same Bulgarian content until Phase 3).
+  No animation, no `'use client'` anywhere — fully static Server Components.
 
 Run locally: `npm install`, then `npm run dev` (or `npm run build && npm run
 start` to check the production build). `npm run build` and `npx eslint .`
