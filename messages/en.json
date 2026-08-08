@@ -1,1 +1,114 @@
-{}
+{
+  "hero": {
+    "eyebrow": "Old-school iron gym",
+    "headingPlain": "Iron",
+    "headingAccent": "Temple",
+    "hours": "Open 09:00–21:00 · every day",
+    "location": "Tsentar, Sunny Beach",
+    "ctaCall": "Call",
+    "ctaFind": "Find us"
+  },
+  "proofBar": {
+    "rating": "4.4★ Google rating",
+    "reviewCount": "~149 reviews",
+    "dumbbells": "Dumbbells up to 55 kg",
+    "ac": "Air conditioning"
+  },
+  "theGym": {
+    "eyebrow": "The gym",
+    "headingPlain": "Built by hand,",
+    "headingAccent": "not bought off a shelf",
+    "paragraph1": "Plamen, the owner, built most of the machines in this gym with his own hands. Not because he couldn't buy new ones — he knows exactly how each one needs to work, and builds it to hold up.",
+    "paragraph2": "The iron here isn't shiny and it isn't new. We keep it maintained, oiled and fully working — that's the point of old school: not a showroom, a tool that does the job every day."
+  },
+  "equipment": {
+    "eyebrow": "Equipment",
+    "heading": "Everything you need",
+    "items": [
+      "Benches",
+      "Leg press",
+      "Hack squat",
+      "Machine preacher curl + free preacher bench",
+      "Leg curl",
+      "Quad extension",
+      "Calisthenics park",
+      "Boxing area",
+      "Cables",
+      "All pulldown variations",
+      "Dip machine",
+      "Adductor + abductor",
+      "Elbow-style pec dec and extended-arm pec dec with rear delt",
+      "Travelling smith machine and standard smith machine",
+      "Dumbbells up to 55 kg",
+      "Air conditioning"
+    ]
+  },
+  "passes": {
+    "eyebrow": "Passes",
+    "heading": "Walk in. Train. No paperwork.",
+    "intro": "Call us or come by — we'll tell you everything about passes on the spot.",
+    "ctaCall": "Call about a pass",
+    "items": [
+      {
+        "name": "Day pass",
+        "desc": "For beach guests who want one serious training session, then back to the sea."
+      },
+      {
+        "name": "Week pass",
+        "desc": "For a week in Sunny Beach — train every day of your stay without breaking your routine."
+      },
+      {
+        "name": "Month pass",
+        "desc": "For a longer stay in the area — regular access, no long-term commitment."
+      }
+    ]
+  },
+  "reviews": {
+    "eyebrow": "From Google reviews",
+    "heading": "Don't just take our word for it",
+    "sourceLabel": "Google review",
+    "items": [
+      {
+        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool. Everyone is so helpful and welcoming. Gym has amazing air conditioning not to mention how spotless this gym is.",
+        "author": "Zara P",
+        "meta": "5★ · Jun 2025"
+      },
+      {
+        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines. A must visit if you are visiting sunny beach.",
+        "author": "R D",
+        "meta": "5★ · Jun 2023"
+      },
+      {
+        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless. Owner is very nice",
+        "author": "Kevin S",
+        "meta": "5★ · Aug 2025"
+      }
+    ]
+  },
+  "findUs": {
+    "eyebrow": "Find us",
+    "heading": "Come in today",
+    "addressLabel": "Address:",
+    "address": "Tsentar, Sunny Beach 8240, Nesebar",
+    "hoursLabel": "Hours:",
+    "hours": "09:00–21:00, every day",
+    "phoneLabel": "Phone:",
+    "walkingTime": "A few minutes' walk from the beach.",
+    "houseRules": "One small request, so it stays good for everyone: rack your plates and dumbbells and wipe down the bench when you're done. Thanks.",
+    "ctaMaps": "Open in Google Maps",
+    "ctaCall": "Call"
+  },
+  "footer": {
+    "name": "Fitness Plamen GYM Sunny Beach",
+    "address": "Tsentar, Sunny Beach 8240, Nesebar, Bulgaria",
+    "facebook": "Facebook",
+    "languageLabel": "Language",
+    "copyright": "© {year} {name}"
+  },
+  "languages": {
+    "bg": "Български",
+    "en": "English",
+    "ru": "Русский",
+    "de": "Deutsch"
+  }
+}

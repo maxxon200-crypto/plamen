@@ -1,6 +1,5 @@
+import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
-
-const items = ["4.4★ Google рейтинг", "~149 отзива", "Дъмбели до 55 кг", "Климатик"];
 
 /**
  * Thin proof strip. Deliberately not built on the Section primitive — that
@@ -13,7 +12,10 @@ const items = ["4.4★ Google рейтинг", "~149 отзива", "Дъмбе�
  * TODO(founding-year): once the owner confirms a real year, add an item
  * here, e.g. `"${YEARS} години в Слънчев бряг"` — never ship a guessed number.
  */
-export default function ProofBar() {
+export default async function ProofBar() {
+  const t = await getTranslations("proofBar");
+  const items = [t("rating"), t("reviewCount"), t("dumbbells"), t("ac")];
+
   return (
     <div className="bg-black py-4">
       <Container>

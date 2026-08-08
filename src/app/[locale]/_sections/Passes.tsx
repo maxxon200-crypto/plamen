@@ -1,37 +1,28 @@
+import { getTranslations } from "next-intl/server";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 
 const TEL_HREF = "tel:+359878821115";
 
-const passes = [
-  {
-    name: "Дневен пропуск",
-    desc: "За гости на плажа, които искат едно сериозно тренировъчно занимание и после обратно към морето.",
-  },
-  {
-    name: "Седмичен пропуск",
-    desc: "За почивка на Слънчев бряг — тренирай през цялата седмица без прекъсване на режима.",
-  },
-  {
-    name: "Месечен пропуск",
-    desc: "За по-дълъг престой в района — редовен достъп без излишни ангажименти.",
-  },
-];
+interface Pass {
+  name: string;
+  desc: string;
+}
 
-export default function Passes() {
+export default async function Passes() {
+  const t = await getTranslations("passes");
+  const passes = t.raw("items") as Pass[];
+
   return (
     <Section background="charcoal">
       <Container>
         <p className="font-condensed text-caption uppercase tracking-[0.15em] text-steel">
-          Пропуски
+          {t("eyebrow")}
         </p>
-        <h2 className="mt-2 font-condensed text-h2 uppercase">
-          Влез. Тренирай. Без формалности.
-        </h2>
+        <h2 className="mt-2 font-condensed text-h2 uppercase">{t("heading")}</h2>
         <p className="mt-4 max-w-2xl font-sans text-body text-steel">
-          Обадете се или елате направо на място — ще ви кажем всичко за
-          пропуските в момента.
+          {t("intro")}
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-3">
           {passes.map((pass) => (
@@ -43,7 +34,7 @@ export default function Passes() {
         </div>
         <div className="mt-10">
           <Button href={TEL_HREF} variant="filled">
-            Обадете се за пропуск
+            {t("ctaCall")}
           </Button>
         </div>
       </Container>

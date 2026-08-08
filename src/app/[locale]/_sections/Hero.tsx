@@ -1,3 +1,4 @@
+import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
@@ -13,7 +14,9 @@ const MAPS_HREF =
  * missing photo gets a labelled empty slot with a TODO comment, never a
  * stock/AI placeholder image.
  */
-export default function Hero() {
+export default async function Hero() {
+  const t = await getTranslations("hero");
+
   return (
     <section className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-ink">
       <div className="absolute inset-0">
@@ -29,17 +32,18 @@ export default function Hero() {
       <div className="absolute inset-0 bg-ink/70" aria-hidden="true" />
 
       <Container className="relative z-10 pb-10 pt-28 sm:pb-14 sm:pt-36">
-        <Eyebrow>Старошколска желязна зала</Eyebrow>
+        <Eyebrow>{t("eyebrow")}</Eyebrow>
         <h1 className="mt-3 font-condensed text-display uppercase text-white">
-          Желязен <span className="bg-blood px-2 text-white">Храм</span>
+          {t("headingPlain")}{" "}
+          <span className="bg-blood px-2 text-white">{t("headingAccent")}</span>
         </h1>
         <div className="mt-6 space-y-1 font-sans text-body text-steel">
-          <p>Отворено 09:00–21:00 · всеки ден</p>
-          <p>Център, Слънчев бряг</p>
+          <p>{t("hours")}</p>
+          <p>{t("location")}</p>
         </div>
         <div className="mt-8 flex flex-col gap-4 sm:flex-row">
           <Button href={TEL_HREF} variant="filled">
-            Обади се
+            {t("ctaCall")}
           </Button>
           <Button
             href={MAPS_HREF}
@@ -47,7 +51,7 @@ export default function Hero() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            Намери ни
+            {t("ctaFind")}
           </Button>
         </div>
       </Container>

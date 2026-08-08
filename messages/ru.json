@@ -1,1 +1,114 @@
-{}
+{
+  "hero": {
+    "eyebrow": "Олдскульный железный зал",
+    "headingPlain": "Железный",
+    "headingAccent": "Храм",
+    "hours": "Открыто 09:00–21:00 · без выходных",
+    "location": "Центр, Солнечный берег",
+    "ctaCall": "Позвонить",
+    "ctaFind": "Как добраться"
+  },
+  "proofBar": {
+    "rating": "4.4★ рейтинг Google",
+    "reviewCount": "~149 отзывов",
+    "dumbbells": "Гантели до 55 кг",
+    "ac": "Кондиционер"
+  },
+  "theGym": {
+    "eyebrow": "О зале",
+    "headingPlain": "Сделано своими руками,",
+    "headingAccent": "а не куплено готовым",
+    "paragraph1": "Пламен, владелец зала, построил большую часть тренажёров своими руками. Не потому что не мог купить новые — а потому что точно знает, как должен работать каждый из них, и делает их так, чтобы служили долго.",
+    "paragraph2": "Железо здесь не блестящее и не вчерашнее. Мы держим его в порядке, смазанным и полностью исправным — в этом суть старой школы: не витрина, а инструмент, который каждый день делает своё дело."
+  },
+  "equipment": {
+    "eyebrow": "Оборудование",
+    "heading": "Всё, что нужно для тренировки",
+    "items": [
+      "Скамьи",
+      "Жим ногами",
+      "Гакк-присед",
+      "Тренажёр Скотта + свободная скамья Скотта",
+      "Сгибание ног лёжа",
+      "Разгибание ног",
+      "Площадка для калистеники",
+      "Зона для бокса",
+      "Блочные тренажёры",
+      "Все варианты тяги верхнего блока",
+      "Дип-машина",
+      "Тренажёр для приведения и отведения бедра",
+      "Баттерфляй с упором на локти и баттерфляй с прямыми руками и задней дельтой",
+      "Подвижный Смит-тренажёр и стандартный Смит-тренажёр",
+      "Гантели до 55 кг",
+      "Кондиционер"
+    ]
+  },
+  "passes": {
+    "eyebrow": "Абонементы",
+    "heading": "Пришёл. Потренировался. Без формальностей.",
+    "intro": "Позвоните или приходите прямо на месте — расскажем всё об абонементах.",
+    "ctaCall": "Узнать об абонементе",
+    "items": [
+      {
+        "name": "Разовое посещение",
+        "desc": "Для отдыхающих на пляже, которые хотят одну серьёзную тренировку — и снова к морю."
+      },
+      {
+        "name": "Недельный абонемент",
+        "desc": "Для отдыха на Солнечном берегу — тренируйтесь всю неделю без перерыва в режиме."
+      },
+      {
+        "name": "Месячный абонемент",
+        "desc": "Для долгого пребывания в регионе — регулярный доступ без лишних обязательств."
+      }
+    ]
+  },
+  "reviews": {
+    "eyebrow": "Из отзывов на Google",
+    "heading": "Это не только наши слова",
+    "sourceLabel": "Отзыв на Google",
+    "items": [
+      {
+        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool. Everyone is so helpful and welcoming. Gym has amazing air conditioning not to mention how spotless this gym is.",
+        "author": "Zara P",
+        "meta": "5★ · июнь 2025"
+      },
+      {
+        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines. A must visit if you are visiting sunny beach.",
+        "author": "R D",
+        "meta": "5★ · июнь 2023"
+      },
+      {
+        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless. Owner is very nice",
+        "author": "Kevin S",
+        "meta": "5★ · авг. 2025"
+      }
+    ]
+  },
+  "findUs": {
+    "eyebrow": "Как добраться",
+    "heading": "Приходите сегодня",
+    "addressLabel": "Адрес:",
+    "address": "Центр, Солнечный берег 8240, Несебр",
+    "hoursLabel": "Часы работы:",
+    "hours": "09:00–21:00, ежедневно",
+    "phoneLabel": "Телефон:",
+    "walkingTime": "Всего в нескольких минутах ходьбы от пляжа.",
+    "houseRules": "Небольшая просьба, чтобы всем было комфортно: убирайте блины и гантели на место и протирайте скамью после тренировки. Спасибо.",
+    "ctaMaps": "Открыть в Google Maps",
+    "ctaCall": "Позвонить"
+  },
+  "footer": {
+    "name": "Fitness Plamen GYM Sunny Beach",
+    "address": "Центр, Солнечный берег 8240, Несебр, Болгария",
+    "facebook": "Facebook",
+    "languageLabel": "Язык",
+    "copyright": "© {year} {name}"
+  },
+  "languages": {
+    "bg": "Български",
+    "en": "English",
+    "ru": "Русский",
+    "de": "Deutsch"
+  }
+}

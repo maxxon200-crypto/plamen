@@ -1,29 +1,22 @@
+import { getTranslations } from "next-intl/server";
 import Container from "@/components/ui/Container";
+import LanguageSwitcher from "@/components/LanguageSwitcher";
 
-const NAME = "Фитнес Пламен GYM Sunny Beach";
-const ADDRESS = "Център, Слънчев бряг 8240, Несебър, България";
 const PHONE_DISPLAY = "+359 87 882 1115";
 const TEL_HREF = "tel:+359878821115";
 const FACEBOOK_HREF = "https://www.facebook.com/FITNESSMERCURYSUNNYBEACH/";
 
-// Real routes — /bg /en /ru /de all resolve since Phase 0. Copy on the
-// other three locales isn't localized yet (that's Phase 3), so these are
-// working navigation, not dead links: they render the same real page.
-const languages = [
-  { code: "bg", label: "BG" },
-  { code: "en", label: "EN" },
-  { code: "ru", label: "RU" },
-  { code: "de", label: "DE" },
-];
+export default async function Footer() {
+  const t = await getTranslations("footer");
+  const name = t("name");
 
-export default function Footer() {
   return (
     <footer className="bg-black py-10">
       <Container>
         <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:justify-between">
           <div className="font-sans text-body text-steel">
-            <p className="font-condensed text-h3 uppercase text-white">{NAME}</p>
-            <p className="mt-2">{ADDRESS}</p>
+            <p className="font-condensed text-h3 uppercase text-white">{name}</p>
+            <p className="mt-2">{t("address")}</p>
             <p className="mt-1">
               <a href={TEL_HREF} className="underline underline-offset-2">
                 {PHONE_DISPLAY}
@@ -35,28 +28,15 @@ export default function Footer() {
               rel="noopener noreferrer"
               className="mt-3 inline-block underline underline-offset-2"
             >
-              Facebook
+              {t("facebook")}
             </a>
           </div>
 
-          <nav aria-label="Език">
-            <ul className="flex gap-2 font-condensed text-caption uppercase tracking-[0.1em] text-steel">
-              {languages.map((lang) => (
-                <li key={lang.code}>
-                  <a
-                    href={`/${lang.code}`}
-                    className="inline-flex min-h-11 min-w-11 items-center justify-center hover:text-white"
-                  >
-                    {lang.label}
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </nav>
+          <LanguageSwitcher />
         </div>
 
         <p className="mt-8 font-sans text-caption text-steel/70">
-          © {new Date().getFullYear()} {NAME}
+          {t("copyright", { year: new Date().getFullYear(), name })}
         </p>
       </Container>
     </footer>

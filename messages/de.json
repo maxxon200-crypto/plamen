@@ -1,1 +1,114 @@
-{}
+{
+  "hero": {
+    "eyebrow": "Old-School-Eisenstudio",
+    "headingPlain": "Eiserner",
+    "headingAccent": "Tempel",
+    "hours": "Geöffnet 09:00–21:00 Uhr · täglich",
+    "location": "Zentrum, Sonnenstrand",
+    "ctaCall": "Anrufen",
+    "ctaFind": "Anfahrt"
+  },
+  "proofBar": {
+    "rating": "4,4★ Google-Bewertung",
+    "reviewCount": "~149 Bewertungen",
+    "dumbbells": "Kurzhanteln bis 55 kg",
+    "ac": "Klimaanlage"
+  },
+  "theGym": {
+    "eyebrow": "Das Studio",
+    "headingPlain": "Handgebaut,",
+    "headingAccent": "nicht von der Stange",
+    "paragraph1": "Plamen, der Inhaber, hat einen Großteil der Geräte in diesem Studio mit eigenen Händen gebaut. Nicht weil er sich keine neuen leisten könnte — er weiß genau, wie jedes Gerät funktionieren muss, und baut es entsprechend, damit es hält.",
+    "paragraph2": "Das Eisen hier ist nicht glänzend und nicht neu. Wir halten es gepflegt, geölt und voll funktionsfähig — genau darum geht es bei Old School: kein Schauraum, sondern ein Werkzeug, das jeden Tag seine Arbeit macht."
+  },
+  "equipment": {
+    "eyebrow": "Ausstattung",
+    "heading": "Alles, was du brauchst",
+    "items": [
+      "Bänke",
+      "Beinpresse",
+      "Hackenschmidt-Maschine",
+      "Scott-Curl-Maschine + freie Scott-Bank",
+      "Beincurler",
+      "Beinstrecker",
+      "Calisthenics-Bereich",
+      "Boxbereich",
+      "Kabelzüge",
+      "Alle Latzug-Varianten",
+      "Dip-Maschine",
+      "Adduktoren- und Abduktorenmaschine",
+      "Butterfly mit Ellbogenauflage und Butterfly mit gestrecktem Arm und hinterer Schulter",
+      "Fahrbare Smith-Maschine und Standard-Smith-Maschine",
+      "Kurzhanteln bis 55 kg",
+      "Klimaanlage"
+    ]
+  },
+  "passes": {
+    "eyebrow": "Karten",
+    "heading": "Reinkommen. Trainieren. Ohne Formalitäten.",
+    "intro": "Rufen Sie an oder kommen Sie direkt vorbei — wir erklären Ihnen vor Ort alles zu den Karten.",
+    "ctaCall": "Karte erfragen",
+    "items": [
+      {
+        "name": "Tageskarte",
+        "desc": "Für Strandurlauber, die eine ernsthafte Trainingseinheit wollen und danach zurück ans Meer."
+      },
+      {
+        "name": "Wochenkarte",
+        "desc": "Für den Urlaub am Sonnenstrand — die ganze Woche trainieren, ohne die Routine zu unterbrechen."
+      },
+      {
+        "name": "Monatskarte",
+        "desc": "Für einen längeren Aufenthalt in der Region — regelmäßiger Zugang ohne feste Bindung."
+      }
+    ]
+  },
+  "reviews": {
+    "eyebrow": "Aus Google-Bewertungen",
+    "heading": "Das sagen nicht nur wir",
+    "sourceLabel": "Google-Bewertung",
+    "items": [
+      {
+        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool. Everyone is so helpful and welcoming. Gym has amazing air conditioning not to mention how spotless this gym is.",
+        "author": "Zara P",
+        "meta": "5★ · Juni 2025"
+      },
+      {
+        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines. A must visit if you are visiting sunny beach.",
+        "author": "R D",
+        "meta": "5★ · Juni 2023"
+      },
+      {
+        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless. Owner is very nice",
+        "author": "Kevin S",
+        "meta": "5★ · Aug. 2025"
+      }
+    ]
+  },
+  "findUs": {
+    "eyebrow": "Anfahrt",
+    "heading": "Komm heute vorbei",
+    "addressLabel": "Adresse:",
+    "address": "Zentrum, Sonnenstrand 8240, Nessebar",
+    "hoursLabel": "Öffnungszeiten:",
+    "hours": "09:00–21:00 Uhr, täglich",
+    "phoneLabel": "Telefon:",
+    "walkingTime": "Nur wenige Gehminuten vom Strand entfernt.",
+    "houseRules": "Eine kleine Bitte, damit es für alle angenehm bleibt: Scheiben und Hanteln nach dem Training zurückräumen und die Bank abwischen. Danke.",
+    "ctaMaps": "In Google Maps öffnen",
+    "ctaCall": "Anrufen"
+  },
+  "footer": {
+    "name": "Fitness Plamen GYM Sunny Beach",
+    "address": "Zentrum, Sonnenstrand 8240, Nessebar, Bulgarien",
+    "facebook": "Facebook",
+    "languageLabel": "Sprache",
+    "copyright": "© {year} {name}"
+  },
+  "languages": {
+    "bg": "Български",
+    "en": "English",
+    "ru": "Русский",
+    "de": "Deutsch"
+  }
+}
