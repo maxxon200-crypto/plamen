@@ -9,11 +9,9 @@ const MAPS_HREF =
   "https://www.google.com/maps/search/?api=1&query=Fitness+Plamen+GYM&query_place_id=ChIJIxshlPafpkARpBnO0sV6nrc";
 
 /**
- * Full-bleed hero. No real gym photography exists yet — CLAUDE.md
- * "Outstanding decisions" #2 blocks the photography sections on the owner
- * supplying at least 10 real shots. Per CLAUDE.md's Photography rule, a
- * missing photo gets a labelled empty slot with a TODO comment, never a
- * stock/AI placeholder image.
+ * Full-bleed hero. First real gym photo landed here in Phase 8 (owner-
+ * supplied); CLAUDE.md's Outstanding Decision #2 (min. 10 real shots) is
+ * still open — this is one of a handful received so far, not the full set.
  */
 export default async function Hero() {
   const t = await getTranslations("hero");
@@ -21,7 +19,7 @@ export default async function Hero() {
   return (
     <section className="relative flex min-h-svh flex-col justify-end overflow-hidden bg-ink">
       <div className="absolute inset-0">
-        <HeroBackground />
+        <HeroBackground alt={t("imageAlt")} />
       </div>
       {/* Dark scrim so hero copy stays legible once a real photo lands here */}
       <div className="absolute inset-0 bg-ink/70" aria-hidden="true" />

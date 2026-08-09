@@ -10,7 +10,8 @@
     "hours": "Open 09:00–21:00 · every day",
     "location": "Tsentar, Sunny Beach",
     "ctaCall": "Call",
-    "ctaFind": "Find us"
+    "ctaFind": "Find us",
+    "imageAlt": "Dumbbell rack and benches at Fitness Plamen GYM"
   },
   "proofBar": {
     "yearsValue": "23",
@@ -27,7 +28,8 @@
     "headingPlain": "Built by hand,",
     "headingAccent": "not bought off a shelf",
     "paragraph1": "Fitness Plamen has been running in Sunny Beach for 23 years — longer than any other gym in town. Plamen, the owner, built most of the machines in this gym with his own hands. Not because he couldn't buy new ones — he knows exactly how each one needs to work, and builds it to hold up.",
-    "paragraph2": "The iron here isn't shiny and it isn't new. We keep it maintained, oiled and fully working — that's the point of old school: not a showroom, a tool that does the job every day."
+    "paragraph2": "The iron here isn't shiny and it isn't new. We keep it maintained, oiled and fully working — that's the point of old school: not a showroom, a tool that does the job every day.",
+    "ownerPhotoAlt": "Plamen, the owner of Fitness Plamen GYM"
   },
   "equipment": {
     "eyebrow": "Equipment",
@@ -140,7 +142,8 @@
     "address": "Tsentar, Sunny Beach 8240, Nesebar, Bulgaria",
     "facebook": "Facebook",
     "languageLabel": "Language",
-    "copyright": "© {year} {name}"
+    "copyright": "© {year} {name}",
+    "logoAlt": "Fitness Plamen GYM logo"
   },
   "languages": {
     "bg": "Български",

@@ -10,7 +10,8 @@
     "hours": "Geöffnet 09:00–21:00 Uhr · täglich",
     "location": "Zentrum, Sonnenstrand",
     "ctaCall": "Anrufen",
-    "ctaFind": "Anfahrt"
+    "ctaFind": "Anfahrt",
+    "imageAlt": "Kurzhantel-Ständer und Bänke im Fitness Plamen GYM"
   },
   "proofBar": {
     "yearsValue": "23",
@@ -27,7 +28,8 @@
     "headingPlain": "Handgebaut,",
     "headingAccent": "nicht von der Stange",
     "paragraph1": "Fitness Plamen gibt es seit 23 Jahren in Sonnenstrand — länger als jedes andere Studio am Ort. Plamen, der Inhaber, hat einen Großteil der Geräte in diesem Studio mit eigenen Händen gebaut. Nicht weil er sich keine neuen leisten könnte — er weiß genau, wie jedes Gerät funktionieren muss, und baut es entsprechend, damit es hält.",
-    "paragraph2": "Das Eisen hier ist nicht glänzend und nicht neu. Wir halten es gepflegt, geölt und voll funktionsfähig — genau darum geht es bei Old School: kein Schauraum, sondern ein Werkzeug, das jeden Tag seine Arbeit macht."
+    "paragraph2": "Das Eisen hier ist nicht glänzend und nicht neu. Wir halten es gepflegt, geölt und voll funktionsfähig — genau darum geht es bei Old School: kein Schauraum, sondern ein Werkzeug, das jeden Tag seine Arbeit macht.",
+    "ownerPhotoAlt": "Plamen, Inhaber von Fitness Plamen GYM"
   },
   "equipment": {
     "eyebrow": "Ausstattung",
@@ -140,7 +142,8 @@
     "address": "Zentrum, Sonnenstrand 8240, Nessebar, Bulgarien",
     "facebook": "Facebook",
     "languageLabel": "Sprache",
-    "copyright": "© {year} {name}"
+    "copyright": "© {year} {name}",
+    "logoAlt": "Logo von Fitness Plamen GYM"
   },
   "languages": {
     "bg": "Български",
