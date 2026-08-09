@@ -7,8 +7,14 @@ stakeholder revision pass on the live site — is also done**: typography
 swap (Sofia Sans Condensed → Oswald for display), Equipment section
 redesigned as expandable pill chips, FAQ trimmed 7→5 and converted to a real
 accordion, language switcher moved from the footer to a persistent top bar,
-and ProofBar/Reviews rebuilt for much more visual prominence. See
-`PHASES.md` for the full per-phase runbook including this revision pass.
+and ProofBar/Reviews rebuilt for much more visual prominence. **Phase 8 —
+first real content — is also done**: the 23-year founding claim is now
+owner-verified and live (leads `ProofBar`), and the first three real assets
+(a Hero background photo, an owner portrait, the owner's logo) are
+committed and wired in — see **Photography** below for exactly what's in,
+what's still missing, and why some chat-shared photos didn't make it.
+See `PHASES.md` for the full per-phase runbook including both of these
+post-launch passes.
 
 `SITE_URL` in `src/lib/site.ts` may still be a placeholder domain depending
 on whether the real domain has been swapped in yet — check that file before
@@ -65,18 +71,22 @@ What exists right now:
 - `src/app/[locale]/page.tsx` — the single-page MVP, built from nine
   section components under `src/app/[locale]/_sections/`, each an `async`
   Server Component pulling its copy via `getTranslations` (next-intl/server):
-  `Hero` (labelled `TODO` photo slot, no real photography yet, hours/
-  location/tel+maps CTAs above the fold), `ProofBar` (large rating/review
-  numerals + a decorative `StarRating` — no "20 години" claim, that founding
-  year is still unverified per **Outstanding decisions**), `TheGym`,
-  `Equipment` (pill-chip highlights + expandable "more", all 16 real items
-  still present, see the Equipment section above), `Passes` (day/week/month,
-  no prices), `Reviews` (three of the five approved quotes, verbatim/
-  untranslated in every locale, each with a `StarRating`), `FindUs`, `FAQ`
-  (5 Q&As, native `<details>` accordion per item), `Footer` (NAP block,
-  Facebook link — no longer the language switcher, see `TopBar` below). No
-  animation beyond the existing scroll-reveal, no `'use client'` in any
-  section — fully static Server Components; only `LanguageSwitcher` is a
+  `Hero` (real B&W-treated photo background, `public/photos/
+  dumbbell-rack.jpg` via `HeroBackground` — small/chat-compressed source,
+  swap for full-res when available; hours/location/tel+maps CTAs above the
+  fold), `ProofBar` (three large numerals — years/rating/review count, years
+  leading — plus a decorative `StarRating`; the "23 години" founding claim
+  is real and owner-verified, see **THE BUSINESS**), `TheGym` (owner-portrait
+  photo alongside the two-paragraph story), `Equipment` (pill-chip
+  highlights + expandable "more", all 16 real items still present, see the
+  Equipment section above), `Passes` (day/week/month, no prices), `Reviews`
+  (three of the five approved quotes, verbatim/untranslated in every
+  locale, each with a `StarRating`), `FindUs`, `FAQ` (5 Q&As, native
+  `<details>` accordion per item), `Footer` (NAP block, the owner's logo in
+  a white badge card, Facebook link — no longer the language switcher, see
+  `TopBar` below). No animation beyond the existing scroll-reveal, no
+  `'use client'` in any section — fully static Server Components; only
+  `LanguageSwitcher` is a
   client component.
 - `src/i18n/navigation.ts` — next-intl `createNavigation(routing)`,
   exporting locale-aware `Link`/`usePathname`/`useRouter`/`getPathname`.
@@ -301,18 +311,37 @@ AI-generated imagery.** If a photo is missing, leave a labelled empty slot in
 the code with a `TODO` comment — do not fill it with a placeholder from an
 image service.
 
-**Status (in progress):** owner has started sending real phone photos
-directly in chat. As of the last session, ~6 real, usable photos have been
-reviewed but **not yet committed to the repo** — chat attachments in this
-environment aren't saved to disk automatically, so nothing can be wired
-into the site until they land in `public/photos/` via a repo commit
-(owner uploading through GitHub's web UI, or a future session with real
-file access to the attachments). Photos seen so far: owner portrait
-(selfie, thumbs up), a child using the calisthenics equipment, a close
-dumbbell-rack/bench shot, a wide gym-floor shot, the entrance area with a
-painted mural (bright colours — fine, gets the duotone/B&W treatment like
-everything else), and a covered outdoor training area. Still short of the
-10-shot minimum. One additional submitted image (a posed, studio-lit
+**Status (in progress, first real photos now live):** owner has been
+sending real phone photos directly in chat rather than uploading to the
+repo (GitHub's mobile uploader 406'd on the phone's HEIC photos, and a
+Google Photos share link is blocked by this environment's egress policy).
+Chat images aren't saved to disk automatically in this environment, but
+they are recoverable — the raw base64 image data lives inside this
+session's own transcript log, decodable and writable to `public/` without
+needing a fresh upload. That's how the three photos below got in.
+
+**Committed and live in the site** (`public/logo-supplied.jpg`,
+`public/photos/`): owner portrait (selfie, thumbs up — now in `TheGym`),
+a close dumbbell-rack/bench shot (now the `Hero` background), and the
+supplied logo mark (now in `Footer`). All three are small, chat-compressed
+JPEGs, not full-resolution originals — they read a little soft at large
+display sizes. Swap the files in `public/` for full-resolution versions
+whenever the owner can get them over; nothing else needs to change.
+
+**Committed but not yet placed:** `public/photos/calisthenics-kid.jpg` (a
+child using the calisthenics equipment) — no natural slot for it yet
+without further section changes.
+
+**Shown in chat but lost, not recoverable:** a wide gym-floor shot, the
+entrance area with a painted mural, a covered outdoor training area, and a
+t-shirt mockup reading "20+ YEARS" — these appeared in an earlier chat
+message whose image data didn't survive in the transcript log (likely
+pruned during context compaction). If the owner still wants these used,
+they need to be re-sent in a **current** chat message, not re-fetched from
+history.
+
+Still short of the 10-shot minimum even counting the recoverable-but-
+unplaced one. One additional submitted image (a posed, studio-lit
 shirtless physique shot, sunglasses, staged background) was **not**
 accepted — it reads as stock photography, not a real photo of this gym,
 and needs explicit owner confirmation before it could ever be considered.
@@ -394,6 +423,15 @@ document — summary of the sequence:
   weight (large numerals, star icons) instead of thin strips. Same
   discipline as every other phase: build must pass, `design-critic` audit
   before commit, exact same verified facts (no new numbers invented).
+- **Phase 8 — First real content (post-launch).** The founding-year
+  claim moved from unverified placeholder to owner-verified fact: 23
+  years, oldest gym in Sunny Beach, now leading `ProofBar` and opening
+  `TheGym`'s story. First real photography and the owner's logo landed —
+  recovered from this session's own chat transcript after both direct
+  upload paths (GitHub mobile, a Google Photos link) failed, rather than
+  blocking on a third attempt. See **Photography** in the Design system
+  section for exactly what's live, what's saved-but-unplaced, and what
+  didn't survive to be committed.
 
 ## Sub-agents
 This project uses narrow, single-purpose agents defined in
@@ -428,22 +466,25 @@ semantic HTML and real FAQ content do the actual work.
    continuously-operating gym in Sunny Beach. See **THE BUSINESS** and
    **Positioning** above — this is now a real fact to market, not a
    placeholder.
-2. Real gym photography (min. 10 shots) — **in progress.** Owner has
-   started supplying real phone photos (gym floor from multiple angles,
-   dumbbell rack, owner portrait, entrance mural) directly in chat rather
-   than committed to the repo — see **Photography** below for the current
-   received/committed/used status and how to get new ones in. One
-   submitted image (a posed, studio-lit shirtless physique shot) reads as
-   stock photography rather than a real photo of this gym or its owner —
-   excluded pending explicit confirmation from the owner that it's
-   genuine and who it is.
-3. Logo — owner supplied an existing logo mark (red fist/bicep icon +
-   wordmark) and a matching t-shirt design reading "20+ YEARS" (consistent
-   with the now-confirmed 23-year history, likely just not yet updated on
-   the merch). Undecided: ship the logo as supplied, or redesign it to
-   match the site's exact palette (`#B10000` not whatever red the supplied
-   asset uses) and Oswald typography for visual cohesion with the rest of
-   the site.
+2. Real gym photography (min. 10 shots) — **in progress, 3 live.** A Hero
+   background photo, an owner portrait, and one more saved-but-unplaced
+   shot are committed to the repo and (for the first two) wired into the
+   site — see **Photography** below for the full received/committed/used
+   breakdown, including which chat-shared photos didn't survive to be
+   committed and need re-sending. One submitted image (a posed,
+   studio-lit shirtless physique shot) reads as stock photography rather
+   than a real photo of this gym or its owner — excluded pending explicit
+   confirmation from the owner that it's genuine and who it is.
+3. Logo — **shipped as-supplied, redesign still open.** The owner's
+   existing logo mark (red fist/bicep icon + wordmark) is live in the
+   footer, used exactly as supplied rather than redesigned, because
+   shipping something real now beat blocking on a design decision. A
+   matching t-shirt design reading "20+ YEARS" was also supplied
+   (consistent with the now-confirmed 23-year history, likely just not
+   yet updated on the merch). Still undecided: leave the logo as-is, or
+   redesign it to match the site's exact palette (`#B10000` not whatever
+   red the supplied asset uses) and Oswald typography for visual
+   cohesion with the rest of the site.
 4. Whether/how to mention the "Fitness Mercury" history.
 5. Whether to create an Instagram account or omit it entirely.
 6. Whether the no-prices rule holds — the day rate is already public via a
