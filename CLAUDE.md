@@ -31,8 +31,17 @@ bordered button; Reviews' quote text shrunk from `text-h3` to `text-body`
 (it was overpowering the card at large sizes); and ProofBar's
 dumbbells/AC secondary stats moved from plain caption text to the same
 `rounded-full` oval-chip treatment Equipment uses, scoped for the black
-background. See `PHASES.md` for the full per-phase runbook including all
-four post-launch passes.
+background. The day/week passes were also renamed to "1 Day Pass"/"7 Day
+Pass" (all four locales) per the same feedback round. **Phase 4.5 — legal
+pages and security hardening — is also done**: `/privacy` and `/terms`
+routes (all four locales), a `src/config/legal.ts` single source of truth
+for the entity's legal identity (still mostly `TODO_OWNER` — see
+**Outstanding decisions** below), and a full security-headers pass
+(HSTS, CSP, X-Frame-Options, Permissions-Policy, `poweredByHeader: false`,
+no prod source maps, `/.well-known/security.txt`). See **Legal pages and
+security** below for what's live and what's still blocked on the owner.
+See `PHASES.md` for the full per-phase runbook including all five
+post-launch passes.
 
 `SITE_URL` in `src/lib/site.ts` may still be a placeholder domain depending
 on whether the real domain has been swapped in yet — check that file before
@@ -506,6 +515,65 @@ general-purpose implementation:
 | `qa-verifier` | Build/perf/accessibility/no-JS verification (run before deploy) |
 
 See each agent's file for its full brief and hard prohibitions.
+
+## Legal pages and security (Phase 4.5)
+- `src/config/legal.ts` — single source of truth for the entity's legal
+  identity. Every field the owner hasn't supplied yet is the literal
+  string `"TODO_OWNER"` (never an invented value) — currently that's
+  `legalEntityName`, `eik`, `registeredAddress`, `contactEmail`.
+  `contactPhone` and `lastUpdated` are filled. `src/components/
+  LegalTodoWarning.tsx` renders a visible dev-only banner on `/privacy`
+  listing exactly which fields are still missing, so a half-filled legal
+  page can't ship unnoticed — verified it fires in `next dev` and is
+  absent from a production build.
+- `/[locale]/privacy` — GDPR + Bulgarian Personal Data Protection Act
+  policy, all four locales, Bulgarian marked as the authoritative version
+  in the other three. Covers what's collected (server logs + the
+  `NEXT_LOCALE` cookie, nothing else — no forms, no accounts, no
+  analytics), legal basis per item, retention (still `TODO_OWNER` —
+  pending the host's confirmed log-retention window), who data is shared
+  with (Vercel Inc. as processor), GDPR rights incl. the right to
+  complain to the КЗЛД, and a cookie table. No cookie consent banner —
+  deliberate: the only cookie is strictly necessary, so there's nothing
+  to ask consent for.
+- `/[locale]/terms` — informational-only site, no bookings/payments, no
+  prices (consistent with the existing no-prices rule), positively-framed
+  house rules, a training-risk disclaimer, Bulgarian law/text governs.
+- Both routes linked from `Footer` in all locales (`privacyLink`/
+  `termsLink`), nothing added to `TopBar`.
+- Security headers (`next.config.ts`): HSTS, `X-Content-Type-Options`,
+  `Referrer-Policy`, `X-Frame-Options: DENY`, a locked-down
+  `Permissions-Policy`, `poweredByHeader: false`, no production source
+  maps. **CSP is not in `next.config.ts`** — it needs a fresh nonce per
+  request (Next's App Router injects inline `<script>` tags for RSC
+  hydration payload on every render, which a static `script-src 'self'`
+  blocks outright, confirmed via a real headless-Chromium console check
+  across all 12 locale/page combinations), so it lives in
+  `src/middleware.ts` instead, composed with next-intl's own middleware
+  via Next's documented `x-middleware-override-headers` /
+  `x-middleware-request-*` mechanism. **Merge, don't overwrite** that
+  header — next-intl uses the same mechanism to forward the resolved
+  locale downstream, and a first attempt that overwrote it instead of
+  merging silently broke locale-aware `<Link>` prefetching (caught via a
+  fresh-browser-context check: prefetch requests 404'd against a
+  malformed path). No `'unsafe-eval'`, no wildcard, anywhere in the CSP —
+  `style-src` keeps `'unsafe-inline'` only because `next/font` ships its
+  generated `@font-face` rules as an inline `<style>` tag.
+- `/.well-known/security.txt` (RFC 9116) — a route handler, not a static
+  file, so `Contact`/`Expires` always derive from `legal.ts` and can never
+  drift from the real contact details. Currently shows `mailto:TODO_OWNER`
+  until the owner supplies `contactEmail`.
+- External links already carried `rel="noopener noreferrer"` before this
+  phase (Hero/FindUs maps links, Footer's Facebook link) — audited, no
+  fix needed.
+- No `<form>` element exists anywhere in the codebase (verified) — nothing
+  to worry about for `form-action 'none'`.
+- `npm audit`: 3 high-severity findings, all inherited transitively via
+  `next`'s own bundled `postcss`/`sharp` — fix requires a major Next.js
+  upgrade (`next@16.3.0`, breaking). Not auto-applied; flagged for the
+  owner/maintainer to decide when to take that upgrade.
+- No secrets in the repo (verified): no `.env*` committed, `.gitignore`
+  already covered it, no API keys/tokens found in tracked source.
 
 ## Marketing — the part that actually moves rankings
 For a single-location local business the Google Business Profile is the

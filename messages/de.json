@@ -63,11 +63,11 @@
     "ctaCall": "Karte erfragen",
     "items": [
       {
-        "name": "Tageskarte",
+        "name": "1-Tageskarte",
         "desc": "Für Strandurlauber, die eine ernsthafte Trainingseinheit wollen und danach zurück ans Meer."
       },
       {
-        "name": "Wochenkarte",
+        "name": "7-Tageskarte",
         "desc": "Für den Urlaub am Sonnenstrand — die ganze Woche trainieren, ohne die Routine zu unterbrechen."
       },
       {
@@ -137,13 +137,95 @@
       }
     ]
   },
+  "privacy": {
+    "eyebrow": "Rechtliches",
+    "heading": "Datenschutzerklärung",
+    "authorityNote": "Rechtlich verbindlich ist die bulgarische Fassung dieser Datenschutzerklärung. Diese deutsche Fassung dient nur der Verständlichkeit — bei Abweichungen gilt der bulgarische Text.",
+    "lastUpdatedLabel": "Zuletzt aktualisiert:",
+    "s1Heading": "Wer wir sind",
+    "s1Body": "Verantwortlicher im Sinne der DSGVO ist das Unternehmen, das Fitness Plamen GYM betreibt, siehe unten.",
+    "controllerNameLabel": "Unternehmen:",
+    "controllerEikLabel": "Handelsregisternummer (EIK):",
+    "controllerAddressLabel": "Eingetragener Sitz:",
+    "controllerEmailLabel": "E-Mail:",
+    "controllerPhoneLabel": "Telefon:",
+    "s2Heading": "Was wir erheben",
+    "s2Intro": "Wir erheben sehr wenig — nur das, was der Betrieb der Website tatsächlich braucht:",
+    "s2Log": "Server-Protokolldaten: IP-Adresse, User-Agent des Browsers, angefragte URL und Zeitstempel. Automatisch erhoben durch unseren Hosting-Anbieter.",
+    "s2Cookie": "Spracheinstellung, gespeichert in einem Cookie namens NEXT_LOCALE.",
+    "s2None": "Sonst nichts. Wir haben kein Kontaktformular, kein Konto-System, keinen Newsletter und keine Werbe- oder Analyse-Tracker.",
+    "s2Phone": "Wenn Sie uns anrufen, führen wir keine Aufzeichnung und keinen schriftlichen Vermerk über das Gespräch.",
+    "s3Heading": "Warum wir diese Daten verarbeiten und auf welcher Rechtsgrundlage",
+    "s3LogsHeading": "Server-Protokolle",
+    "s3LogsBody": "Verarbeitet auf Grundlage berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO): Sicherheit der Website, Missbrauchsprävention und Fehlerdiagnose.",
+    "s3CookieHeading": "Sprach-Cookie",
+    "s3CookieBody": "Unbedingt erforderlich für einen von Ihnen angefragten Dienst (Art. 6 Abs. 1 lit. b DSGVO) — deshalb holen wir keine Einwilligung ein.",
+    "s4Heading": "Wie lange wir Daten speichern",
+    "s4Body": "Unser Hosting-Anbieter speichert Server-Protokolle für einen kurzen Zeitraum und löscht sie danach. Die genaue Aufbewahrungsdauer wird noch mit dem Anbieter geklärt — TODO_OWNER.",
+    "s5Heading": "Mit wem wir Daten teilen",
+    "s5Body": "Wir teilen Daten ausschließlich mit unserem Hosting-Anbieter, Vercel Inc., der als Auftragsverarbeiter nach unseren Weisungen handelt. Daten können außerhalb des EWR verarbeitet werden, auf Grundlage eines Angemessenheitsbeschlusses der EU oder Standardvertragsklauseln. Wir verkaufen keine Daten und geben sie nicht an Werbetreibende weiter.",
+    "s6Heading": "Ihre Rechte nach der DSGVO",
+    "s6Body": "Sie haben das Recht auf:",
+    "s6Rights": [
+      "Auskunft über Ihre Daten",
+      "Berichtigung unrichtiger Daten",
+      "Löschung Ihrer Daten",
+      "Einschränkung der Verarbeitung",
+      "Widerspruch gegen die Verarbeitung",
+      "Datenübertragbarkeit",
+      "Beschwerde bei der bulgarischen Kommission für den Schutz personenbezogener Daten (КЗЛД), www.cpdp.bg, Sofia"
+    ],
+    "s6Contact": "Um diese Rechte auszuüben, kontaktieren Sie uns über die oben genannten Kontaktdaten.",
+    "s6ResponseTime": "Wir antworten innerhalb eines Monats, wie von der DSGVO gefordert.",
+    "s7Heading": "Kinder",
+    "s7Body": "Diese Website richtet sich nicht an Kinder unter 16 Jahren, und wir erheben wissentlich keine Daten von ihnen.",
+    "s8Heading": "Externe Links",
+    "s8Body": "Diese Website verlinkt zu Google Maps und Facebook. Sobald Sie diesen Links folgen, gelten deren eigene Datenschutzerklärungen — nicht unsere.",
+    "s9Heading": "Änderungen dieser Erklärung",
+    "s9Body": "Bei Änderungen veröffentlichen wir hier die aktualisierte Fassung mit einem neuen Datum oben.",
+    "cookiesHeading": "Cookies",
+    "cookieTableName": "Name",
+    "cookieTablePurpose": "Zweck",
+    "cookieTableType": "Art",
+    "cookieTableDuration": "Dauer",
+    "cookieRowName": "NEXT_LOCALE",
+    "cookieRowPurpose": "Merkt sich Ihre gewählte Sprache",
+    "cookieRowType": "Unbedingt erforderlich",
+    "cookieRowDuration": "1 Jahr",
+    "cookieNote": "Wir verwenden keine Analyse-, Werbe- oder Tracking-Cookies von Drittanbietern — deshalb holen wir keine Cookie-Einwilligung ein.",
+    "cookieClear": "Sie können dieses Cookie jederzeit in Ihren Browser-Einstellungen löschen — die Website funktioniert weiterhin, vergisst dann nur Ihre Sprachwahl."
+  },
+  "terms": {
+    "eyebrow": "Rechtliches",
+    "heading": "Nutzungsbedingungen",
+    "lastUpdatedLabel": "Zuletzt aktualisiert:",
+    "intro": "Diese Website dient ausschließlich der Information. Buchungen oder Zahlungen finden hier nicht statt.",
+    "s1Heading": "Nur zur Information",
+    "s1Body": "Öffnungszeiten, Verfügbarkeit und Kartenbedingungen können sich ändern. Maßgeblich ist das Studio selbst — rufen Sie zur Bestätigung an.",
+    "s2Heading": "Keine Preise auf dieser Website",
+    "s2Body": "Wir nennen hier bewusst keine Preise. Preise erfahren Sie vor Ort.",
+    "rulesHeading": "Hausregeln",
+    "rules": [
+      "Räumen Sie Scheiben und Kurzhanteln nach Gebrauch zurück.",
+      "Wischen Sie Bänke und Geräte nach dem Training ab.",
+      "Legen Sie Matten und Verschlüsse zurück an ihren Platz.",
+      "Respektieren Sie die Sätze anderer — teilen Sie sich die Geräte.",
+      "Geschlossenes Trainingsschuhwerk ist Pflicht."
+    ],
+    "riskHeading": "Trainingsrisiko",
+    "riskBody": "Training mit Gewichten birgt ein natürliches körperliches Risiko. Sie trainieren in eigener Verantwortung und sollten im Zweifel einen Arzt konsultieren.",
+    "lawHeading": "Anwendbares Recht",
+    "lawBody": "Es gilt bulgarisches Recht. Der bulgarische Text hat Vorrang vor jeder Übersetzung."
+  },
   "footer": {
     "name": "Fitness Plamen GYM Sunny Beach",
     "address": "Zentrum, Sonnenstrand 8240, Nessebar, Bulgarien",
     "facebook": "Facebook",
     "languageLabel": "Sprache",
     "copyright": "© {year} {name}",
-    "logoAlt": "Logo von Fitness Plamen GYM"
+    "logoAlt": "Logo von Fitness Plamen GYM",
+    "privacyLink": "Datenschutz",
+    "termsLink": "Nutzungsbedingungen"
   },
   "languages": {
     "bg": "Български",

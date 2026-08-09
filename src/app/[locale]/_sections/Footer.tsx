@@ -1,6 +1,7 @@
 import { getTranslations } from "next-intl/server";
 import Image from "next/image";
 import Container from "@/components/ui/Container";
+import { Link } from "@/i18n/navigation";
 
 const PHONE_DISPLAY = "+359 87 882 1115";
 const TEL_HREF = "tel:+359878821115";
@@ -58,6 +59,21 @@ export default async function Footer() {
         <p className="mt-8 font-sans text-caption text-steel/70">
           {t("copyright", { year: new Date().getFullYear(), name })}
         </p>
+
+        <nav className="mt-3 flex gap-4 font-sans text-caption text-steel/70">
+          <Link
+            href="/privacy"
+            className="underline underline-offset-2 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            {t("privacyLink")}
+          </Link>
+          <Link
+            href="/terms"
+            className="underline underline-offset-2 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+          >
+            {t("termsLink")}
+          </Link>
+        </nav>
       </Container>
     </footer>
   );

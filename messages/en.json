@@ -63,11 +63,11 @@
     "ctaCall": "Call about a pass",
     "items": [
       {
-        "name": "Day pass",
+        "name": "1 Day Pass",
         "desc": "For beach guests who want one serious training session, then back to the sea."
       },
       {
-        "name": "Week pass",
+        "name": "7 Day Pass",
         "desc": "For a week in Sunny Beach — train every day of your stay without breaking your routine."
       },
       {
@@ -137,13 +137,95 @@
       }
     ]
   },
+  "privacy": {
+    "eyebrow": "Legal",
+    "heading": "Privacy Policy",
+    "authorityNote": "The Bulgarian version of this policy is the legally authoritative one. This English version is provided for convenience — if the two differ, the Bulgarian text governs.",
+    "lastUpdatedLabel": "Last updated:",
+    "s1Heading": "Who we are",
+    "s1Body": "The data controller is the company operating Fitness Plamen GYM, listed below.",
+    "controllerNameLabel": "Company:",
+    "controllerEikLabel": "Company number (EIK):",
+    "controllerAddressLabel": "Registered address:",
+    "controllerEmailLabel": "Email:",
+    "controllerPhoneLabel": "Phone:",
+    "s2Heading": "What we collect",
+    "s2Intro": "We collect very little — only what the site actually needs to run:",
+    "s2Log": "Server log data: IP address, browser user agent, requested URL and timestamp. Collected automatically by our hosting provider.",
+    "s2Cookie": "Language preference, stored in a cookie named NEXT_LOCALE.",
+    "s2None": "Nothing else. We have no contact form, no account system, no newsletter, and no advertising or analytics trackers.",
+    "s2Phone": "If you call us, we keep no recording and no written record of the call.",
+    "s3Heading": "Why we process it, and on what legal basis",
+    "s3LogsHeading": "Server logs",
+    "s3LogsBody": "Processed under legitimate interest (Art. 6(1)(f) GDPR): site security, abuse prevention, and diagnosing faults.",
+    "s3CookieHeading": "Language cookie",
+    "s3CookieBody": "Strictly necessary for a service you've requested (Art. 6(1)(b) GDPR) — that's why we don't ask for consent.",
+    "s4Heading": "How long we keep it",
+    "s4Body": "Our hosting provider retains server logs for a short period and then deletes them. The exact retention period is still being confirmed with the host — TODO_OWNER.",
+    "s5Heading": "Who we share it with",
+    "s5Body": "We share data only with our hosting provider, Vercel Inc., acting as a processor on our instructions. Data may be processed outside the EEA under an EU adequacy decision or Standard Contractual Clauses. We never sell data, and we never share it with advertisers.",
+    "s6Heading": "Your rights under GDPR",
+    "s6Body": "You have the right to:",
+    "s6Rights": [
+      "access your data",
+      "have inaccurate data corrected",
+      "have your data erased",
+      "restrict processing",
+      "object to processing",
+      "data portability",
+      "lodge a complaint with the Bulgarian Commission for Personal Data Protection (КЗЛД), www.cpdp.bg, Sofia"
+    ],
+    "s6Contact": "To exercise any of these rights, contact us using the details above.",
+    "s6ResponseTime": "We respond within one month, as required by GDPR.",
+    "s7Heading": "Children",
+    "s7Body": "This site is not directed at children under 16, and we do not knowingly collect their data.",
+    "s8Heading": "External links",
+    "s8Body": "This site links to Google Maps and Facebook. Once you follow them, their own privacy policies apply — not ours.",
+    "s9Heading": "Changes to this policy",
+    "s9Body": "If this policy changes, we publish the updated version here with a new \"last updated\" date above.",
+    "cookiesHeading": "Cookies",
+    "cookieTableName": "Name",
+    "cookieTablePurpose": "Purpose",
+    "cookieTableType": "Type",
+    "cookieTableDuration": "Duration",
+    "cookieRowName": "NEXT_LOCALE",
+    "cookieRowPurpose": "Remembers your chosen language",
+    "cookieRowType": "Strictly necessary",
+    "cookieRowDuration": "1 year",
+    "cookieNote": "We use no analytics, advertising or third-party tracking cookies — that's why we don't ask for cookie consent.",
+    "cookieClear": "You can clear this cookie in your browser settings at any time — the site will still work, it will just forget your language choice."
+  },
+  "terms": {
+    "eyebrow": "Legal",
+    "heading": "Terms of Use",
+    "lastUpdatedLabel": "Last updated:",
+    "intro": "This site is informational only. No bookings or payments happen here.",
+    "s1Heading": "Informational only",
+    "s1Body": "Opening hours, availability and pass conditions may change. The gym itself is the authoritative source — call to confirm.",
+    "s2Heading": "No prices on this site",
+    "s2Body": "We deliberately don't quote prices here. Prices are given at the desk.",
+    "rulesHeading": "House rules",
+    "rules": [
+      "Re-rack your plates and dumbbells when you're done.",
+      "Wipe down benches and machines after use.",
+      "Return mats and collars to where they belong.",
+      "Respect other people's sets — share the equipment.",
+      "Closed-toe training shoes required."
+    ],
+    "riskHeading": "Training risk",
+    "riskBody": "Training with weights carries inherent physical risk. You train at your own responsibility, and should consult a doctor if you're unsure.",
+    "lawHeading": "Governing law",
+    "lawBody": "Bulgarian law governs these terms. The Bulgarian text prevails over any translation."
+  },
   "footer": {
     "name": "Fitness Plamen GYM Sunny Beach",
     "address": "Tsentar, Sunny Beach 8240, Nesebar, Bulgaria",
     "facebook": "Facebook",
     "languageLabel": "Language",
     "copyright": "© {year} {name}",
-    "logoAlt": "Fitness Plamen GYM logo"
+    "logoAlt": "Fitness Plamen GYM logo",
+    "privacyLink": "Privacy Policy",
+    "termsLink": "Terms of Use"
   },
   "languages": {
     "bg": "Български",

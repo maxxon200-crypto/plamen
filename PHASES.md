@@ -246,6 +246,56 @@ More live feedback, addressed in the same session:
 
 -----
 
+## PHASE 4.5 — Legal pages and security hardening
+
+Not part of the original 6-phase sequence — real compliance/security work,
+same discipline as every other phase (build must pass, design-critic audit
+before commit, no invented facts).
+
+- `src/config/legal.ts`: single source of truth for the entity's legal
+  identity. Fields the owner hasn't supplied are the literal string
+  `TODO_OWNER`, never an invented value — currently `legalEntityName`,
+  `eik`, `registeredAddress`, `contactEmail`. A dev-only warning
+  (`src/components/LegalTodoWarning.tsx`) lists exactly which fields are
+  still missing on `/privacy`, so this can't ship half-filled unnoticed —
+  verified it fires in `next dev` and is silent in a production build.
+- `/[locale]/privacy` (all four locales): GDPR + Bulgarian Personal Data
+  Protection Act policy. Bulgarian is authoritative, the other three say
+  so explicitly. Covers what's collected (server logs + the `NEXT_LOCALE`
+  cookie only — no forms, accounts, or analytics), legal basis per item,
+  retention (still `TODO_OWNER`, pending the host's confirmed window),
+  who data is shared with (Vercel Inc. as processor), GDPR rights incl.
+  the right to complain to the КЗЛД, and a cookie table. No consent
+  banner — deliberate, since the only cookie is strictly necessary.
+- `/[locale]/terms` (all four locales): informational-only site, no
+  bookings/payments, no prices, positively-framed house rules, a
+  training-risk disclaimer, Bulgarian law/text governs.
+- Both linked from `Footer` in all locales, nothing added to `TopBar`.
+- Security headers via `next.config.ts`: HSTS, `X-Content-Type-Options`,
+  `Referrer-Policy`, `X-Frame-Options: DENY`, a locked-down
+  `Permissions-Policy`, `poweredByHeader: false`, no production source
+  maps.
+- CSP required a nonce-based implementation in `src/middleware.ts` instead
+  of a static header in `next.config.ts` — a real headless-Chromium
+  console check across all 12 locale/page combinations caught a static
+  `script-src 'self'` blocking Next's own RSC-hydration inline scripts on
+  every page. Composed with next-intl's own middleware via Next's
+  documented request-header-override mechanism; a first attempt that
+  overwrote next-intl's own override list instead of merging into it
+  silently broke locale-aware `<Link>` prefetching (caught the same way —
+  fresh-browser-context checks, not assumption). No `'unsafe-eval'`, no
+  wildcard, anywhere in the final CSP.
+- `/.well-known/security.txt`: a route handler (not a static file) so
+  `Contact`/`Expires` always derive from `legal.ts`.
+- Audited: external links already had `rel="noopener noreferrer"`, no
+  `<form>` exists anywhere in the codebase, no secrets committed,
+  robots.txt's AI-crawler allowances untouched. `npm audit`: 3 high
+  findings, all transitively inherited via `next`'s own bundled
+  `postcss`/`sharp`, fix requires a breaking major Next.js upgrade — not
+  auto-applied, flagged for the owner/maintainer to schedule.
+
+-----
+
 ## BLOCKED UNTIL THE OWNER PROVIDES
 
 - ~~Founding year~~ **RESOLVED as of Phase 8** — owner-verified 23 years,
