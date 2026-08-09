@@ -158,6 +158,44 @@ Console, run the live URL through Google's Rich Results Test.
 
 -----
 
+## PHASE 7 — Stakeholder revision pass (post-launch)
+
+Not part of the original 6-phase sequence — this is real feedback on the
+live, deployed site, addressed with the same discipline as every other
+phase (build must pass, design-critic audit before commit, no invented
+facts).
+
+What changed:
+
+- Display typeface swapped: Sofia Sans Condensed → Oswald (700), because
+  the original read as "wrong personality" for an old-school iron gym.
+  Cyrillic support verified before shipping (Bulgarian is the default
+  locale, Russian is one of the four — non-negotiable).
+- Equipment section condensed: still all 16 real items (nothing deleted,
+  nothing invented), now shown as pill/tag chips split into a curated
+  highlight set plus the rest behind a native `<details>` expand, instead
+  of one long bordered list eating half the page.
+- FAQ trimmed 7 → 5 (dropped the two most redundant with content already
+  shown in ProofBar/Equipment) and converted to a real accordion (one
+  `<details>` per question) instead of a static stacked list.
+- Language switcher moved off the footer into a persistent top bar so it's
+  reachable at any scroll position. Flag icons were requested but not
+  implemented — recognisable flags need national colours that don't exist
+  in the fixed palette; this needs an explicit stakeholder decision to
+  override the palette rule, not a guess.
+- ProofBar and Reviews rebuilt for real visual weight (large rating/review
+  numerals, a decorative star-rating row) — the old ProofBar was a thin
+  caption-sized strip that read as "practically inexistent" against real
+  numbers (~4.4★, ~149 reviews, unchanged from what CLAUDE.md documents —
+  only the presentation changed, not the facts).
+
+`rounded-full` is now a narrow, explicit exception to the border-radius
+ban, scoped to exactly two files (Equipment's chips, the language-switcher
+badges) — see CLAUDE.md's Design system section and
+`.claude/agents/design-critic.md` for the exact scope.
+
+-----
+
 ## BLOCKED UNTIL THE OWNER PROVIDES
 
 - Founding year (the "20 YEARS" claim is unverified — do not ship a guess)

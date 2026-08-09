@@ -13,8 +13,10 @@
     "ctaFind": "Find us"
   },
   "proofBar": {
-    "rating": "4.4★ Google rating",
-    "reviewCount": "~149 reviews",
+    "ratingValue": "4.4",
+    "ratingLabel": "Google rating",
+    "reviewCountValue": "~149",
+    "reviewCountLabel": "reviews",
     "dumbbells": "Dumbbells up to 55 kg",
     "ac": "Air conditioning"
   },
@@ -28,24 +30,27 @@
   "equipment": {
     "eyebrow": "Equipment",
     "heading": "Everything you need",
-    "items": [
-      "Benches",
+    "highlights": [
+      "Dumbbells up to 55 kg",
+      "Boxing area",
+      "Calisthenics park",
+      "Cables",
       "Leg press",
       "Hack squat",
+      "All pulldown variations",
+      "Air conditioning"
+    ],
+    "more": [
+      "Benches",
       "Machine preacher curl + free preacher bench",
       "Leg curl",
       "Quad extension",
-      "Calisthenics park",
-      "Boxing area",
-      "Cables",
-      "All pulldown variations",
       "Dip machine",
       "Adductor + abductor",
       "Elbow-style pec dec and extended-arm pec dec with rear delt",
-      "Travelling smith machine and standard smith machine",
-      "Dumbbells up to 55 kg",
-      "Air conditioning"
-    ]
+      "Travelling smith machine and standard smith machine"
+    ],
+    "moreLabel": "See the full equipment list"
   },
   "passes": {
     "eyebrow": "Passes",
@@ -121,14 +126,6 @@
       {
         "question": "Where exactly is the gym?",
         "answer": "The gym is in the centre (Tsentar) of Sunny Beach, a few minutes' walk from the beach. Open the address directly in Google Maps via the \"Find us\" link on this page for exact directions."
-      },
-      {
-        "question": "Do you have heavy dumbbells?",
-        "answer": "Yes, dumbbells go up to 55 kg. There's also a leg press, hack squat, cable machines and a full set of strength equipment — see the Equipment section above for the full list."
-      },
-      {
-        "question": "Is there air conditioning?",
-        "answer": "Yes, the gym has air conditioning. Guests regularly mention how clean and comfortable the air feels inside, even during the hottest summer months."
       },
       {
         "question": "When is the gym least busy?",

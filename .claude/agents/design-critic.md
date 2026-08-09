@@ -10,8 +10,15 @@ violations with file and line. Fail the phase if you find:
 - `opacity: 0` or `autoAlpha: 0` as a base style, or any GSAP from() that hides
   content without a no-JS fallback
 - Missing prefers-reduced-motion guard around any animation
-- border-radius > 4px, any box-shadow, any gradient that is not a
-  black→charcoal wash or a black/red duotone image overlay
+- border-radius > 4px anywhere EXCEPT `rounded-full` pill/tag chips in
+  exactly two places: the Equipment section's tag chips
+  (`src/app/[locale]/_sections/Equipment.tsx`) and the language-switcher
+  badges (`src/components/LanguageSwitcher.tsx`). Fail on `rounded-full`
+  or any other radius above 4px anywhere else, including anything that
+  merely looks pill-shaped in a different component — the exception is
+  scoped to those two files, not to "chips" as a general concept.
+- Any box-shadow, any gradient that is not a black→charcoal wash or a
+  black/red duotone image overlay
 - Red used for body text, or red text on a black background
 - href="#", onClick handlers that do nothing, disabled CTAs
 - Any image path pointing at a stock or AI generation service

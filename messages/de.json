@@ -13,8 +13,10 @@
     "ctaFind": "Anfahrt"
   },
   "proofBar": {
-    "rating": "4,4★ Google-Bewertung",
-    "reviewCount": "~149 Bewertungen",
+    "ratingValue": "4,4",
+    "ratingLabel": "Google-Bewertung",
+    "reviewCountValue": "~149",
+    "reviewCountLabel": "Bewertungen",
     "dumbbells": "Kurzhanteln bis 55 kg",
     "ac": "Klimaanlage"
   },
@@ -28,24 +30,27 @@
   "equipment": {
     "eyebrow": "Ausstattung",
     "heading": "Alles, was du brauchst",
-    "items": [
-      "Bänke",
+    "highlights": [
+      "Kurzhanteln bis 55 kg",
+      "Boxbereich",
+      "Calisthenics-Bereich",
+      "Kabelzüge",
       "Beinpresse",
       "Hackenschmidt-Maschine",
+      "Alle Latzug-Varianten",
+      "Klimaanlage"
+    ],
+    "more": [
+      "Bänke",
       "Scott-Curl-Maschine + freie Scott-Bank",
       "Beincurler",
       "Beinstrecker",
-      "Calisthenics-Bereich",
-      "Boxbereich",
-      "Kabelzüge",
-      "Alle Latzug-Varianten",
       "Dip-Maschine",
       "Adduktoren- und Abduktorenmaschine",
       "Butterfly mit Ellbogenauflage und Butterfly mit gestrecktem Arm und hinterer Schulter",
-      "Fahrbare Smith-Maschine und Standard-Smith-Maschine",
-      "Kurzhanteln bis 55 kg",
-      "Klimaanlage"
-    ]
+      "Fahrbare Smith-Maschine und Standard-Smith-Maschine"
+    ],
+    "moreLabel": "Komplette Ausstattung anzeigen"
   },
   "passes": {
     "eyebrow": "Karten",
@@ -121,14 +126,6 @@
       {
         "question": "Wo genau liegt das Studio?",
         "answer": "Das Studio liegt im Zentrum von Sonnenstrand, nur wenige Gehminuten vom Strand entfernt. Öffnen Sie die Adresse direkt über den Link „Anfahrt“ auf dieser Seite in Google Maps für die genaue Route."
-      },
-      {
-        "question": "Gibt es schwere Kurzhanteln?",
-        "answer": "Ja, die Kurzhanteln gehen bis 55 kg. Außerdem gibt es eine Beinpresse, eine Hackenschmidt-Maschine, Kabelzüge und ein volles Krafttrainings-Sortiment — die vollständige Liste finden Sie oben im Abschnitt Ausstattung."
-      },
-      {
-        "question": "Gibt es eine Klimaanlage?",
-        "answer": "Ja, das Studio hat eine Klimaanlage. Gäste erwähnen regelmäßig, wie angenehm frisch die Luft selbst in den heißesten Sommermonaten ist."
       },
       {
         "question": "Wann ist im Studio am wenigsten los?",

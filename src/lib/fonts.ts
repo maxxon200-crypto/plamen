@@ -1,4 +1,4 @@
-import { Sofia_Sans, Sofia_Sans_Condensed } from "next/font/google";
+import { Oswald, Sofia_Sans } from "next/font/google";
 
 export const sofiaSans = Sofia_Sans({
   subsets: ["latin", "cyrillic"],
@@ -7,9 +7,15 @@ export const sofiaSans = Sofia_Sans({
   display: "swap",
 });
 
-export const sofiaSansCondensed = Sofia_Sans_Condensed({
+// Display/heading typeface. Oswald's narrower, industrial-gothic letterforms
+// read as more "old-school iron gym" than Sofia Sans Condensed's rounder,
+// corporate-friendly shapes — picked specifically to fix that "wrong
+// personality" complaint. Cyrillic subset is non-negotiable (Bulgarian is
+// the default locale, Russian is one of the four) — verified it renders BG
+// and RU correctly via a full production build before shipping this swap.
+export const displayFont = Oswald({
   subsets: ["latin", "cyrillic"],
-  weight: ["800"],
-  variable: "--font-sofia-sans-condensed",
+  weight: ["700"],
+  variable: "--font-display",
   display: "swap",
 });

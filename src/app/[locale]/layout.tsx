@@ -3,9 +3,10 @@ import { hasLocale, NextIntlClientProvider } from "next-intl";
 import { getTranslations } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
-import { sofiaSans, sofiaSansCondensed } from "@/lib/fonts";
+import { displayFont, sofiaSans } from "@/lib/fonts";
 import { SITE_NAME, SITE_URL, localeUrl, ogLocale, type Locale } from "@/lib/site";
 import SmoothScroll from "@/components/SmoothScroll";
+import TopBar from "@/components/TopBar";
 import "../globals.css";
 
 export function generateStaticParams() {
@@ -78,11 +79,14 @@ export default async function LocaleLayout({
   return (
     <html
       lang={locale}
-      className={`${sofiaSans.variable} ${sofiaSansCondensed.variable}`}
+      className={`${sofiaSans.variable} ${displayFont.variable}`}
     >
       <body className="font-sans bg-ink text-white">
         <SmoothScroll />
-        <NextIntlClientProvider>{children}</NextIntlClientProvider>
+        <NextIntlClientProvider>
+          <TopBar />
+          {children}
+        </NextIntlClientProvider>
       </body>
     </html>
   );

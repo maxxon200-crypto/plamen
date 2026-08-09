@@ -1,28 +1,38 @@
 # PROJECT: Fitness Plamen GYM Sunny Beach
 
 ## Repository state (read this first)
-**Phases 0–5 (scaffold, design foundation, Bulgarian MVP, i18n, SEO/schema,
-motion) are done.** Phase 6 (verification and deploy) is not — the site
-hasn't shipped anywhere yet, `SITE_URL` is still a placeholder domain. Treat
-the rest of this file as the spec the remaining phase must be built to
-conform to. Do not jump ahead and start Phase 6 work unprompted. See
-`PHASES.md` for the full per-phase runbook.
+**Phases 0–6 (scaffold through verification) are done and live in
+production** (merged to `main`, deployed to Vercel). **Phase 7 — a
+stakeholder revision pass on the live site — is also done**: typography
+swap (Sofia Sans Condensed → Oswald for display), Equipment section
+redesigned as expandable pill chips, FAQ trimmed 7→5 and converted to a real
+accordion, language switcher moved from the footer to a persistent top bar,
+and ProofBar/Reviews rebuilt for much more visual prominence. See
+`PHASES.md` for the full per-phase runbook including this revision pass.
+
+`SITE_URL` in `src/lib/site.ts` may still be a placeholder domain depending
+on whether the real domain has been swapped in yet — check that file before
+assuming canonical/OG/sitemap URLs are live-correct.
 
 What exists right now:
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS v3 + ESLint, scaffolded
   into `src/`, no Turbopack.
 - `src/app/[locale]/layout.tsx` — sets `<html lang>` per locale, wraps
-  children in `NextIntlClientProvider`, loads the Sofia Sans / Sofia Sans
-  Condensed font variables, and exports `generateMetadata()` (Phase 4 —
-  see below).
+  children in `NextIntlClientProvider`, mounts `TopBar` before `children`,
+  loads the Sofia Sans / Oswald font variables, and exports
+  `generateMetadata()` (Phase 4 — see below).
 - `src/i18n/routing.ts` — next-intl `defineRouting`, locales
   `['bg','en','ru','de']`, default `bg`.
 - `src/i18n/request.ts` — next-intl `getRequestConfig`, loads
   `messages/{locale}.json`.
 - `src/middleware.ts` — next-intl middleware, locale detection +
   `NEXT_LOCALE` cookie persistence, matcher excludes `api`/`_next`/files.
-- `src/lib/fonts.ts` — `next/font/google` for Sofia Sans (400/600) and Sofia
-  Sans Condensed (800), latin + cyrillic subsets, self-hosted at build time.
+- `src/lib/fonts.ts` — `next/font/google` for Sofia Sans (400/600, body) and
+  Oswald (700, display — exported as `displayFont`, mapped to the same
+  `--font-display` CSS variable and `font-condensed` Tailwind class the
+  codebase already uses everywhere, so no component markup had to change
+  when the display typeface swapped), latin + cyrillic subsets, self-hosted
+  at build time.
 - `messages/{bg,en,ru,de}.json` — real, structurally-identical copy under
   nine namespaces (`hero`, `proofBar`, `theGym`, `equipment`, `passes`,
   `reviews`, `findUs`, `footer`, `languages`). `bg.json` is the source of
@@ -32,8 +42,9 @@ What exists right now:
   review quotes are never translated — only `.meta`'s date format adapts).
 - `tailwind.config.ts` — palette tokens (`ink`, `black`, `charcoal`, `steel`,
   `bone`, `white`, `blood`, `blood.hi`) and `font-sans`/`font-condensed`
-  mapped to the Sofia Sans CSS variables, plus a `fontSize` scale
-  (`display`/`h2`/`h3`/`body`/`caption`) for the condensed-caps type system.
+  mapped to the Sofia Sans / Oswald CSS variables, plus a `fontSize` scale
+  (`display`/`h2`/`h3`/`body`/`caption`, weight 700 to match Oswald's loaded
+  weight) for the condensed-caps type system.
   Tailwind v3 (config-file-based), not v4 — chosen so the palette lives in
   one typed `tailwind.config.ts` rather than a CSS `@theme` block.
 - `src/app/globals.css` — the same palette tokens mirrored as CSS custom
@@ -51,25 +62,50 @@ What exists right now:
 - `public/` is currently empty — the default create-next-app SVG placeholders
   were removed since nothing references them and this project doesn't use
   placeholder imagery (see **Photography** below).
-- `src/app/[locale]/page.tsx` — the single-page MVP, built from eight
+- `src/app/[locale]/page.tsx` — the single-page MVP, built from nine
   section components under `src/app/[locale]/_sections/`, each an `async`
   Server Component pulling its copy via `getTranslations` (next-intl/server):
   `Hero` (labelled `TODO` photo slot, no real photography yet, hours/
-  location/tel+maps CTAs above the fold), `ProofBar` (rating/review count/
-  proof points — no "20 години" claim, that founding year is still
-  unverified per **Outstanding decisions**), `TheGym`, `Equipment` (all 16
-  items verbatim per locale), `Passes` (day/week/month, no prices),
-  `Reviews` (three of the five approved quotes, verbatim/untranslated in
-  every locale), `FindUs`, `Footer` (NAP block, Facebook link, real
-  `LanguageSwitcher`). No animation, no `'use client'` in any section —
-  fully static Server Components; only the switcher is a client component.
+  location/tel+maps CTAs above the fold), `ProofBar` (large rating/review
+  numerals + a decorative `StarRating` — no "20 години" claim, that founding
+  year is still unverified per **Outstanding decisions**), `TheGym`,
+  `Equipment` (pill-chip highlights + expandable "more", all 16 real items
+  still present, see the Equipment section above), `Passes` (day/week/month,
+  no prices), `Reviews` (three of the five approved quotes, verbatim/
+  untranslated in every locale, each with a `StarRating`), `FindUs`, `FAQ`
+  (5 Q&As, native `<details>` accordion per item), `Footer` (NAP block,
+  Facebook link — no longer the language switcher, see `TopBar` below). No
+  animation beyond the existing scroll-reveal, no `'use client'` in any
+  section — fully static Server Components; only `LanguageSwitcher` is a
+  client component.
 - `src/i18n/navigation.ts` — next-intl `createNavigation(routing)`,
   exporting locale-aware `Link`/`usePathname`/`useRouter`/`getPathname`.
+- `src/components/TopBar.tsx` — slim `fixed` bar pinned above `Hero` in the
+  locale layout, holding `LanguageSwitcher`. Moved here from the footer
+  after live feedback that it needed to be reachable at any scroll position,
+  not just once at the bottom.
 - `src/components/LanguageSwitcher.tsx` — client component, real working
   links to all four locales (own-script labels: Български/English/Русский/
-  Deutsch), `aria-current` on the active locale, persists via the existing
-  middleware's `NEXT_LOCALE` cookie handling (no extra client-side cookie
-  code needed).
+  Deutsch, styled as `rounded-full` pill badges — one of the two explicit
+  border-radius exceptions), `aria-current` on the active locale, persists
+  via the existing middleware's `NEXT_LOCALE` cookie handling (no extra
+  client-side cookie code needed). **No flag icons** — a recognisable flag
+  needs its national colours, and Bulgaria/Russia/Germany/UK-or-US all
+  require hex values outside the fixed 8-token palette. If flags are ever
+  wanted badly enough to justify a palette exception, that's a decision for
+  a human to make explicitly, not something to add quietly.
+- `src/components/StarRating.tsx` — decorative 5-star SVG row (not the
+  Unicode ★ glyph, so partial fill works), `aria-hidden` since the adjacent
+  numeral/label already carries the accessible rating info. Filled portion
+  is a `fill-blood` shape (sanctioned use of red — a fill, not text-on-
+  black), empty stars are `stroke-steel`. Uses React's `useId()` for unique
+  `clipPath` ids since it renders more than once per page (ProofBar +
+  once per Reviews card) — duplicate SVG ids across instances would corrupt
+  each other's clip regions.
+- `src/lib/site.ts` also exports `GOOGLE_RATING` (the numeric `4.4`) as the
+  single source of truth `StarRating` reads for the fill amount, kept
+  separate from the localized display strings in `messages/*.json` — if the
+  real rating ever changes, update both, don't let them drift apart.
 - `src/lib/site.ts` — `SITE_URL` is a **placeholder domain**
   (`https://fitnessplamen.bg`) since no real production domain is
   configured yet; every canonical/OG/sitemap/robots URL derives from this
@@ -183,6 +219,17 @@ One elbow-style pec dec, one extended-arm pec dec with rear delt.
 One travelling smith machine, one standard smith machine.
 Dumbbells up to 55 kg. Air conditioning.
 
+**Display treatment (post-launch revision):** the full 16-item list above is
+still the complete, real inventory — nothing here was deleted or fabricated.
+After live feedback that the equipment section was eating half the page, the
+site now shows it as pill/tag chips split into `equipment.highlights` (8
+items, the ones a tourist actually searches for — free weights, cables,
+calisthenics, boxing, AC) and `equipment.more` (the remaining 8, behind a
+native `<details>`/`<summary>` expand). See `messages/{locale}.json` →
+`equipment` for the exact current split. If the owner ever wants specific
+items removed from the site entirely (not just tucked behind the expand),
+that requires an explicit confirmed list from them — don't guess which ones.
+
 ## Real reviews — quote only these, verbatim. Never write a fake testimonial.
 - Zara P, 5★, Jun 2025: "such a lovely & friendly training environment. This gym
   has everything and more than you could ever need for training not to mention
@@ -225,11 +272,21 @@ passes AAA on white → safe for large headings and CTA fills. `#FF0000` is
 banned — it reads "sale sticker," not "blood."
 
 ### Typography
-Sofia Sans Condensed — display, ALL CAPS, tight tracking (`-0.02em`), weight
-800. Sofia Sans — body, weight 400/600. Both from Google Fonts via
-`next/font`; self-host the subset. Sofia Sans renders native Bulgarian
-Cyrillic — that is why it was chosen. Set `<html lang>` per locale so
-Bulgarian letterforms shape correctly. No other typefaces. No serifs.
+Oswald — display, ALL CAPS, tight tracking (`-0.02em`), weight 700. Sofia
+Sans — body, weight 400/600. Both from Google Fonts via `next/font`;
+self-host the subset. Both render native Bulgarian and Russian Cyrillic —
+that is a hard requirement, not a nice-to-have, since Bulgarian is the
+default locale and Russian is one of the four. Set `<html lang>` per locale
+so Cyrillic letterforms shape correctly. No other typefaces. No serifs.
+
+Oswald replaced Sofia Sans Condensed after live-site feedback that the
+original display type read as "wrong personality" — too plain/corporate for
+an old-school iron gym. Oswald's narrower, industrial-gothic letterforms
+(descended from early-20th-century sign-painting alphabets) read as more
+"iron/athletic poster" even at nominally lower weight (700 vs the old 800).
+Popular "bold industrial" alternatives considered and rejected for missing
+Cyrillic support entirely: Bebas Neue, Anton, Fjalla One, Staatliches, Six
+Caps — do not reach for these, they will silently break BG/RU.
 
 ### Photography
 Real photos of this gym only. High-contrast black and white with grain, or
@@ -246,7 +303,11 @@ image service.
 - Buttons or links that do nothing. Every interactive element works or is cut.
 - Emoji in UI
 - Numbered 01 / 02 / 03 section markers
-- Drop shadows. Border radius above 4px.
+- Drop shadows. Border radius above 4px — **one narrow exception:**
+  `rounded-full` pill/tag chips, scoped to exactly two places: the Equipment
+  section's tag chips and the language-switcher badges. No other component
+  may use any border-radius above 4px, including anything that looks like a
+  pill but isn't one of those two.
 - Low-contrast grey body text
 - Prices
 
@@ -302,6 +363,15 @@ document — summary of the sequence:
 - **Phase 6 — Verification and deploy.** Full QA checklist, then Vercel
   deploy, verify all locales + hreflang live, submit sitemap to Search
   Console, run Rich Results Test.
+- **Phase 7 — Stakeholder revision pass (post-launch).** Live-site feedback
+  addressed: display typeface swapped (Sofia Sans Condensed → Oswald,
+  Cyrillic verified), Equipment condensed into expandable pill chips,
+  FAQ trimmed 7→5 and converted to a real accordion, language switcher
+  relocated to a persistent top bar (no flags — palette conflict, flagged
+  as an open decision), ProofBar and Reviews rebuilt with real visual
+  weight (large numerals, star icons) instead of thin strips. Same
+  discipline as every other phase: build must pass, `design-critic` audit
+  before commit, exact same verified facts (no new numbers invented).
 
 ## Sub-agents
 This project uses narrow, single-purpose agents defined in
