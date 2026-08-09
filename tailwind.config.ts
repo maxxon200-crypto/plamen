@@ -23,15 +23,15 @@ const config: Config = {
       fontSize: {
         display: [
           "clamp(3rem, 1rem + 6vw, 7rem)",
-          { lineHeight: "0.9", letterSpacing: "-0.02em", fontWeight: "400" },
+          { lineHeight: "0.9", letterSpacing: "-0.02em", fontWeight: "700" },
         ],
         h2: [
           "clamp(2rem, 1rem + 4vw, 3.5rem)",
-          { lineHeight: "1.05", letterSpacing: "-0.01em", fontWeight: "400" },
+          { lineHeight: "1.05", letterSpacing: "-0.01em", fontWeight: "700" },
         ],
         h3: [
           "clamp(1.5rem, 0.9rem + 2vw, 2.25rem)",
-          { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "400" },
+          { lineHeight: "1.15", letterSpacing: "-0.01em", fontWeight: "700" },
         ],
         body: ["1rem", { lineHeight: "1.6", fontWeight: "400" }],
         caption: [

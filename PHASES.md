@@ -196,11 +196,38 @@ badges) — see CLAUDE.md's Design system section and
 
 -----
 
+## PHASE 9 — Second direct revision round (post-launch)
+
+More live feedback on Phase 7/8's output, addressed in the same session:
+
+- Display typeface swapped twice more: Oswald → Russo One → PT Sans Bold.
+  Both swaps Cyrillic-verified before shipping (grepped the generated
+  `@font-face` `unicode-range` for `U+0400-045F`, same method as every
+  prior font swap) — see CLAUDE.md's Typography section for the full
+  swap history and why the genre changed (display/poster face → serious
+  workhorse grotesque) after two poster-style picks both got rejected.
+- Language switcher stripped to flags-only — the own-script text label
+  (Български/English/Русский/Deutsch) is still in the DOM as `sr-only`
+  so the accessible name survives, it just doesn't render visually
+  anymore.
+- Fixed a real bug behind a "text overlapping" report: `TheGym`'s heading
+  accent ("not bought", etc.) was inline with the plain text before it,
+  so the browser was free to break the line *inside* the red chip,
+  producing a jagged multi-line red box. Moving the accent onto its own
+  line (block-level) fixed it regardless of copy length — shortening the
+  copy alone hadn't been enough.
+- `TheGym`'s paragraphs tightened further; English's "Call" CTA button
+  copy became "Call us".
+
+-----
+
 ## BLOCKED UNTIL THE OWNER PROVIDES
 
-- Founding year (the "20 YEARS" claim is unverified — do not ship a guess)
-- At least 10 real photos: floor, owner-built machines, the 55 kg dumbbells,
-  calisthenics park, boxing area, changing rooms, Plamen himself
+- ~~Founding year~~ **RESOLVED as of Phase 8** — owner-verified 23 years,
+  oldest gym in Sunny Beach. See CLAUDE.md's THE BUSINESS section.
+- Photography — in progress, not yet at the 10-shot minimum. See
+  CLAUDE.md's Photography section for the current committed/unplaced/
+  lost breakdown.
 - Decision on whether to mention the former "Fitness Mercury" name
 - Decision on Instagram: create the account or omit it entirely
 

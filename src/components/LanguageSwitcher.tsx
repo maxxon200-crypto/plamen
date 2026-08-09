@@ -10,11 +10,11 @@ import { FLAGS } from "@/components/Flags";
  * `Link` (from src/i18n/navigation.ts) so every language keeps the visitor
  * on the current page and the request to the new locale-prefixed URL lets
  * middleware.ts persist the NEXT_LOCALE cookie, same as any other
- * locale-prefixed navigation. Each language is labelled in its own script
- * (Български / English / Русский / Deutsch) plus a flag icon (see
+ * locale-prefixed navigation. Flag-only per stakeholder direction (see
  * src/components/Flags.tsx — national flag colours are an explicit,
- * narrowly-scoped exception to CLAUDE.md's fixed palette, confirmed by the
- * stakeholder).
+ * narrowly-scoped exception to CLAUDE.md's fixed palette) — the own-script
+ * text label (Български/English/Русский/Deutsch) is kept as `sr-only` so
+ * the accessible name survives even though nothing renders visually.
  *
  * Client component because it needs to know the active locale and the
  * current (locale-stripped) pathname to build the other three links and to
@@ -28,7 +28,7 @@ export default function LanguageSwitcher() {
 
   return (
     <nav aria-label={t2("languageLabel")}>
-      <ul className="flex flex-wrap gap-2 font-condensed text-caption uppercase tracking-[0.1em]">
+      <ul className="flex flex-wrap gap-2">
         {routing.locales.map((locale) => {
           const Flag = FLAGS[locale];
           return (
@@ -37,14 +37,12 @@ export default function LanguageSwitcher() {
                 href={pathname}
                 locale={locale}
                 aria-current={locale === activeLocale ? "true" : undefined}
-                className={`inline-flex min-h-11 items-center gap-2 rounded-full border-2 px-3 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
-                  locale === activeLocale
-                    ? "border-blood text-white"
-                    : "border-steel/40 text-steel hover:border-steel hover:text-white"
+                className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border-2 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
+                  locale === activeLocale ? "border-blood" : "border-steel/40 hover:border-steel"
                 }`}
               >
-                <Flag className="h-4 w-6 flex-shrink-0" />
-                {t(locale)}
+                <Flag className="h-5 w-8 flex-shrink-0" />
+                <span className="sr-only">{t(locale)}</span>
               </Link>
             </li>
           );

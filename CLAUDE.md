@@ -13,8 +13,14 @@ owner-verified and live (leads `ProofBar`), and the first three real assets
 (a Hero background photo, an owner portrait, the owner's logo) are
 committed and wired in — see **Photography** below for exactly what's in,
 what's still missing, and why some chat-shared photos didn't make it.
-See `PHASES.md` for the full per-phase runbook including both of these
-post-launch passes.
+**Phase 9 — a second, more direct revision round — is also done**: the
+display typeface changed twice more in quick succession (Oswald → Russo
+One → PT Sans, see Typography below for why), the language switcher is
+now flags-only with text kept `sr-only`, `TheGym`'s heading accent moved
+to its own line to stop the red chip splitting across a wrapped line
+break, `TheGym`'s paragraphs were tightened further, and the English
+"Call" CTA became "Call us". See `PHASES.md` for the full per-phase
+runbook including all three post-launch passes.
 
 `SITE_URL` in `src/lib/site.ts` may still be a placeholder domain depending
 on whether the real domain has been swapped in yet — check that file before
@@ -34,11 +40,12 @@ What exists right now:
 - `src/middleware.ts` — next-intl middleware, locale detection +
   `NEXT_LOCALE` cookie persistence, matcher excludes `api`/`_next`/files.
 - `src/lib/fonts.ts` — `next/font/google` for Sofia Sans (400/600, body) and
-  Russo One (400, display — exported as `displayFont`, mapped to the same
+  PT Sans (700, display — exported as `displayFont`, mapped to the same
   `--font-display` CSS variable and `font-condensed` Tailwind class the
   codebase already uses everywhere, so no component markup had to change
-  when the display typeface swapped again, Sofia Sans Condensed → Oswald →
-  Russo One), latin + cyrillic subsets, self-hosted at build time.
+  across any of the display-typeface swaps: Sofia Sans Condensed → Oswald
+  → Russo One → PT Sans), latin + cyrillic subsets, self-hosted at build
+  time.
 - `messages/{bg,en,ru,de}.json` — real, structurally-identical copy under
   nine namespaces (`hero`, `proofBar`, `theGym`, `equipment`, `passes`,
   `reviews`, `findUs`, `footer`, `languages`). `bg.json` is the source of
@@ -48,9 +55,9 @@ What exists right now:
   review quotes are never translated — only `.meta`'s date format adapts).
 - `tailwind.config.ts` — palette tokens (`ink`, `black`, `charcoal`, `steel`,
   `bone`, `white`, `blood`, `blood.hi`) and `font-sans`/`font-condensed`
-  mapped to the Sofia Sans / Russo One CSS variables, plus a `fontSize`
-  scale (`display`/`h2`/`h3`/`body`/`caption`, weight 400 to match Russo
-  One's single loaded weight) for the condensed-caps type system.
+  mapped to the Sofia Sans / PT Sans CSS variables, plus a `fontSize`
+  scale (`display`/`h2`/`h3`/`body`/`caption`, weight 700 to match PT
+  Sans's loaded Bold weight) for the condensed-caps type system.
   Tailwind v3 (config-file-based), not v4 — chosen so the palette lives in
   one typed `tailwind.config.ts` rather than a CSS `@theme` block.
 - `src/app/globals.css` — the same palette tokens mirrored as CSS custom
@@ -95,16 +102,18 @@ What exists right now:
   after live feedback that it needed to be reachable at any scroll position,
   not just once at the bottom.
 - `src/components/LanguageSwitcher.tsx` — client component, real working
-  links to all four locales (own-script labels: Български/English/Русский/
-  Deutsch, styled as `rounded-full` pill badges — one of the two explicit
-  border-radius exceptions), `aria-current` on the active locale, persists
-  via the existing middleware's `NEXT_LOCALE` cookie handling (no extra
-  client-side cookie code needed). Each badge also carries a flag icon from
-  `src/components/Flags.tsx` — stakeholder explicitly confirmed wanting
-  flags despite the palette conflict, so national flag colours are now a
-  narrow, explicit exception scoped to exactly that one file (see Palette
-  below). English is represented by the UK flag — a judgement call, nothing
-  in CLAUDE.md picked UK vs. US.
+  links to all four locales, styled as `rounded-full` pill badges (one of
+  the two explicit border-radius exceptions), `aria-current` on the active
+  locale, persists via the existing middleware's `NEXT_LOCALE` cookie
+  handling (no extra client-side cookie code needed). Each badge shows a
+  flag icon from `src/components/Flags.tsx` only — stakeholder explicitly
+  confirmed wanting flags despite the palette conflict, so national flag
+  colours are a narrow, explicit exception scoped to exactly that one file
+  (see Palette below), and later asked for flags-only with the own-script
+  text label (Български/English/Русский/Deutsch) removed visually — it's
+  kept as `sr-only` so the accessible name survives. English is
+  represented by the UK flag — a judgement call, nothing in CLAUDE.md
+  picked UK vs. US.
 - `src/components/StarRating.tsx` — decorative 5-star SVG row (not the
   Unicode ★ glyph, so partial fill works), `aria-hidden` since the adjacent
   numeral/label already carries the accessible rating info. Filled portion
@@ -296,23 +305,32 @@ file. No other component may introduce a hex value outside the palette
 table, flags or otherwise.
 
 ### Typography
-Russo One — display, ALL CAPS, weight 400 (it only ships one weight; it's
-already heavy/blocky at that weight, no bolding needed). Sofia Sans — body,
-weight 400/600. Both from Google Fonts via `next/font`; self-host the
-subset. Both render native Bulgarian and Russian Cyrillic — that is a hard
-requirement, not a nice-to-have, since Bulgarian is the default locale and
-Russian is one of the four. Set `<html lang>` per locale so Cyrillic
-letterforms shape correctly. No other typefaces. No serifs.
+PT Sans Bold — display, ALL CAPS. Sofia Sans — body, weight 400/600. Both
+from Google Fonts via `next/font`; self-host the subset. Both render
+native Bulgarian and Russian Cyrillic — that is a hard requirement, not a
+nice-to-have, since Bulgarian is the default locale and Russian is one of
+the four. Set `<html lang>` per locale so Cyrillic letterforms shape
+correctly. No other typefaces. No serifs.
 
-Russo One replaced Oswald after further live-site feedback that Oswald
-still read as generic/"AI-safe" rather than a real gym brand mark. Russo
-One is a native Cyrillic display face (designed around Cyrillic + Latin
-together, not Latin-first with Cyrillic bolted on) with a bold, blocky,
-sports/poster character — distinct personality, not a neutral condensed
-sans. Oswald's own rejection reasoning still applies to picking anything
-next: verify Cyrillic support before reaching for a popular "gym font."
-Rejected for missing Cyrillic entirely (do not reach for these): Bebas
-Neue, Anton, Fjalla One, Staatliches, Six Caps.
+Display typeface history, three swaps so far, each a direct response to
+live-site feedback: Sofia Sans Condensed (original) → Oswald (Sofia Sans
+Condensed read as "wrong personality," too plain/corporate) → Russo One
+(Oswald still read as generic/"AI-safe" display-font-of-the-week) → **PT
+Sans Bold (current)**, after Russo One was rejected outright ("0/10").
+The pattern across all three complaints: a display/poster-genre face
+(Oswald, Russo One) reads as a trendy pick, not a real brand's typeface.
+PT Sans breaks that pattern deliberately — it's a serious, workhorse
+sans-serif (Paratype, built for a Russian government Cyrillic-
+modernization project) that real companies use for actual identity work,
+not a novelty display face. If this gets rejected too, the next
+candidate should stay in that same "quality workhorse grotesque" register
+(e.g. Golos Text, PT Sans Caption) rather than swinging back toward
+another display/poster face — that whole genre has now been tried twice
+and rejected twice. Always verify Cyrillic support before reaching for
+anything: rejected for missing Cyrillic entirely (do not reach for these):
+Bebas Neue, Anton, Fjalla One, Staatliches, Six Caps, Archivo Black
+(confirmed via `next/font/google`'s own TypeScript types refusing a
+`cyrillic` subset for Archivo Black).
 
 ### Photography
 Real photos of this gym only. High-contrast black and white with grain, or
@@ -442,6 +460,19 @@ document — summary of the sequence:
   blocking on a third attempt. See **Photography** in the Design system
   section for exactly what's live, what's saved-but-unplaced, and what
   didn't survive to be committed.
+- **Phase 9 — second direct revision round (post-launch).** More live
+  feedback, addressed fast: display face swapped twice more (Oswald →
+  Russo One → PT Sans Bold — see Typography's swap history, both
+  Cyrillic-verified via the generated `@font-face` `unicode-range` before
+  shipping), language switcher stripped to flags-only (text kept
+  `sr-only` for accessibility), `TheGym`'s heading accent chip moved onto
+  its own line (the real bug behind a "text overlapping" report — an
+  inline accent phrase let the browser break the line inside the red
+  chip, not the copy length), `TheGym`'s paragraphs tightened again, and
+  English's "Call" CTA became "Call us". Same discipline held under
+  pressure: every change still build-verified and screenshotted at
+  375-390px in a real headless browser before being reported as fixed,
+  not just claimed.
 
 ## Sub-agents
 This project uses narrow, single-purpose agents defined in

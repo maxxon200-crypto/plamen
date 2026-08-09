@@ -9,7 +9,7 @@
     "headingAccent": "Temple",
     "hours": "Open 09:00–21:00 · every day",
     "location": "Tsentar, Sunny Beach",
-    "ctaCall": "Call",
+    "ctaCall": "Call us",
     "ctaFind": "Find us",
     "imageAlt": "Dumbbell rack and benches at Fitness Plamen GYM"
   },
@@ -26,7 +26,7 @@
   "theGym": {
     "eyebrow": "The gym",
     "headingPlain": "Built by hand,",
-    "headingAccent": "not bought off a shelf",
+    "headingAccent": "not bought",
     "paragraph1": "Plamen, the owner, built most of the machines here with his own hands. Not because he couldn't buy new ones — he knows exactly how each one needs to work.",
     "paragraph2": "23 years on, the iron here still isn't shiny or new — we keep it maintained and fully working, because that's the point of old school: a tool that does the job every day, not a showroom.",
     "ownerPhotoAlt": "Plamen, the owner of Fitness Plamen GYM"
@@ -109,7 +109,7 @@
     "walkingTime": "A few minutes' walk from the beach.",
     "houseRules": "One small request, so it stays good for everyone: rack your plates and dumbbells and wipe down the bench when you're done. Thanks.",
     "ctaMaps": "Open in Google Maps",
-    "ctaCall": "Call"
+    "ctaCall": "Call us"
   },
   "faq": {
     "eyebrow": "Questions",

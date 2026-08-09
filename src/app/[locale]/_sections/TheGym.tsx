@@ -18,8 +18,19 @@ export default async function TheGym() {
       <Container className="max-w-3xl">
         <Eyebrow>{t("eyebrow")}</Eyebrow>
         <h2 className="mt-2 font-condensed text-h2 uppercase">
-          {t("headingPlain")}{" "}
-          <span className="bg-blood px-2 text-white">{t("headingAccent")}</span>
+          <span className="block">{t("headingPlain")}</span>
+          {/*
+            Accent chip is block-level, not inline, on purpose: with the
+            plain text inline before it, the browser was free to break the
+            line INSIDE the chip (e.g. "NOT" on one line, "BOUGHT" on the
+            next, each half getting its own disconnected red background) —
+            shortening the copy alone didn't fix that, only forcing it onto
+            its own line does, since a short phrase reliably fits one line
+            by itself even where "plain text + phrase" combined doesn't.
+          */}
+          <span className="mt-1 inline-block bg-blood px-2 text-white">
+            {t("headingAccent")}
+          </span>
         </h2>
         <div className="mt-6 flex flex-col gap-6 sm:flex-row sm:items-start">
           <div className="space-y-4 font-sans text-body text-steel">
