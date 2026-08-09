@@ -37,7 +37,7 @@ export default async function Reviews() {
               className="border-2 border-ink/15 p-6"
             >
               <StarRating value={5} />
-              <blockquote className="mt-4 font-sans text-h3 leading-snug text-ink">
+              <blockquote className="mt-4 font-sans text-body leading-relaxed text-ink">
                 <p>&ldquo;{review.quote}&rdquo;</p>
               </blockquote>
               <figcaption className="mt-4 font-condensed text-caption uppercase tracking-[0.1em] text-ink/60">

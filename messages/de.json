@@ -18,8 +18,8 @@
     "yearsLabel": "Jahre — ältestes Studio am Ort",
     "ratingValue": "4,4",
     "ratingLabel": "Google-Bewertung",
-    "reviewCountValue": "~149",
-    "reviewCountLabel": "Bewertungen",
+    "reviewCountValue": "177",
+    "reviewCountLabel": "Bewertungen — die meisten am Ort",
     "dumbbells": "Kurzhanteln bis 55 kg",
     "ac": "Klimaanlage"
   },
@@ -38,13 +38,13 @@
       "Kurzhanteln bis 55 kg",
       "Boxbereich",
       "Calisthenics-Bereich",
-      "Kabelzüge",
+      "Kabelzüge"
+    ],
+    "more": [
       "Beinpresse",
       "Hackenschmidt-Maschine",
       "Alle Latzug-Varianten",
-      "Klimaanlage"
-    ],
-    "more": [
+      "Klimaanlage",
       "Bänke",
       "Scott-Curl-Maschine + freie Scott-Bank",
       "Beincurler",

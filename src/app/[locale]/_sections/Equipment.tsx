@@ -9,11 +9,12 @@ const chipClass =
  * Pill/oval tag chips instead of an exhaustive bordered list — the full
  * 16-item CLAUDE.md equipment inventory is still all here (nothing deleted,
  * see messages/{locale}.json → equipment.highlights + equipment.more), just
- * split into a scannable default view plus a no-JS-safe expand via native
- * <details>/<summary> for the rest, so the section stops eating half the
- * page on first load. `rounded-full` here is the one explicit exception to
- * CLAUDE.md's border-radius-above-4px ban — see CLAUDE.md's Design system
- * section for the exact scope of that carve-out.
+ * split into a tight 4-item default view (the categories a tourist actually
+ * searches for) plus a no-JS-safe expand via native <details>/<summary> for
+ * the other 12, so the section stops eating a third of the page on first
+ * load. `rounded-full` here is the one explicit exception to CLAUDE.md's
+ * border-radius-above-4px ban — see CLAUDE.md's Design system section for
+ * the exact scope of that carve-out.
  */
 export default async function Equipment() {
   const t = await getTranslations("equipment");
@@ -37,7 +38,7 @@ export default async function Equipment() {
           ))}
         </ul>
         <details className="mt-6">
-          <summary className="inline-flex min-h-11 cursor-pointer items-center font-condensed text-caption uppercase tracking-[0.1em] text-ink underline underline-offset-4 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
+          <summary className="inline-flex min-h-11 cursor-pointer items-center border-2 border-ink px-6 font-condensed text-body uppercase tracking-[0.02em] text-ink outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ink">
             {t("moreLabel")}
           </summary>
           <ul className="mt-4 flex flex-wrap gap-3">

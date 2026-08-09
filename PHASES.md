@@ -221,6 +221,31 @@ More live feedback on Phase 7/8's output, addressed in the same session:
 
 -----
 
+## PHASE 10 — Third revision round (post-launch)
+
+More live feedback, addressed in the same session:
+
+- Review count corrected: owner verified 177 Google reviews (the
+  previously-documented ~149 was stale) — the most of any gym in Sunny
+  Beach. Added as a second competitive claim alongside the existing
+  23-years/oldest-gym one, in both `ProofBar`'s copy (all four locales)
+  and CLAUDE.md's THE BUSINESS/Positioning sections.
+- Equipment's default view tightened again: 8 highlight chips → 4 (the
+  categories a tourist actually searches for — dumbbells, boxing,
+  calisthenics, cables), the other 12 moved behind the existing
+  `<details>` expand. Same 16 real items, nothing added or removed. The
+  expand toggle itself restyled from an underlined text link to a real
+  bordered button, per explicit feedback to "put a button to see more."
+- Reviews' quote text shrunk from `text-h3` (clamp 1.5rem→2.25rem) to
+  `text-body` (1rem) — it was overpowering the review card at large
+  viewport sizes.
+- ProofBar's secondary stats (`dumbbells`, `ac`) restyled from plain
+  caption-sized text into `rounded-full` oval chips matching Equipment's
+  pill treatment, scoped for the black background (steel border/white
+  text instead of Equipment's ink-on-bone).
+
+-----
+
 ## BLOCKED UNTIL THE OWNER PROVIDES
 
 - ~~Founding year~~ **RESOLVED as of Phase 8** — owner-verified 23 years,

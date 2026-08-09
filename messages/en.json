@@ -18,8 +18,8 @@
     "yearsLabel": "Years — oldest gym in town",
     "ratingValue": "4.4",
     "ratingLabel": "Google rating",
-    "reviewCountValue": "~149",
-    "reviewCountLabel": "reviews",
+    "reviewCountValue": "177",
+    "reviewCountLabel": "Reviews — most reviewed in town",
     "dumbbells": "Dumbbells up to 55 kg",
     "ac": "Air conditioning"
   },
@@ -38,13 +38,13 @@
       "Dumbbells up to 55 kg",
       "Boxing area",
       "Calisthenics park",
-      "Cables",
+      "Cables"
+    ],
+    "more": [
       "Leg press",
       "Hack squat",
       "All pulldown variations",
-      "Air conditioning"
-    ],
-    "more": [
+      "Air conditioning",
       "Benches",
       "Machine preacher curl + free preacher bench",
       "Leg curl",

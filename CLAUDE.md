@@ -19,8 +19,20 @@ One → PT Sans, see Typography below for why), the language switcher is
 now flags-only with text kept `sr-only`, `TheGym`'s heading accent moved
 to its own line to stop the red chip splitting across a wrapped line
 break, `TheGym`'s paragraphs were tightened further, and the English
-"Call" CTA became "Call us". See `PHASES.md` for the full per-phase
-runbook including all three post-launch passes.
+"Call" CTA became "Call us". **Phase 10 — a third revision round — is
+also done**: the review count was corrected to the owner-verified 177
+(up from the previously-documented ~149) and the site now also claims
+"most reviewed gym in Sunny Beach" alongside the existing "oldest gym"
+claim (both `ProofBar`'s copy and CLAUDE.md's Positioning/THE BUSINESS
+sections); Equipment's default view tightened from 8 highlight chips to
+4 (all 16 real items still present, just 12 behind the expand instead of
+8) and its expand toggle restyled from an underlined text link to a real
+bordered button; Reviews' quote text shrunk from `text-h3` to `text-body`
+(it was overpowering the card at large sizes); and ProofBar's
+dumbbells/AC secondary stats moved from plain caption text to the same
+`rounded-full` oval-chip treatment Equipment uses, scoped for the black
+background. See `PHASES.md` for the full per-phase runbook including all
+four post-launch passes.
 
 `SITE_URL` in `src/lib/site.ts` may still be a placeholder domain depending
 on whether the real domain has been swapped in yet — check that file before
@@ -133,7 +145,7 @@ What exists right now:
   and locale-URL/OG-locale helpers.
 - `src/lib/schema.ts` — `buildExerciseGymSchema()` and `buildFaqSchema()`
   JSON-LD builders. **No `aggregateRating` field, ever** — hard prohibition,
-  the ~4.4–4.5/~149 rating stays visible text only in `ProofBar`. `image` is
+  the ~4.4–4.5/177 rating stays visible text only in `ProofBar`. `image` is
   intentionally omitted (no real photography yet).
 - `messages/{bg,en,ru,de}.json` also carry two more namespaces since Phase
   4: `meta` (per-locale title/description targeting real search phrasing)
@@ -212,7 +224,10 @@ now, and they can walk in today. Everything else is secondary.
 - Coordinates: 42.690716, 27.707864
 - Google Place ID: ChIJIxshlPafpkARpBnO0sV6nrc
 - Facebook: https://www.facebook.com/FITNESSMERCURYSUNNYBEACH/
-- Google rating: ~4.4–4.5, ~149 reviews
+- Google rating: ~4.4–4.5, **177 reviews — the most of any gym in Sunny
+  Beach.** Owner-verified (was previously documented as an unverified
+  ~149; corrected and the "most reviewed" claim added this pass — do not
+  revert to the old figure).
 - Owner: Plamen. Builds many of the machines by hand.
 - Passes: day, week, month. **NO PRICES ANYWHERE ON THE SITE.**
 - No Instagram account exists. Do not link one.
@@ -227,11 +242,14 @@ Mercury" history and an Instagram decision are unresolved.
 
 ## Positioning
 The only hardcore old-school bodybuilding and powerlifting gym in Sunny
-Beach — and, now verified, the oldest one: 23 years running, longer than
-any other gym in town. Competitors are combat-sports centres (Max Fight) or
-modern chains (Pulse), none of which can claim that tenure. Nobody else
-owns "iron temple." Lean into both claims completely — "old-school" is no
-longer just an aesthetic choice, it's literally true.
+Beach — and, now verified, both the oldest and the most-reviewed one: 23
+years running (longer than any other gym in town) and 177 Google reviews
+(more than any other gym in town). Competitors are combat-sports centres
+(Max Fight) or modern chains (Pulse), none of which can claim either
+tenure or review volume. Nobody else owns "iron temple." Lean into all
+three claims completely — "old-school" is no longer just an aesthetic
+choice, it's literally true, and it's also the gym most people have
+actually reviewed.
 
 Reframe the two recurring criticisms instead of hiding them:
 - "equipment is old" → owner-built, maintained, and it works. That is the point.

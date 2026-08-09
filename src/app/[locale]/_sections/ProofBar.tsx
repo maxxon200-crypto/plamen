@@ -7,13 +7,21 @@ const numeralClass =
   "font-condensed text-[2.25rem] uppercase leading-none text-white sm:text-[3.5rem] lg:text-[4.5rem]";
 const labelClass =
   "mt-2 font-condensed text-caption uppercase tracking-[0.1em] text-steel";
+// Oval chips, same `rounded-full` exception Equipment's tag chips use (see
+// CLAUDE.md's Design system section) — just re-colored for the black
+// background instead of Equipment's bone one. Requested explicitly: the
+// dumbbells/AC stats read as an afterthought as plain caption text, so
+// they get the same pill treatment as an equipment highlight would.
+const secondaryChipClass =
+  "rounded-full border-2 border-steel px-4 py-2 font-condensed text-caption uppercase tracking-[0.1em] text-white";
 
 /**
  * Rebuilt from a thin bg-black caption strip into a proper Section — the
  * old version was flagged as "practically inexistent" given the actual
- * numbers behind it (real, verified: ~4.4 rating, ~149 reviews, 23 years
- * running, per CLAUDE.md). Same facts, no new/invented numbers, just real
- * visual weight: large numerals + a star row instead of small caption text.
+ * numbers behind it (real, verified: ~4.4 rating, 177 reviews — the most
+ * of any gym in Sunny Beach — 23 years running, per CLAUDE.md). Same
+ * facts, no new/invented numbers, just real visual weight: large numerals
+ * + a star row instead of small caption text.
  *
  * `yearsValue`/`yearsLabel` leads the row — the owner-verified "23 years,
  * oldest gym in Sunny Beach" claim is the newest and strongest
@@ -57,9 +65,11 @@ export default async function ProofBar() {
           </div>
         </div>
 
-        <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-2 font-condensed text-caption uppercase tracking-[0.1em] text-steel">
+        <ul className="mt-8 flex flex-wrap gap-3">
           {secondaryItems.map((item) => (
-            <li key={item}>{item}</li>
+            <li key={item} className={secondaryChipClass}>
+              {item}
+            </li>
           ))}
         </ul>
       </Container>
