@@ -5,7 +5,6 @@ import { Link } from "@/i18n/navigation";
 
 const PHONE_DISPLAY = "+359 87 882 1115";
 const TEL_HREF = "tel:+359878821115";
-const FACEBOOK_HREF = "https://www.facebook.com/FITNESSMERCURYSUNNYBEACH/";
 
 // Language switcher moved to TopBar (src/components/TopBar.tsx) per
 // stakeholder feedback — reachable at any scroll position, not just once
@@ -46,14 +45,6 @@ export default async function Footer() {
               {PHONE_DISPLAY}
             </a>
           </p>
-          <a
-            href={FACEBOOK_HREF}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="mt-3 inline-block underline underline-offset-2 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-          >
-            {t("facebook")}
-          </a>
         </div>
 
         <p className="mt-8 font-sans text-caption text-steel/70">

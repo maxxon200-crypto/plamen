@@ -336,6 +336,57 @@ out to just mean "needs a working upload path," not "gone."
 
 -----
 
+## PHASE 12 — Page reorganized around social proof
+
+Direct feedback that the page felt "scattered" and photos looked "low
+quality," plus an explicit requested section order. Addressed in the
+same session, with the same discipline: build/lint clean, real-browser
+screenshots at multiple viewports and locales, design-critic audit
+before commit, one clarifying question asked (and answered) before
+touching structure, since the requested order didn't mention two
+existing sections.
+
+- **Page reorder**, confirmed with the user first: `Hero → ProofBar →
+  Reviews → TheGym → Passes → FindUs → Gallery → FollowUs → Footer`.
+  `Equipment` and `FAQ` were dropped from the live page entirely at the
+  user's explicit direction — component files still exist under
+  `_sections/`, just unimported, in case that reverses.
+- `ProofBar` and `Reviews` now sit back-to-back with no divider between
+  them, reading as one continuous "proof" block, and both are centered
+  (not left-aligned) — "center highlight" the best-gym claim, per direct
+  feedback. A short blood-fill underline was added beneath ProofBar's
+  claim heading for more visual weight. See CLAUDE.md's new "Layout /
+  alignment" note for the stated rule this now falls under, so it reads
+  as a system rather than three uncoordinated one-off asks.
+- Reviews' three quotes shortened by **verbatim truncation only** — never
+  reworded, since CLAUDE.md's fake-testimonial rule applies to excerpting
+  too. See CLAUDE.md's "Real reviews" section for the full master quotes
+  and the exact excerpting rule.
+- New `FollowUs` section added before `Footer`: a real Facebook link with
+  a new monochrome `FacebookIcon` component (no brand blue — stays inside
+  the 8-token palette), and a real Google "leave a review" deep link
+  built from the Place ID, not a placeholder.
+- **Hero photo crop fixed:** `entrance-mural.jpg` is portrait
+  (335×597) forced into Hero's wide/short slot — `object-cover` at the
+  default center position was cropping so hard on wide viewports that
+  the "GYM" lettering (the whole reason that photo was picked) was
+  invisible. Confirmed via real screenshots before/after at 1440px, fixed
+  with `object-top`.
+- **Photo quality improved, ceiling documented honestly:** every real
+  photo in active use was reprocessed with `sharp` (Lanczos3 upscale,
+  mild pre-sharpen blur + real unsharp mask, re-encode at quality 92).
+  Visibly better at display size, but CLAUDE.md is explicit this isn't a
+  substitute for full-resolution originals — it narrows the gap, it
+  doesn't close it.
+- design-critic audit caught a real documentation gap from Phase 10:
+  ProofBar's secondary stat chips have used `rounded-full` since Phase
+  10, but CLAUDE.md's formal Banned-list exception still only named two
+  places. Fixed by updating the exception list to a third named place
+  (`.claude/agents/design-critic.md` updated to match) rather than
+  ripping out an already-shipped, already-requested design.
+
+-----
+
 ## BLOCKED UNTIL THE OWNER PROVIDES
 
 - ~~Founding year~~ **RESOLVED as of Phase 8** — owner-verified 23 years,

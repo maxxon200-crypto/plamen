@@ -92,17 +92,17 @@
     "sourceLabel": "Google-Bewertung",
     "items": [
       {
-        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool. Everyone is so helpful and welcoming. Gym has amazing air conditioning not to mention how spotless this gym is.",
+        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool.",
         "author": "Zara P",
         "meta": "5★ · Juni 2025"
       },
       {
-        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines. A must visit if you are visiting sunny beach.",
+        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines.",
         "author": "R D",
         "meta": "5★ · Juni 2023"
       },
       {
-        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless. Owner is very nice",
+        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless.",
         "author": "Kevin S",
         "meta": "5★ · Aug. 2025"
       }
@@ -120,6 +120,12 @@
     "houseRules": "Eine kleine Bitte, damit es für alle angenehm bleibt: Scheiben und Hanteln nach dem Training zurückräumen und die Bank abwischen. Danke.",
     "ctaMaps": "In Google Maps öffnen",
     "ctaCall": "Anrufen"
+  },
+  "followUs": {
+    "eyebrow": "Bleiben Sie in Kontakt",
+    "heading": "Folgen Sie uns & bewerten Sie uns",
+    "facebookLabel": "Folgen Sie uns auf Facebook",
+    "googleLabel": "Bewertung bei Google abgeben"
   },
   "faq": {
     "eyebrow": "Fragen",
@@ -230,7 +236,6 @@
   "footer": {
     "name": "Fitness Plamen GYM Sunny Beach",
     "address": "Zentrum, Sonnenstrand 8240, Nessebar, Bulgarien",
-    "facebook": "Facebook",
     "languageLabel": "Sprache",
     "copyright": "© {year} {name}",
     "logoAlt": "Logo von Fitness Plamen GYM",

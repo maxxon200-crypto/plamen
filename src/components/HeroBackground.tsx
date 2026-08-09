@@ -66,7 +66,7 @@ export default function HeroBackground({ alt }: HeroBackgroundProps) {
         fill
         priority
         sizes="100vw"
-        className="object-cover grayscale contrast-125"
+        className="object-cover object-top grayscale contrast-125"
       />
     </div>
   );

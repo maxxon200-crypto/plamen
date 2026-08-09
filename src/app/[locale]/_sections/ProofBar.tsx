@@ -34,25 +34,34 @@ const secondaryChipClass =
  * each stat an even third of the width at every size instead of fighting
  * for it; the numeral scale steps down at the base breakpoint
  * (2.25rem -> 3.5rem -> 4.5rem) so three columns actually fit on a phone.
+ *
+ * Centered, not left-aligned, per explicit feedback to make the "best gym
+ * in Sunny Beach" claim read as a billboard statement rather than a data
+ * table — the claim heading, its short blood-fill underline, the stat
+ * grid, and the secondary chips all center on the section's own axis
+ * (`justify-center` added anywhere flex layout ignores the ancestor's
+ * `text-center`, e.g. the rating row and the chip list).
  */
 export default async function ProofBar() {
   const t = await getTranslations("proofBar");
   const secondaryItems = [t("dumbbells"), t("ac")];
 
   return (
-    <div className="bg-black py-10 sm:py-12">
-      <Container>
+    <div className="bg-black py-12 sm:py-16">
+      <Container className="text-center">
         <h2 className="font-condensed text-h3 uppercase text-white sm:text-h2">
           {t("claim")}
         </h2>
-        <div className="mt-8 grid grid-cols-3 gap-x-4 gap-y-6 sm:gap-x-10">
+        <div className="mx-auto mt-4 h-0.5 w-20 bg-blood" aria-hidden="true" />
+
+        <div className="mx-auto mt-10 grid max-w-2xl grid-cols-3 gap-x-4 gap-y-6 sm:gap-x-10">
           <div>
             <span className={numeralClass}>{t("yearsValue")}</span>
             <p className={labelClass}>{t("yearsLabel")}</p>
           </div>
 
           <div>
-            <div className="flex flex-wrap items-baseline gap-2">
+            <div className="flex flex-wrap items-baseline justify-center gap-2">
               <span className={numeralClass}>{t("ratingValue")}</span>
               <StarRating
                 value={GOOGLE_RATING}
@@ -68,7 +77,7 @@ export default async function ProofBar() {
           </div>
         </div>
 
-        <ul className="mt-8 flex flex-wrap gap-3">
+        <ul className="mt-8 flex flex-wrap justify-center gap-3">
           {secondaryItems.map((item) => (
             <li key={item} className={secondaryChipClass}>
               {item}

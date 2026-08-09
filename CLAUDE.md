@@ -56,7 +56,23 @@ heading above ProofBar's numerals) so the site states the competitive
 positioning outright rather than leaving a visitor to infer it from three
 numbers. See **Photography** below for the full per-file breakdown,
 including what's still excluded pending owner confirmation.
-See `PHASES.md` for the full per-phase runbook including all six
+**Phase 12 — page reorganized around social proof, is also done**: direct
+feedback that the page read as "scattered" led to a full section reorder
+— `Hero → ProofBar → Reviews → TheGym → Passes → FindUs → Gallery →
+FollowUs → Footer` — with `ProofBar` and `Reviews` now placed back-to-back
+as one continuous "proof" block and both centered (not left-aligned) for
+billboard-style impact; **Equipment and FAQ were removed from the live
+page entirely** at the user's explicit direction ("nobody cares, if they
+have a question they can call") — the component files still exist under
+`_sections/` but are unimported, not deleted, in case that decision
+reverses. Reviews' three quotes were shortened by verbatim truncation
+(never reworded — see **Real reviews** below, the rule against fake
+testimonials applies to excerpting too). A new `FollowUs` section
+(Facebook + a real Google "leave a review" deep link) was added before
+`Footer`. `Hero`'s background photo crop was fixed (see **Photography**),
+and every real photo actually in use was reprocessed for sharpness — see
+**Photography** for what that can and can't fix.
+See `PHASES.md` for the full per-phase runbook including all seven
 post-launch passes.
 
 `SITE_URL` in `src/lib/site.ts` may still be a placeholder domain depending
@@ -112,30 +128,44 @@ What exists right now:
 - `public/` is currently empty — the default create-next-app SVG placeholders
   were removed since nothing references them and this project doesn't use
   placeholder imagery (see **Photography** below).
-- `src/app/[locale]/page.tsx` — the single-page MVP, built from ten
-  section components under `src/app/[locale]/_sections/`, each an `async`
-  Server Component pulling its copy via `getTranslations` (next-intl/server):
-  `Hero` (real B&W-treated photo background, `public/photos/
-  entrance-mural.jpg` via `HeroBackground` — small/chat-compressed source,
-  swap for full-res when available; a strap-line claim ("oldest &
-  most-reviewed gym in Sunny Beach") under the H1; hours/location/tel+maps
-  CTAs above the fold), `ProofBar` (a bold claim heading above three large
-  numerals — years/rating/review count, years leading — plus a decorative
+- `src/app/[locale]/page.tsx` — the single-page MVP, built from nine live
+  section components under `src/app/[locale]/_sections/` (Phase 12
+  reordered and trimmed this from ten — see below), each an `async` Server
+  Component pulling its copy via `getTranslations` (next-intl/server), in
+  page order: `Hero` (real B&W-treated photo background, `public/photos/
+  entrance-mural.jpg` via `HeroBackground` — `object-top` crop so the
+  hand-painted "GYM" lettering survives the portrait-photo-in-a-wide-slot
+  crop instead of being cut off, fixed Phase 12; a strap-line claim
+  ("oldest & most-reviewed gym in Sunny Beach") under the H1;
+  hours/location/tel+maps CTAs above the fold), `ProofBar` (Phase 12:
+  centered, not left-aligned, for billboard-style impact — a bold claim
+  heading + a short blood-fill underline above three large numerals —
+  years/rating/review count, years leading — plus a decorative
   `StarRating`; the "23 години" founding claim is real and owner-verified,
-  see **THE BUSINESS**), `TheGym` (owner-portrait photo alongside the
-  two-paragraph story), `Equipment` (pill-chip highlights + expandable
-  "more", all 16 real items still present, see the Equipment section
-  above), `Gallery` (four real training-floor photos, same B&W treatment,
-  added Phase 11 to visually back up the site's claims), `Passes`
-  (day/week/month, no prices), `Reviews`
-  (three of the five approved quotes, verbatim/untranslated in every
-  locale, each with a `StarRating`), `FindUs`, `FAQ` (5 Q&As, native
-  `<details>` accordion per item), `Footer` (NAP block, the owner's logo in
-  a white badge card, Facebook link — no longer the language switcher, see
-  `TopBar` below). No animation beyond the existing scroll-reveal, no
-  `'use client'` in any section — fully static Server Components; only
-  `LanguageSwitcher` is a
-  client component.
+  see **THE BUSINESS**), `Reviews` (Phase 12: moved directly under
+  `ProofBar` with no divider between them so the two read as one
+  continuous "proof" block, per explicit feedback; centered heading; three
+  of the five approved quotes, each shortened by verbatim truncation —
+  never reworded, see **Real reviews** below — verbatim/untranslated in
+  every locale, each with a `StarRating`), `TheGym` (owner-portrait photo
+  alongside the two-paragraph story), `Passes` (day/week/month, no
+  prices), `FindUs`, `Gallery` (four real training-floor photos, same B&W
+  treatment, added Phase 11 to visually back up the site's claims),
+  `FollowUs` (Phase 12: a new section — real Facebook link with a
+  monochrome `FacebookIcon` plus a real Google "leave a review" deep link
+  built from the Place ID — no brand-blue, palette-compliant), `Footer`
+  (NAP block, the owner's logo in a white badge card — no longer holds the
+  Facebook link, which moved to `FollowUs`, and no longer the language
+  switcher either, see `TopBar` below). No animation beyond the existing
+  scroll-reveal, no `'use client'` in any section — fully static Server
+  Components; only `LanguageSwitcher` is a client component.
+  **`Equipment` and `FAQ` still exist as component files under
+  `_sections/` but are not imported by `page.tsx`** — removed from the
+  live page at the user's explicit direction (Phase 12), not deleted, in
+  case that decision reverses. `FAQ.tsx`'s `FAQPage` JSON-LD block is
+  self-contained inside that component, so removing the import also
+  removed the schema — correct, since Google's guidance is against
+  markup for content that isn't visibly on the page.
 - `src/i18n/navigation.ts` — next-intl `createNavigation(routing)`,
   exporting locale-aware `Link`/`usePathname`/`useRouter`/`getPathname`.
 - `src/components/TopBar.tsx` — slim `fixed` bar pinned above `Hero` in the
@@ -196,7 +226,7 @@ What exists right now:
   before ever constructing a Lenis instance (the CSS kill-switch alone
   doesn't stop Lenis's JS scroll hijacking).
 - `src/components/Reveal.tsx` — the one scroll fade+rise, wrapping
-  `ProofBar`/`TheGym`/`Equipment`/`Passes`/`Reviews`/`FindUs`/`FAQ` in
+  `ProofBar`/`Reviews`/`TheGym`/`Passes`/`FindUs`/`Gallery`/`FollowUs` in
   `page.tsx` (`Hero` and `Footer` excluded). **The GSAP-visibility-without-
   JS guarantee, load-bearing for CLAUDE.md's motion hard rule:** the
   server-rendered wrapper `<div>` carries zero className/style — a no-JS
@@ -304,6 +334,16 @@ items removed from the site entirely (not just tucked behind the expand),
 that requires an explicit confirmed list from them — don't guess which ones.
 
 ## Real reviews — quote only these, verbatim. Never write a fake testimonial.
+This is the full master list — the source of truth. `Reviews.tsx` shows
+three of these five, and as of Phase 12 shows **shortened excerpts**, not
+the full text, for the three it uses (Zara P, R D, Kevin S) — direct
+feedback that the full quotes ran too long. Shortening means truncating a
+contiguous run of the reviewer's own words (optionally down to just the
+first sentence or two); it never means paraphrasing, reordering, or
+substituting different wording — the truncated version must still be a
+literal substring of what's below, or it's a fake testimonial by
+CLAUDE.md's own rule. See `messages/{locale}.json` → `reviews.items` for
+the exact excerpt currently live.
 - Zara P, 5★, Jun 2025: "such a lovely & friendly training environment. This gym
   has everything and more than you could ever need for training not to mention
   that the owner built all of the machinery by hand which is crazy cool.
@@ -350,6 +390,19 @@ Russia/Germany) outside the 8-token set above — stakeholder explicitly
 confirmed wanting flags despite the conflict. Scope is exactly that one
 file. No other component may introduce a hex value outside the palette
 table, flags or otherwise.
+
+### Layout / alignment
+Sections default to left-aligned content (`TheGym`, `Passes`, `FindUs`,
+`Gallery`, `Footer`) — that's still the baseline, not something to
+change without reason. Two categories get centered content instead, by
+deliberate exception, not accident: **proof sections** (`ProofBar`,
+`Reviews` — center-aligned as of Phase 12, per explicit feedback to make
+the "best gym in Sunny Beach" claim read as a billboard statement) and
+**the closing CTA section** (`FollowUs` — centered because a small,
+final action block reads better centered than pinned to one edge,
+independent of the proof-section rationale). If a new section needs
+centering, it should fall into one of those two categories with a stated
+reason in its own file comment — don't add centering piecemeal.
 
 ### Typography
 PT Sans Bold — display, ALL CAPS. Sofia Sans — body, weight 400/600. Both
@@ -417,6 +470,32 @@ All are small, chat/upload-compressed JPEGs, not full-resolution
 originals — swap the `public/` files for full-resolution versions
 whenever available; nothing else needs to change.
 
+**Phase 12 fixes — real quality ceiling, addressed honestly:** direct
+feedback called the photos "low quality" and said the Hero photo "has
+been cropped." Both were real, diagnosed issues, not vague complaints:
+- **Crop bug (fixed):** `entrance-mural.jpg` is portrait (335×597,
+  aspect ≈0.56); `Hero`'s background slot is wide and short. `object-cover`
+  at the default `center` position was cropping so aggressively on wide
+  viewports that the "GYM" lettering — the entire reason that photo was
+  picked — was cut off the top of the frame and invisible. Confirmed via
+  real screenshots at 1440px before and after. Fixed with `object-top`
+  (`HeroBackground.tsx`) — mobile is nearly unaffected (its viewport
+  aspect is already close to the photo's), desktop now shows the full
+  "GYM" sign and skull mural dramatically instead of an unrecognizable
+  cropped sliver.
+- **Perceived quality (improved, not solved):** every real photo in
+  active use (`entrance-mural`, `dumbbell-rack`, the three
+  `gym-floor-wide` shots, `owner-portrait`) was reprocessed with `sharp`
+  — Lanczos3 upscale (2–2.5×), a mild pre-sharpen blur to soften JPEG
+  block edges, then a real unsharp mask, re-encoded at quality 92. This
+  is a real, honest improvement (visibly less blocky/soft at display
+  size) but it is **not** a substitute for higher-resolution source
+  files — it cannot invent detail that was never captured. The actual
+  ceiling here is that every source photo is a small, phone/chat-
+  compressed JPEG (194–335px on the long edge before reprocessing). If
+  the owner can supply full-resolution originals, that's the real fix;
+  reprocessing narrows the gap in the meantime.
+
 **Committed but not yet placed:** `public/photos/calisthenics-kid.jpg` (a
 child using the calisthenics equipment) — still no natural slot without
 further section changes, and a minor's photo warrants more caution than
@@ -448,10 +527,13 @@ still-unplaced kid photo count toward it.
 - Emoji in UI
 - Numbered 01 / 02 / 03 section markers
 - Drop shadows. Border radius above 4px — **one narrow exception:**
-  `rounded-full` pill/tag chips, scoped to exactly two places: the Equipment
-  section's tag chips and the language-switcher badges. No other component
-  may use any border-radius above 4px, including anything that looks like a
-  pill but isn't one of those two.
+  `rounded-full` pill/tag chips, scoped to exactly three places: the
+  Equipment section's tag chips, the language-switcher badges, and
+  ProofBar's secondary stat chips (dumbbells/AC — added Phase 10, this
+  formal exception list just hadn't been updated to name it until a
+  design-critic audit caught the gap in Phase 12). No other component may
+  use any border-radius above 4px, including anything that looks like a
+  pill but isn't one of those three.
 - Low-contrast grey body text
 - Prices
 

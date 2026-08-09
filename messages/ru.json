@@ -92,17 +92,17 @@
     "sourceLabel": "Отзыв на Google",
     "items": [
       {
-        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool. Everyone is so helpful and welcoming. Gym has amazing air conditioning not to mention how spotless this gym is.",
+        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool.",
         "author": "Zara P",
         "meta": "5★ · июнь 2025"
       },
       {
-        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines. A must visit if you are visiting sunny beach.",
+        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines.",
         "author": "R D",
         "meta": "5★ · июнь 2023"
       },
       {
-        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless. Owner is very nice",
+        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless.",
         "author": "Kevin S",
         "meta": "5★ · авг. 2025"
       }
@@ -120,6 +120,12 @@
     "houseRules": "Небольшая просьба, чтобы всем было комфортно: убирайте блины и гантели на место и протирайте скамью после тренировки. Спасибо.",
     "ctaMaps": "Открыть в Google Maps",
     "ctaCall": "Позвонить"
+  },
+  "followUs": {
+    "eyebrow": "Будьте на связи",
+    "heading": "Подписывайтесь и оставляйте отзыв",
+    "facebookLabel": "Подписаться на нас в Facebook",
+    "googleLabel": "Оставить отзыв в Google"
   },
   "faq": {
     "eyebrow": "Вопросы",
@@ -230,7 +236,6 @@
   "footer": {
     "name": "Fitness Plamen GYM Sunny Beach",
     "address": "Центр, Солнечный берег 8240, Несебр, Болгария",
-    "facebook": "Facebook",
     "languageLabel": "Язык",
     "copyright": "© {year} {name}",
     "logoAlt": "Логотип Fitness Plamen GYM",

@@ -24,10 +24,10 @@ export default async function Reviews() {
   return (
     <Section background="white">
       <Container>
-        <p className="font-condensed text-caption uppercase tracking-[0.15em] text-ink/60">
+        <p className="text-center font-condensed text-caption uppercase tracking-[0.15em] text-ink/60">
           {t("eyebrow")}
         </p>
-        <h2 className="mt-2 font-condensed text-h2 uppercase text-ink">
+        <h2 className="mt-2 text-center font-condensed text-h2 uppercase text-ink">
           {t("heading")}
         </h2>
         <div className="mt-10 grid gap-6 lg:grid-cols-3">
