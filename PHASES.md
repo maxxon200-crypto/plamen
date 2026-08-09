@@ -296,12 +296,53 @@ before commit, no invented facts).
 
 -----
 
+## PHASE 11 — Real photography lands in volume, social proof gets louder
+
+Owner uploaded 8 photos directly to GitHub's `main` branch — the first
+upload path that actually worked (mobile GitHub uploader had 406'd on
+HEIC before; a Google Photos link was blocked by egress policy). Of the
+8: two were exact-pixel duplicates of already-committed files, one was a
+re-submission of the previously-excluded posed physique shot (still
+excluded — see CLAUDE.md's Photography section), and five were genuinely
+new — including two shots earlier marked "lost, not recoverable" (the
+entrance mural, the "20+ YEARS" t-shirt mockup). That "lost" note turned
+out to just mean "needs a working upload path," not "gone."
+
+- `Hero`'s background swapped from a tight dumbbell-rack crop to the
+  entrance mural (hand-painted "GYM" sign + a skull/chains mural) — a
+  side-by-side comparison showed the mural reads far more distinctively
+  "old-school iron gym" at full-bleed hero size. Text contrast over the
+  new, visibly brighter photo was measured, not assumed: sampled pixel
+  luminance behind the new claim text across all four locales and down to
+  a 320px viewport (German's claim text is the longest and wraps
+  furthest) — worst case 13.84:1, typical case ~17:1, both far above the
+  4.5:1 body-text / 7:1 AAA bar. The existing `bg-ink/70` scrim turned out
+  to already be sufficient.
+- New `Gallery` section (four real training-floor photos, same
+  grayscale+contrast+grain treatment as every other real photo on the
+  site) added between `Equipment` and `Passes` — the dumbbell-rack shot
+  moved here instead of being dropped when `Hero` changed.
+- Both `Hero` and `ProofBar` gained an explicit competitive claim in copy
+  instead of leaving a visitor to infer it from three numbers: a
+  strap-line under `Hero`'s H1 ("Sunny Beach's Oldest & Most-Reviewed
+  Gym") and a bold heading above `ProofBar`'s numeral grid ("The Best Gym
+  In Sunny Beach — And The Numbers Prove It"), both translated
+  per-locale, both grounded in the two already-verified facts (23 years,
+  177 reviews) — no new numbers invented.
+- design-critic audit run before commit; its one real flag (Hero's
+  brighter replacement photo needing an actual contrast check, not an
+  assumption) was independently measured and resolved as above rather
+  than skipped.
+
+-----
+
 ## BLOCKED UNTIL THE OWNER PROVIDES
 
 - ~~Founding year~~ **RESOLVED as of Phase 8** — owner-verified 23 years,
   oldest gym in Sunny Beach. See CLAUDE.md's THE BUSINESS section.
-- Photography — in progress, not yet at the 10-shot minimum. See
-  CLAUDE.md's Photography section for the current committed/unplaced/
+- Photography — 8 real distinct photos live on-site as of Phase 11, at
+  or close to the 10-shot minimum. See CLAUDE.md's Photography section
+  for the current committed/unplaced/
   lost breakdown.
 - Decision on whether to mention the former "Fitness Mercury" name
 - Decision on Instagram: create the account or omit it entirely

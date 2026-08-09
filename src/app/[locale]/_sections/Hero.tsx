@@ -30,6 +30,9 @@ export default async function Hero() {
           {t("headingPlain")}{" "}
           <span className="bg-blood px-2 text-white">{t("headingAccent")}</span>
         </h1>
+        <p className="mt-3 font-condensed text-h3 uppercase text-white">
+          {t("claim")}
+        </p>
         <div className="mt-6 space-y-1 font-sans text-body text-steel">
           <p>{t("hours")}</p>
           <p>{t("location")}</p>

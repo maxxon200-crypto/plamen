@@ -42,7 +42,10 @@ export default async function ProofBar() {
   return (
     <div className="bg-black py-10 sm:py-12">
       <Container>
-        <div className="grid grid-cols-3 gap-x-4 gap-y-6 sm:gap-x-10">
+        <h2 className="font-condensed text-h3 uppercase text-white sm:text-h2">
+          {t("claim")}
+        </h2>
+        <div className="mt-8 grid grid-cols-3 gap-x-4 gap-y-6 sm:gap-x-10">
           <div>
             <span className={numeralClass}>{t("yearsValue")}</span>
             <p className={labelClass}>{t("yearsLabel")}</p>

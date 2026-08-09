@@ -9,6 +9,7 @@ import Hero from "./_sections/Hero";
 import ProofBar from "./_sections/ProofBar";
 import TheGym from "./_sections/TheGym";
 import Equipment from "./_sections/Equipment";
+import Gallery from "./_sections/Gallery";
 import Passes from "./_sections/Passes";
 import Reviews from "./_sections/Reviews";
 import FindUs from "./_sections/FindUs";
@@ -54,6 +55,9 @@ export default async function Home({
         <Rule />
         <Reveal>
           <Equipment />
+        </Reveal>
+        <Reveal>
+          <Gallery />
         </Reveal>
         <Reveal>
           <Passes />

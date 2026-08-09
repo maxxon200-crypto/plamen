@@ -40,7 +40,23 @@ for the entity's legal identity (still mostly `TODO_OWNER` — see
 (HSTS, CSP, X-Frame-Options, Permissions-Policy, `poweredByHeader: false`,
 no prod source maps, `/.well-known/security.txt`). See **Legal pages and
 security** below for what's live and what's still blocked on the owner.
-See `PHASES.md` for the full per-phase runbook including all five
+**Phase 11 — real photography finally landed in volume, and social proof
+got louder — is also done**: the owner uploaded 8 photos directly to
+GitHub (the first upload path that actually worked), yielding 5 genuinely
+new real photos including two previously marked "lost" (the entrance
+mural, the "20+ YEARS" t-shirt mockup). `Hero`'s background swapped from
+a tight dumbbell-rack crop to the entrance mural (stronger, more
+distinctive "old-school iron gym" impression at full-bleed size — verified
+by comparing both side-by-side); a new `Gallery` section (four real
+training-floor photos) was added between `Equipment` and `Passes` to
+visually back up the gym's claims instead of just asserting them; and
+both `Hero` and `ProofBar` gained an explicit "oldest & most-reviewed gym
+in Sunny Beach" claim in copy (a strap-line under Hero's H1, a bold
+heading above ProofBar's numerals) so the site states the competitive
+positioning outright rather than leaving a visitor to infer it from three
+numbers. See **Photography** below for the full per-file breakdown,
+including what's still excluded pending owner confirmation.
+See `PHASES.md` for the full per-phase runbook including all six
 post-launch passes.
 
 `SITE_URL` in `src/lib/site.ts` may still be a placeholder domain depending
@@ -96,18 +112,22 @@ What exists right now:
 - `public/` is currently empty — the default create-next-app SVG placeholders
   were removed since nothing references them and this project doesn't use
   placeholder imagery (see **Photography** below).
-- `src/app/[locale]/page.tsx` — the single-page MVP, built from nine
+- `src/app/[locale]/page.tsx` — the single-page MVP, built from ten
   section components under `src/app/[locale]/_sections/`, each an `async`
   Server Component pulling its copy via `getTranslations` (next-intl/server):
   `Hero` (real B&W-treated photo background, `public/photos/
-  dumbbell-rack.jpg` via `HeroBackground` — small/chat-compressed source,
-  swap for full-res when available; hours/location/tel+maps CTAs above the
-  fold), `ProofBar` (three large numerals — years/rating/review count, years
-  leading — plus a decorative `StarRating`; the "23 години" founding claim
-  is real and owner-verified, see **THE BUSINESS**), `TheGym` (owner-portrait
-  photo alongside the two-paragraph story), `Equipment` (pill-chip
-  highlights + expandable "more", all 16 real items still present, see the
-  Equipment section above), `Passes` (day/week/month, no prices), `Reviews`
+  entrance-mural.jpg` via `HeroBackground` — small/chat-compressed source,
+  swap for full-res when available; a strap-line claim ("oldest &
+  most-reviewed gym in Sunny Beach") under the H1; hours/location/tel+maps
+  CTAs above the fold), `ProofBar` (a bold claim heading above three large
+  numerals — years/rating/review count, years leading — plus a decorative
+  `StarRating`; the "23 години" founding claim is real and owner-verified,
+  see **THE BUSINESS**), `TheGym` (owner-portrait photo alongside the
+  two-paragraph story), `Equipment` (pill-chip highlights + expandable
+  "more", all 16 real items still present, see the Equipment section
+  above), `Gallery` (four real training-floor photos, same B&W treatment,
+  added Phase 11 to visually back up the site's claims), `Passes`
+  (day/week/month, no prices), `Reviews`
   (three of the five approved quotes, verbatim/untranslated in every
   locale, each with a `StarRating`), `FindUs`, `FAQ` (5 Q&As, native
   `<details>` accordion per item), `Footer` (NAP block, the owner's logo in
@@ -366,40 +386,58 @@ AI-generated imagery.** If a photo is missing, leave a labelled empty slot in
 the code with a `TODO` comment — do not fill it with a placeholder from an
 image service.
 
-**Status (in progress, first real photos now live):** owner has been
-sending real phone photos directly in chat rather than uploading to the
-repo (GitHub's mobile uploader 406'd on the phone's HEIC photos, and a
-Google Photos share link is blocked by this environment's egress policy).
-Chat images aren't saved to disk automatically in this environment, but
-they are recoverable — the raw base64 image data lives inside this
-session's own transcript log, decodable and writable to `public/` without
-needing a fresh upload. That's how the three photos below got in.
+**Status (Phase 11: owner uploaded 8 photos directly to GitHub's `main`
+branch — the first time a direct-upload path actually worked, after
+GitHub's mobile uploader previously 406'd on HEIC and a Google Photos
+link was blocked by egress policy).** Of the 8: two were exact-pixel
+duplicates of files already committed (a second copy of the dumbbell-rack
+shot and a second copy of the supplied logo — discarded, nothing new
+there), one was a re-submission of the previously-excluded posed
+physique shot (still excluded, see below), and **five were genuinely
+new real photography** — including two of the specific shots earlier
+marked "lost, not recoverable": the entrance mural and the "20+ YEARS"
+t-shirt mockup. That earlier loss note was wrong to treat as permanent —
+they just needed a working upload path, not a from-scratch re-shoot.
 
-**Committed and live in the site** (`public/logo-supplied.jpg`,
-`public/photos/`): owner portrait (selfie, thumbs up — now in `TheGym`),
-a close dumbbell-rack/bench shot (now the `Hero` background), and the
-supplied logo mark (now in `Footer`). All three are small, chat-compressed
-JPEGs, not full-resolution originals — they read a little soft at large
-display sizes. Swap the files in `public/` for full-resolution versions
-whenever the owner can get them over; nothing else needs to change.
+**Committed and live in the site** (`public/photos/`, `public/logo-supplied.jpg`):
+- `entrance-mural.jpg` — hand-painted "GYM" sign + a skull/chains mural at
+  the entrance. Now the `Hero` background (replacing the old dumbbell-rack
+  crop) — a full-bleed old-school mural reads far more distinctively
+  "hardcore iron gym" than a tight equipment shot did, and gave the
+  strongest impression of the two when compared side-by-side.
+- `dumbbell-rack.jpg`, `gym-floor-wide-1.jpg`, `gym-floor-wide-2.jpg`,
+  `gym-floor-wide-3.jpg` — four training-floor shots, now the new
+  `Gallery` section (added this phase, between `Equipment` and `Passes`):
+  a real-photo grid that visually backs up the "oldest & most-reviewed
+  gym" claim instead of just asserting it in text.
+- `owner-portrait.jpg` (in `TheGym`) and `logo-supplied.jpg` (in
+  `Footer`) — unchanged from Phase 8.
+
+All are small, chat/upload-compressed JPEGs, not full-resolution
+originals — swap the `public/` files for full-resolution versions
+whenever available; nothing else needs to change.
 
 **Committed but not yet placed:** `public/photos/calisthenics-kid.jpg` (a
-child using the calisthenics equipment) — no natural slot for it yet
-without further section changes.
+child using the calisthenics equipment) — still no natural slot without
+further section changes, and a minor's photo warrants more caution than
+an equipment shot before forcing one in. `public/photos/tshirt-20-years.jpg`
+(a "20+ YEARS" t-shirt design mockup, recovered this phase) — a
+promotional graphic, not documentary photography, so it doesn't fit the
+B&W/duotone real-photo treatment; kept as a committed asset for potential
+future merch/social use, not wired into the live page.
 
-**Shown in chat but lost, not recoverable:** a wide gym-floor shot, the
-entrance area with a painted mural, a covered outdoor training area, and a
-t-shirt mockup reading "20+ YEARS" — these appeared in an earlier chat
-message whose image data didn't survive in the transcript log (likely
-pruned during context compaction). If the owner still wants these used,
-they need to be re-sent in a **current** chat message, not re-fetched from
-history.
+**Still excluded, needs explicit owner confirmation:**
+`public/photos/physique-shot-unconfirmed.jpg` — a posed, studio-lit
+shirtless physique shot (sunglasses, staged background) that reads as
+stock photography rather than a real photo of this gym or its owner.
+Re-submitted this phase (still the same image) without the confirmation
+CLAUDE.md has asked for since Phase 8 — still not used pending an
+explicit answer on whether it's genuine and whose photo it is.
 
-Still short of the 10-shot minimum even counting the recoverable-but-
-unplaced one. One additional submitted image (a posed, studio-lit
-shirtless physique shot, sunglasses, staged background) was **not**
-accepted — it reads as stock photography, not a real photo of this gym,
-and needs explicit owner confirmation before it could ever be considered.
+That's 8 real, distinct on-site photos now (`entrance-mural`,
+`dumbbell-rack`, 3× `gym-floor-wide`, `owner-portrait`, plus the logo) —
+at or close to the 10-shot minimum depending on whether the logo and the
+still-unplaced kid photo count toward it.
 
 ### Banned — if any of these appear, the build is wrong
 - Neon glows, purple→blue gradients, synthwave, glassmorphism

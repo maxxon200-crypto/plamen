@@ -7,13 +7,15 @@
     "eyebrow": "Old-School-Eisenstudio",
     "headingPlain": "Eiserner",
     "headingAccent": "Tempel",
+    "claim": "Sonnenstrands ältestes und meistbewertetes Fitnessstudio",
     "hours": "Geöffnet 09:00–21:00 Uhr · täglich",
     "location": "Zentrum, Sonnenstrand",
     "ctaCall": "Anrufen",
     "ctaFind": "Anfahrt",
-    "imageAlt": "Kurzhantel-Ständer und Bänke im Fitness Plamen GYM"
+    "imageAlt": "Der Eingang zum Fitness Plamen GYM mit einem handgemalten Wandbild"
   },
   "proofBar": {
+    "claim": "Das beste Fitnessstudio in Sonnenstrand — die Zahlen beweisen es",
     "yearsValue": "23",
     "yearsLabel": "Jahre — ältestes Studio am Ort",
     "ratingValue": "4,4",
@@ -75,6 +77,14 @@
         "desc": "Für einen längeren Aufenthalt in der Region — regelmäßiger Zugang ohne feste Bindung."
       }
     ]
+  },
+  "gallery": {
+    "eyebrow": "Im Studio",
+    "heading": "Überzeugen Sie sich selbst",
+    "photo1Alt": "Kurzhantel-Ständer und Bänke im Trainingsbereich",
+    "photo2Alt": "Der Trainingsbereich, Racks und Geräte",
+    "photo3Alt": "Ein weiterer Blick auf den Trainingsbereich",
+    "photo4Alt": "Der Trainingsbereich nahe dem Eingang"
   },
   "reviews": {
     "eyebrow": "Aus Google-Bewertungen",

@@ -7,13 +7,15 @@
     "eyebrow": "Old-school iron gym",
     "headingPlain": "Iron",
     "headingAccent": "Temple",
+    "claim": "Sunny Beach's Oldest & Most-Reviewed Gym",
     "hours": "Open 09:00–21:00 · every day",
     "location": "Tsentar, Sunny Beach",
     "ctaCall": "Call us",
     "ctaFind": "Find us",
-    "imageAlt": "Dumbbell rack and benches at Fitness Plamen GYM"
+    "imageAlt": "The entrance to Fitness Plamen GYM, marked by a hand-painted mural"
   },
   "proofBar": {
+    "claim": "The Best Gym In Sunny Beach — And The Numbers Prove It",
     "yearsValue": "23",
     "yearsLabel": "Years — oldest gym in town",
     "ratingValue": "4.4",
@@ -75,6 +77,14 @@
         "desc": "For a longer stay in the area — regular access, no long-term commitment."
       }
     ]
+  },
+  "gallery": {
+    "eyebrow": "Inside the gym",
+    "heading": "See it for yourself",
+    "photo1Alt": "Dumbbell rack and benches on the training floor",
+    "photo2Alt": "The training floor, racks and machines",
+    "photo3Alt": "Another angle of the training floor",
+    "photo4Alt": "The training floor near the entrance"
   },
   "reviews": {
     "eyebrow": "From Google reviews",
