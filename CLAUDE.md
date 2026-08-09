@@ -196,16 +196,22 @@ now, and they can walk in today. Everything else is secondary.
 - Owner: Plamen. Builds many of the machines by hand.
 - Passes: day, week, month. **NO PRICES ANYWHERE ON THE SITE.**
 - No Instagram account exists. Do not link one.
+- **Founded 23 years ago — the oldest continuously-operating gym in Sunny
+  Beach.** Owner-verified (was previously unverified — see history below).
+  This is a real competitive claim: use it, don't soften it.
 
 Open blockers from the owner (do not fabricate substitutes — see
-**Outstanding decisions** below): the "20 years" founding claim is
-unverified; real gym photos are not yet supplied; the "Fitness Mercury"
-history and an Instagram decision are unresolved.
+**Outstanding decisions** below): real gym photos are being supplied
+incrementally (see **Photography** below for current status); the "Fitness
+Mercury" history and an Instagram decision are unresolved.
 
 ## Positioning
 The only hardcore old-school bodybuilding and powerlifting gym in Sunny
-Beach. Competitors are combat-sports centres (Max Fight) or modern chains
-(Pulse). Nobody else owns "iron temple." Lean into it completely.
+Beach — and, now verified, the oldest one: 23 years running, longer than
+any other gym in town. Competitors are combat-sports centres (Max Fight) or
+modern chains (Pulse), none of which can claim that tenure. Nobody else
+owns "iron temple." Lean into both claims completely — "old-school" is no
+longer just an aesthetic choice, it's literally true.
 
 Reframe the two recurring criticisms instead of hiding them:
 - "equipment is old" → owner-built, maintained, and it works. That is the point.
@@ -294,6 +300,22 @@ duotone `#0A0A0A → #B10000`. Never colour-corrected stock. **Zero
 AI-generated imagery.** If a photo is missing, leave a labelled empty slot in
 the code with a `TODO` comment — do not fill it with a placeholder from an
 image service.
+
+**Status (in progress):** owner has started sending real phone photos
+directly in chat. As of the last session, ~6 real, usable photos have been
+reviewed but **not yet committed to the repo** — chat attachments in this
+environment aren't saved to disk automatically, so nothing can be wired
+into the site until they land in `public/photos/` via a repo commit
+(owner uploading through GitHub's web UI, or a future session with real
+file access to the attachments). Photos seen so far: owner portrait
+(selfie, thumbs up), a child using the calisthenics equipment, a close
+dumbbell-rack/bench shot, a wide gym-floor shot, the entrance area with a
+painted mural (bright colours — fine, gets the duotone/B&W treatment like
+everything else), and a covered outdoor training area. Still short of the
+10-shot minimum. One additional submitted image (a posed, studio-lit
+shirtless physique shot, sunglasses, staged background) was **not**
+accepted — it reads as stock photography, not a real photo of this gym,
+and needs explicit owner confirmation before it could ever be considered.
 
 ### Banned — if any of these appear, the build is wrong
 - Neon glows, purple→blue gradients, synthwave, glassmorphism
@@ -402,12 +424,29 @@ tactic — it's unsupported by Google and unused by AI crawlers; clean
 semantic HTML and real FAQ content do the actual work.
 
 ## Outstanding decisions (blockers — do not paper over with invented content)
-1. Founding year for the "20 years" claim — unverified, do not ship as fact.
-2. Real gym photography (min. 10 shots) — required before the photography
-   sections can leave `TODO` placeholders.
-3. Whether/how to mention the "Fitness Mercury" history.
-4. Whether to create an Instagram account or omit it entirely.
-5. Whether the no-prices rule holds — the day rate is already public via a
+1. ~~Founding year~~ **RESOLVED.** Owner-verified: 23 years, oldest
+   continuously-operating gym in Sunny Beach. See **THE BUSINESS** and
+   **Positioning** above — this is now a real fact to market, not a
+   placeholder.
+2. Real gym photography (min. 10 shots) — **in progress.** Owner has
+   started supplying real phone photos (gym floor from multiple angles,
+   dumbbell rack, owner portrait, entrance mural) directly in chat rather
+   than committed to the repo — see **Photography** below for the current
+   received/committed/used status and how to get new ones in. One
+   submitted image (a posed, studio-lit shirtless physique shot) reads as
+   stock photography rather than a real photo of this gym or its owner —
+   excluded pending explicit confirmation from the owner that it's
+   genuine and who it is.
+3. Logo — owner supplied an existing logo mark (red fist/bicep icon +
+   wordmark) and a matching t-shirt design reading "20+ YEARS" (consistent
+   with the now-confirmed 23-year history, likely just not yet updated on
+   the merch). Undecided: ship the logo as supplied, or redesign it to
+   match the site's exact palette (`#B10000` not whatever red the supplied
+   asset uses) and Oswald typography for visual cohesion with the rest of
+   the site.
+4. Whether/how to mention the "Fitness Mercury" history.
+5. Whether to create an Instagram account or omit it entirely.
+6. Whether the no-prices rule holds — the day rate is already public via a
    Google review, so omitting it on-site mainly adds friction. If the owner
    still declines, compensate by making the phone CTA prominent with
    "call for prices" in all four languages.

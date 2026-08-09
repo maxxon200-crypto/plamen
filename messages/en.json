@@ -13,6 +13,8 @@
     "ctaFind": "Find us"
   },
   "proofBar": {
+    "yearsValue": "23",
+    "yearsLabel": "Years — oldest gym in Sunny Beach",
     "ratingValue": "4.4",
     "ratingLabel": "Google rating",
     "reviewCountValue": "~149",
@@ -24,7 +26,7 @@
     "eyebrow": "The gym",
     "headingPlain": "Built by hand,",
     "headingAccent": "not bought off a shelf",
-    "paragraph1": "Plamen, the owner, built most of the machines in this gym with his own hands. Not because he couldn't buy new ones — he knows exactly how each one needs to work, and builds it to hold up.",
+    "paragraph1": "Fitness Plamen has been running in Sunny Beach for 23 years — longer than any other gym in town. Plamen, the owner, built most of the machines in this gym with his own hands. Not because he couldn't buy new ones — he knows exactly how each one needs to work, and builds it to hold up.",
     "paragraph2": "The iron here isn't shiny and it isn't new. We keep it maintained, oiled and fully working — that's the point of old school: not a showroom, a tool that does the job every day."
   },
   "equipment": {

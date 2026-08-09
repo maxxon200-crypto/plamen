@@ -13,6 +13,8 @@
     "ctaFind": "Anfahrt"
   },
   "proofBar": {
+    "yearsValue": "23",
+    "yearsLabel": "Jahre — ältestes Fitnessstudio am Sonnenstrand",
     "ratingValue": "4,4",
     "ratingLabel": "Google-Bewertung",
     "reviewCountValue": "~149",
@@ -24,7 +26,7 @@
     "eyebrow": "Das Studio",
     "headingPlain": "Handgebaut,",
     "headingAccent": "nicht von der Stange",
-    "paragraph1": "Plamen, der Inhaber, hat einen Großteil der Geräte in diesem Studio mit eigenen Händen gebaut. Nicht weil er sich keine neuen leisten könnte — er weiß genau, wie jedes Gerät funktionieren muss, und baut es entsprechend, damit es hält.",
+    "paragraph1": "Fitness Plamen gibt es seit 23 Jahren in Sonnenstrand — länger als jedes andere Studio am Ort. Plamen, der Inhaber, hat einen Großteil der Geräte in diesem Studio mit eigenen Händen gebaut. Nicht weil er sich keine neuen leisten könnte — er weiß genau, wie jedes Gerät funktionieren muss, und baut es entsprechend, damit es hält.",
     "paragraph2": "Das Eisen hier ist nicht glänzend und nicht neu. Wir halten es gepflegt, geölt und voll funktionsfähig — genau darum geht es bei Old School: kein Schauraum, sondern ein Werkzeug, das jeden Tag seine Arbeit macht."
   },
   "equipment": {
