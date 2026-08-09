@@ -1,13 +1,141 @@
 # PROJECT: Fitness Plamen GYM Sunny Beach
 
 ## Repository state (read this first)
-This repository is **pre-scaffold**. As of now it contains only this file and a
-placeholder `README.md` — no `package.json`, no `src/`, no Next.js app yet.
-There is nothing to "explore" in a codebase-archaeology sense; instead, treat
-this file as the spec the codebase must be built to conform to. The build is
-sequenced into phases (see **Development workflow** below) — do not jump ahead
-and scaffold everything at once. Once Phase 0 lands, update this section to
-describe what actually exists (routes, key files, how to run it locally).
+**Phases 0–5 (scaffold, design foundation, Bulgarian MVP, i18n, SEO/schema,
+motion) are done.** Phase 6 (verification and deploy) is not — the site
+hasn't shipped anywhere yet, `SITE_URL` is still a placeholder domain. Treat
+the rest of this file as the spec the remaining phase must be built to
+conform to. Do not jump ahead and start Phase 6 work unprompted. See
+`PHASES.md` for the full per-phase runbook.
+
+What exists right now:
+- Next.js 15 (App Router) + TypeScript + Tailwind CSS v3 + ESLint, scaffolded
+  into `src/`, no Turbopack.
+- `src/app/[locale]/layout.tsx` — sets `<html lang>` per locale, wraps
+  children in `NextIntlClientProvider`, loads the Sofia Sans / Sofia Sans
+  Condensed font variables, and exports `generateMetadata()` (Phase 4 —
+  see below).
+- `src/i18n/routing.ts` — next-intl `defineRouting`, locales
+  `['bg','en','ru','de']`, default `bg`.
+- `src/i18n/request.ts` — next-intl `getRequestConfig`, loads
+  `messages/{locale}.json`.
+- `src/middleware.ts` — next-intl middleware, locale detection +
+  `NEXT_LOCALE` cookie persistence, matcher excludes `api`/`_next`/files.
+- `src/lib/fonts.ts` — `next/font/google` for Sofia Sans (400/600) and Sofia
+  Sans Condensed (800), latin + cyrillic subsets, self-hosted at build time.
+- `messages/{bg,en,ru,de}.json` — real, structurally-identical copy under
+  nine namespaces (`hero`, `proofBar`, `theGym`, `equipment`, `passes`,
+  `reviews`, `findUs`, `footer`, `languages`). `bg.json` is the source of
+  truth; `en`/`ru`/`de` are adaptations, not literal translations, in each
+  language's real gym vocabulary. `reviews.items[].quote`/`.author` are
+  byte-identical English text across all four files by design (real Google
+  review quotes are never translated — only `.meta`'s date format adapts).
+- `tailwind.config.ts` — palette tokens (`ink`, `black`, `charcoal`, `steel`,
+  `bone`, `white`, `blood`, `blood.hi`) and `font-sans`/`font-condensed`
+  mapped to the Sofia Sans CSS variables, plus a `fontSize` scale
+  (`display`/`h2`/`h3`/`body`/`caption`) for the condensed-caps type system.
+  Tailwind v3 (config-file-based), not v4 — chosen so the palette lives in
+  one typed `tailwind.config.ts` rather than a CSS `@theme` block.
+- `src/app/globals.css` — the same palette tokens mirrored as CSS custom
+  properties, a `texture-grain` utility (SVG fractal-noise overlay, opacity
+  0.06), a `duotone-blood` utility (ink→blood mix-blend overlay — apply to
+  real gym photography only, never stock/AI imagery), and a global
+  `prefers-reduced-motion` kill switch for animation/transition durations.
+- `src/components/ui/` — `Section`, `Container`, `Rule`, `Button` (renders a
+  real `<a>` when given `href`, otherwise a real `<button>` — never a dead
+  CTA), `Eyebrow`. All Server Components, no client JS.
+- `src/app/[locale]/styleguide/` — temporary locale-aware route rendering
+  every palette swatch, type-scale sample, primitive, and texture utility.
+  For human/design review only; remove once Phase 2+ pages validate the
+  system in real content. Not linked from the public site.
+- `public/` is currently empty — the default create-next-app SVG placeholders
+  were removed since nothing references them and this project doesn't use
+  placeholder imagery (see **Photography** below).
+- `src/app/[locale]/page.tsx` — the single-page MVP, built from eight
+  section components under `src/app/[locale]/_sections/`, each an `async`
+  Server Component pulling its copy via `getTranslations` (next-intl/server):
+  `Hero` (labelled `TODO` photo slot, no real photography yet, hours/
+  location/tel+maps CTAs above the fold), `ProofBar` (rating/review count/
+  proof points — no "20 години" claim, that founding year is still
+  unverified per **Outstanding decisions**), `TheGym`, `Equipment` (all 16
+  items verbatim per locale), `Passes` (day/week/month, no prices),
+  `Reviews` (three of the five approved quotes, verbatim/untranslated in
+  every locale), `FindUs`, `Footer` (NAP block, Facebook link, real
+  `LanguageSwitcher`). No animation, no `'use client'` in any section —
+  fully static Server Components; only the switcher is a client component.
+- `src/i18n/navigation.ts` — next-intl `createNavigation(routing)`,
+  exporting locale-aware `Link`/`usePathname`/`useRouter`/`getPathname`.
+- `src/components/LanguageSwitcher.tsx` — client component, real working
+  links to all four locales (own-script labels: Български/English/Русский/
+  Deutsch), `aria-current` on the active locale, persists via the existing
+  middleware's `NEXT_LOCALE` cookie handling (no extra client-side cookie
+  code needed).
+- `src/lib/site.ts` — `SITE_URL` is a **placeholder domain**
+  (`https://fitnessplamen.bg`) since no real production domain is
+  configured yet; every canonical/OG/sitemap/robots URL derives from this
+  one constant, so swap it here before deploy (Phase 6). Also `SITE_NAME`
+  and locale-URL/OG-locale helpers.
+- `src/lib/schema.ts` — `buildExerciseGymSchema()` and `buildFaqSchema()`
+  JSON-LD builders. **No `aggregateRating` field, ever** — hard prohibition,
+  the ~4.4–4.5/~149 rating stays visible text only in `ProofBar`. `image` is
+  intentionally omitted (no real photography yet).
+- `messages/{bg,en,ru,de}.json` also carry two more namespaces since Phase
+  4: `meta` (per-locale title/description targeting real search phrasing)
+  and `faq` (7 Q&A pairs, answer-first, structurally identical across all
+  four locales same as every other namespace).
+- `src/app/[locale]/_sections/FAQ.tsx` — new section (added before
+  `Footer`), renders the FAQ copy plus a mirrored `FAQPage` JSON-LD block.
+  The "when is it least busy" answer is honest and general (mornings
+  quieter than evenings), not a fabricated specific hour range.
+- `src/app/[locale]/page.tsx` also renders the `ExerciseGym` JSON-LD block
+  (kept out of `layout.tsx` so it doesn't leak onto `/styleguide`).
+- `src/app/robots.ts` — allows `GPTBot`/`ClaudeBot`/`PerplexityBot`/
+  `OAI-SearchBot` plus general crawlers, disallows `/styleguide` and
+  `/*/styleguide`. No `llms.txt` — deliberately skipped per CLAUDE.md.
+- `src/app/sitemap.ts` — all four locale homepages with full hreflang
+  alternates including `x-default` → `/bg`.
+- `src/components/SmoothScroll.tsx` — Lenis, mounted once in the locale
+  layout. Independently checks `prefers-reduced-motion` via `matchMedia`
+  before ever constructing a Lenis instance (the CSS kill-switch alone
+  doesn't stop Lenis's JS scroll hijacking).
+- `src/components/Reveal.tsx` — the one scroll fade+rise, wrapping
+  `ProofBar`/`TheGym`/`Equipment`/`Passes`/`Reviews`/`FindUs`/`FAQ` in
+  `page.tsx` (`Hero` and `Footer` excluded). **The GSAP-visibility-without-
+  JS guarantee, load-bearing for CLAUDE.md's motion hard rule:** the
+  server-rendered wrapper `<div>` carries zero className/style — a no-JS
+  visitor gets the section exactly as it rendered, fully visible. GSAP's
+  `fromTo()` only ever applies its "from" values via JS inside a mounted
+  `useEffect`, gated behind its own reduced-motion check, so a hidden-
+  before-visible state never exists in markup. Verified by curling the
+  raw SSR'd HTML for all four locales and grepping for `opacity:0`/
+  `opacity-0`/inline opacity styles — zero matches. Any future change to
+  this component must preserve that property; re-verify with curl+grep,
+  don't just trust that it looks right in a browser.
+- `src/components/HeroBackground.tsx` — same visibility guarantee, subtle
+  scroll-tied scale on the Hero's still-`TODO`-labelled background
+  placeholder only (no real photography yet). No text animation.
+- `src/app/icon.tsx`, `src/app/opengraph-image.tsx` — code-generated
+  favicon/OG image via `next/og`'s `ImageResponse`, palette tokens only
+  (`ink`/`blood`/`white`/`steel`), nothing fetched externally, no
+  photography. Caught during review: an earlier draft had `color: blood`
+  text directly on the `ink` background for "Plamen Gym" — the same red-
+  text-on-black violation as the Hero/TheGym fix in Phase 2. Fixed to a
+  blood-background/white-text chip; watch for this exact mistake recurring
+  anywhere blood is used near ink/black.
+- `src/middleware.ts` — matcher also excludes `icon`/`opengraph-image` now
+  (they have no file extension in their URL, so without this they'd get
+  caught by the locale-prefix redirect and 404).
+- Focus-visible rings (`outline`/`outline-offset`, white on dark) added to
+  every interactive element: `Button`, `LanguageSwitcher`, and the tel/
+  maps/Facebook links in `FindUs`/`Footer`.
+
+Run locally: `npm install`, then `npm run dev` (or `npm run build && npm run
+start` to check the production build). `npm run build` and `npx eslint .`
+both pass as of this phase. `/`, `/bg`, `/en`, `/ru`, `/de`, and
+`/{locale}/styleguide` all resolve; `/` 307-redirects to `/bg` and sets the
+`NEXT_LOCALE` cookie.
+
+Update this section again after each phase lands.
 
 ## What this is
 A 4-language (BG / EN / RU / DE) marketing site for a real, operating gym in
