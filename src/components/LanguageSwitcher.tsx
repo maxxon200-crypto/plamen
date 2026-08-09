@@ -3,6 +3,7 @@
 import { useLocale, useTranslations } from "next-intl";
 import { routing } from "@/i18n/routing";
 import { Link, usePathname } from "@/i18n/navigation";
+import { FLAGS } from "@/components/Flags";
 
 /**
  * Real locale switcher — not a placeholder. Uses next-intl's locale-aware
@@ -10,12 +11,10 @@ import { Link, usePathname } from "@/i18n/navigation";
  * on the current page and the request to the new locale-prefixed URL lets
  * middleware.ts persist the NEXT_LOCALE cookie, same as any other
  * locale-prefixed navigation. Each language is labelled in its own script
- * (Български / English / Русский / Deutsch) per CLAUDE.md — text only, no
- * flag icons: a recognisable flag needs its national colours, which don't
- * exist in the fixed 8-token palette (Bulgaria/Russia/Germany/UK-or-US all
- * require hex values outside it), so this stays palette-compliant pill
- * badges instead. Revisit if the palette is ever explicitly extended for
- * this one purpose.
+ * (Български / English / Русский / Deutsch) plus a flag icon (see
+ * src/components/Flags.tsx — national flag colours are an explicit,
+ * narrowly-scoped exception to CLAUDE.md's fixed palette, confirmed by the
+ * stakeholder).
  *
  * Client component because it needs to know the active locale and the
  * current (locale-stripped) pathname to build the other three links and to
@@ -30,22 +29,26 @@ export default function LanguageSwitcher() {
   return (
     <nav aria-label={t2("languageLabel")}>
       <ul className="flex flex-wrap gap-2 font-condensed text-caption uppercase tracking-[0.1em]">
-        {routing.locales.map((locale) => (
-          <li key={locale}>
-            <Link
-              href={pathname}
-              locale={locale}
-              aria-current={locale === activeLocale ? "true" : undefined}
-              className={`inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border-2 px-3 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
-                locale === activeLocale
-                  ? "border-blood text-white"
-                  : "border-steel/40 text-steel hover:border-steel hover:text-white"
-              }`}
-            >
-              {t(locale)}
-            </Link>
-          </li>
-        ))}
+        {routing.locales.map((locale) => {
+          const Flag = FLAGS[locale];
+          return (
+            <li key={locale}>
+              <Link
+                href={pathname}
+                locale={locale}
+                aria-current={locale === activeLocale ? "true" : undefined}
+                className={`inline-flex min-h-11 items-center gap-2 rounded-full border-2 px-3 outline-none focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white ${
+                  locale === activeLocale
+                    ? "border-blood text-white"
+                    : "border-steel/40 text-steel hover:border-steel hover:text-white"
+                }`}
+              >
+                <Flag className="h-4 w-6 flex-shrink-0" />
+                {t(locale)}
+              </Link>
+            </li>
+          );
+        })}
       </ul>
     </nav>
   );

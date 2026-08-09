@@ -6,7 +6,10 @@ tools: Read, Glob, Grep, Bash
 You are hostile to your own team's output. Grep the codebase and report
 violations with file and line. Fail the phase if you find:
 
-- Any hex value outside the CLAUDE.md palette
+- Any hex value outside the CLAUDE.md palette, EXCEPT national flag colours
+  inside `src/components/Flags.tsx` specifically (a confirmed, narrowly-
+  scoped exception — see CLAUDE.md's Palette section). Fail on any hex
+  outside the palette in any other file, flag-shaped or not.
 - `opacity: 0` or `autoAlpha: 0` as a base style, or any GSAP from() that hides
   content without a no-JS fallback
 - Missing prefers-reduced-motion guard around any animation

@@ -34,11 +34,11 @@ What exists right now:
 - `src/middleware.ts` — next-intl middleware, locale detection +
   `NEXT_LOCALE` cookie persistence, matcher excludes `api`/`_next`/files.
 - `src/lib/fonts.ts` — `next/font/google` for Sofia Sans (400/600, body) and
-  Oswald (700, display — exported as `displayFont`, mapped to the same
+  Russo One (400, display — exported as `displayFont`, mapped to the same
   `--font-display` CSS variable and `font-condensed` Tailwind class the
   codebase already uses everywhere, so no component markup had to change
-  when the display typeface swapped), latin + cyrillic subsets, self-hosted
-  at build time.
+  when the display typeface swapped again, Sofia Sans Condensed → Oswald →
+  Russo One), latin + cyrillic subsets, self-hosted at build time.
 - `messages/{bg,en,ru,de}.json` — real, structurally-identical copy under
   nine namespaces (`hero`, `proofBar`, `theGym`, `equipment`, `passes`,
   `reviews`, `findUs`, `footer`, `languages`). `bg.json` is the source of
@@ -48,9 +48,9 @@ What exists right now:
   review quotes are never translated — only `.meta`'s date format adapts).
 - `tailwind.config.ts` — palette tokens (`ink`, `black`, `charcoal`, `steel`,
   `bone`, `white`, `blood`, `blood.hi`) and `font-sans`/`font-condensed`
-  mapped to the Sofia Sans / Oswald CSS variables, plus a `fontSize` scale
-  (`display`/`h2`/`h3`/`body`/`caption`, weight 700 to match Oswald's loaded
-  weight) for the condensed-caps type system.
+  mapped to the Sofia Sans / Russo One CSS variables, plus a `fontSize`
+  scale (`display`/`h2`/`h3`/`body`/`caption`, weight 400 to match Russo
+  One's single loaded weight) for the condensed-caps type system.
   Tailwind v3 (config-file-based), not v4 — chosen so the palette lives in
   one typed `tailwind.config.ts` rather than a CSS `@theme` block.
 - `src/app/globals.css` — the same palette tokens mirrored as CSS custom
@@ -99,11 +99,12 @@ What exists right now:
   Deutsch, styled as `rounded-full` pill badges — one of the two explicit
   border-radius exceptions), `aria-current` on the active locale, persists
   via the existing middleware's `NEXT_LOCALE` cookie handling (no extra
-  client-side cookie code needed). **No flag icons** — a recognisable flag
-  needs its national colours, and Bulgaria/Russia/Germany/UK-or-US all
-  require hex values outside the fixed 8-token palette. If flags are ever
-  wanted badly enough to justify a palette exception, that's a decision for
-  a human to make explicitly, not something to add quietly.
+  client-side cookie code needed). Each badge also carries a flag icon from
+  `src/components/Flags.tsx` — stakeholder explicitly confirmed wanting
+  flags despite the palette conflict, so national flag colours are now a
+  narrow, explicit exception scoped to exactly that one file (see Palette
+  below). English is represented by the UK flag — a judgement call, nothing
+  in CLAUDE.md picked UK vs. US.
 - `src/components/StarRating.tsx` — decorative 5-star SVG row (not the
   Unicode ★ glyph, so partial fill works), `aria-hidden` since the adjacent
   numeral/label already carries the accessible rating info. Filled portion
@@ -287,22 +288,31 @@ Red rules: never set body copy in red; never set red text on black. `#B10000`
 passes AAA on white → safe for large headings and CTA fills. `#FF0000` is
 banned — it reads "sale sticker," not "blood."
 
-### Typography
-Oswald — display, ALL CAPS, tight tracking (`-0.02em`), weight 700. Sofia
-Sans — body, weight 400/600. Both from Google Fonts via `next/font`;
-self-host the subset. Both render native Bulgarian and Russian Cyrillic —
-that is a hard requirement, not a nice-to-have, since Bulgarian is the
-default locale and Russian is one of the four. Set `<html lang>` per locale
-so Cyrillic letterforms shape correctly. No other typefaces. No serifs.
+**Palette exception — flag icons only.** `src/components/Flags.tsx`, used
+inside `LanguageSwitcher`, uses real national flag colours (Bulgaria/UK/
+Russia/Germany) outside the 8-token set above — stakeholder explicitly
+confirmed wanting flags despite the conflict. Scope is exactly that one
+file. No other component may introduce a hex value outside the palette
+table, flags or otherwise.
 
-Oswald replaced Sofia Sans Condensed after live-site feedback that the
-original display type read as "wrong personality" — too plain/corporate for
-an old-school iron gym. Oswald's narrower, industrial-gothic letterforms
-(descended from early-20th-century sign-painting alphabets) read as more
-"iron/athletic poster" even at nominally lower weight (700 vs the old 800).
-Popular "bold industrial" alternatives considered and rejected for missing
-Cyrillic support entirely: Bebas Neue, Anton, Fjalla One, Staatliches, Six
-Caps — do not reach for these, they will silently break BG/RU.
+### Typography
+Russo One — display, ALL CAPS, weight 400 (it only ships one weight; it's
+already heavy/blocky at that weight, no bolding needed). Sofia Sans — body,
+weight 400/600. Both from Google Fonts via `next/font`; self-host the
+subset. Both render native Bulgarian and Russian Cyrillic — that is a hard
+requirement, not a nice-to-have, since Bulgarian is the default locale and
+Russian is one of the four. Set `<html lang>` per locale so Cyrillic
+letterforms shape correctly. No other typefaces. No serifs.
+
+Russo One replaced Oswald after further live-site feedback that Oswald
+still read as generic/"AI-safe" rather than a real gym brand mark. Russo
+One is a native Cyrillic display face (designed around Cyrillic + Latin
+together, not Latin-first with Cyrillic bolted on) with a bold, blocky,
+sports/poster character — distinct personality, not a neutral condensed
+sans. Oswald's own rejection reasoning still applies to picking anything
+next: verify Cyrillic support before reaching for a popular "gym font."
+Rejected for missing Cyrillic entirely (do not reach for these): Bebas
+Neue, Anton, Fjalla One, Staatliches, Six Caps.
 
 ### Photography
 Real photos of this gym only. High-contrast black and white with grain, or
