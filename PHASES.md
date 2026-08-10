@@ -387,6 +387,51 @@ existing sections.
 
 -----
 
+## PHASE 4.6 — Extending Phase 4's SEO work
+
+Not part of the original 6-phase sequence — real discoverability work,
+same discipline as every other phase (build must pass, verified not
+assumed, no invented facts).
+
+- New `src/config/business.ts`: single source of truth for the NAP and
+  every other GBP fact. `Footer`, `Hero`, `FindUs`, `Passes`, `FollowUs`,
+  and `schema.ts` all consolidated onto it instead of each hardcoding
+  their own copy of the phone number / coordinates / Place ID.
+- Footer NAP now renders as real HTML text (not an image, not
+  JSON-LD-only), byte-identical name/phone across all four locales,
+  "Център, Слънчев бряг" kept in Cyrillic everywhere with a parenthetical
+  Latin transliteration on the three non-Bulgarian locales only.
+- `meta.title` switched to an exact `[keyword] | Fitness Plamen GYM`
+  format per locale; `meta.description` rewritten per locale (not
+  translated), mentions passes + location, never a price.
+- Fixed a real, previously-unnoticed SEO gap: the page's one `<h1>`
+  carried zero keyword content (it was just the brand line, with the
+  keyword-adjacent strap-line living in a sibling paragraph the H1 tag
+  didn't cover). Fixed with a semantic-only change — nested the existing
+  strap-line inside the `<h1>` as a block-level span with the exact same
+  classes — zero visual change, confirmed via screenshot. `hero.claim`/
+  `hero.eyebrow` reworded per locale (via `copy-localizer`) to naturally
+  contain the target keyword phrase, same underlying claim, no new facts.
+- Google Maps links standardized to one exact URL format
+  (`maps/place/?q=place_id:...`) everywhere via `business.ts`.
+- `schema.ts`'s `areaServed` gained Burgas Province. `hasMap`/`sameAs`/
+  `amenityFeature` were already present from an earlier pass — just
+  re-sourced from `business.ts`. Confirmed again: no `aggregateRating`
+  anywhere.
+- hreflang/canonical verified, not assumed: printed the real rendered
+  `<head>` for all four locales post-build. Every locale self-canonicals,
+  every locale carries reciprocal hreflang alternates + x-default → /bg,
+  none canonicals to English. robots.txt/sitemap.xml confirmed unchanged
+  and already correct; confirmed zero accidental `noindex` anywhere.
+  Confirmed zero `<iframe>` elements anywhere in the codebase — the map
+  was already a real outbound link, nothing to replace.
+- GSC/Bing submission is blocked on a real production domain (`SITE_URL`
+  is still the placeholder `fitnessplamen.bg`) — verification method
+  guidance recorded in CLAUDE.md's new "SEO and discoverability" section
+  for whenever the real domain lands.
+
+-----
+
 ## BLOCKED UNTIL THE OWNER PROVIDES
 
 - ~~Founding year~~ **RESOLVED as of Phase 8** — owner-verified 23 years,

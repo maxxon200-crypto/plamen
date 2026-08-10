@@ -1,9 +1,7 @@
 import { localeUrl, type Locale } from "./site";
+import { business, mapsUrl } from "@/config/business";
 
-const TELEPHONE = "+359878821115";
 const FACEBOOK_URL = "https://www.facebook.com/FITNESSMERCURYSUNNYBEACH/";
-const MAPS_URL =
-  "https://www.google.com/maps/search/?api=1&query=Fitness+Plamen+GYM&query_place_id=ChIJIxshlPafpkARpBnO0sV6nrc";
 
 const DAYS_OF_WEEK = [
   "Monday",
@@ -20,33 +18,38 @@ const DAYS_OF_WEEK = [
  * `inLanguage` (the business's name/address/hours don't change per
  * language). HARD PROHIBITION (CLAUDE.md + seo-schema brief): never add
  * `aggregateRating` here — Google treats self-serving aggregateRating on
- * LocalBusiness/ExerciseGym as a policy violation; the ~4.4–4.5/~149 rating
+ * LocalBusiness/ExerciseGym as a policy violation; the ~4.4–4.5/177 rating
  * stays visible text only (see ProofBar.tsx).
  *
- * `image` is intentionally omitted — CLAUDE.md bans stock/AI placeholder
- * imagery and no real gym photography has been supplied yet (Outstanding
- * decisions #2). Add a real image array here once photography lands.
+ * `image` is intentionally still omitted — real photography landed in
+ * Phase 11/12 (see CLAUDE.md's Photography section), but adding photo URLs
+ * to structured data wasn't part of the Phase 4.6 SEO scope; still a real
+ * TODO, just not this pass.
+ *
+ * All identifying facts (name/phone/address/coordinates/Place ID) come
+ * from src/config/business.ts, the single source of truth added Phase 4.6
+ * — never hardcode them here again.
  */
 export function buildExerciseGymSchema(locale: Locale) {
   return {
     "@context": "https://schema.org",
     "@type": "ExerciseGym",
-    name: "Fitness Plamen GYM SUNNY BEACH",
+    name: business.name,
     url: localeUrl(locale),
     inLanguage: locale,
-    telephone: TELEPHONE,
+    telephone: business.phone,
     address: {
       "@type": "PostalAddress",
       streetAddress: "Tsentar (Център)",
       addressLocality: "Sunny Beach",
       addressRegion: "Nesebar",
-      postalCode: "8240",
-      addressCountry: "BG",
+      postalCode: business.postalCode,
+      addressCountry: business.country,
     },
     geo: {
       "@type": "GeoCoordinates",
-      latitude: 42.690716,
-      longitude: 27.707864,
+      latitude: business.lat,
+      longitude: business.lng,
     },
     openingHoursSpecification: {
       "@type": "OpeningHoursSpecification",
@@ -58,8 +61,10 @@ export function buildExerciseGymSchema(locale: Locale) {
     // at least 10 real shots (CLAUDE.md — no stock/AI imagery, ever).
     // image: [],
     sameAs: [FACEBOOK_URL],
-    hasMap: MAPS_URL,
-    areaServed: ["Sunny Beach", "Nesebar"],
+    hasMap: mapsUrl(),
+    // Burgas Province is the wider administrative region Sunny Beach and
+    // Nesebar sit within — added Phase 4.6 for broader areaServed coverage.
+    areaServed: ["Sunny Beach", "Nesebar", "Burgas Province"],
     amenityFeature: [
       {
         "@type": "LocationFeatureSpecification",

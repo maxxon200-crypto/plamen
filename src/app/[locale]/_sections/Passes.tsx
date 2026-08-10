@@ -2,8 +2,9 @@ import { getTranslations } from "next-intl/server";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { telHref } from "@/config/business";
 
-const TEL_HREF = "tel:+359878821115";
+const TEL_HREF = telHref();
 
 interface Pass {
   name: string;

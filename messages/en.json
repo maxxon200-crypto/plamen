@@ -1,13 +1,13 @@
 {
   "meta": {
-    "title": "Gym in Sunny Beach — Fitness Plamen GYM | Open 09:00–21:00",
-    "description": "Old-school iron gym in the centre of Sunny Beach. Dumbbells up to 55 kg, a calisthenics park, a boxing area and air conditioning. Day, week and month passes — call or walk in."
+    "title": "Gym in Sunny Beach | Fitness Plamen GYM",
+    "description": "Old-school bodybuilding gym in the centre of Sunny Beach, Bulgaria. Day, week and month passes available — call or walk in, no booking needed."
   },
   "hero": {
-    "eyebrow": "Old-school iron gym",
+    "eyebrow": "Old-school iron gym in Sunny Beach",
     "headingPlain": "Iron",
     "headingAccent": "Temple",
-    "claim": "Sunny Beach's Oldest & Most-Reviewed Gym",
+    "claim": "The Oldest & Most-Reviewed Gym In Sunny Beach",
     "hours": "Open 09:00–21:00 · every day",
     "location": "Tsentar, Sunny Beach",
     "ctaCall": "Call us",
@@ -133,11 +133,11 @@
     "items": [
       {
         "question": "Is there a gym in Sunny Beach?",
-        "answer": "Yes, Fitness Plamen GYM is in the centre of Sunny Beach. It's an old-school iron gym with barbells, dumbbells and owner-built machines, open every day from 09:00 to 21:00."
+        "answer": "Yes — Fitness Plamen GYM is the gym Sunny Beach visitors search for, right in the centre. It's an old-school iron gym with barbells, dumbbells and owner-built machines, open every day from 09:00 to 21:00."
       },
       {
         "question": "Do you sell day passes?",
-        "answer": "Yes, day, week and month passes are all available. Call the number below or come by in person — we'll walk you through the passes on the spot, no booking or paperwork needed."
+        "answer": "Yes — a gym day pass, a week pass and a month pass are all available. Call the number below or come by in person — we'll walk you through the passes on the spot, no booking or paperwork needed."
       },
       {
         "question": "What are the opening hours?",
@@ -145,7 +145,7 @@
       },
       {
         "question": "Where exactly is the gym?",
-        "answer": "The gym is in the centre (Tsentar) of Sunny Beach, a few minutes' walk from the beach. Open the address directly in Google Maps via the \"Find us\" link on this page for exact directions."
+        "answer": "As a bodybuilding gym in Bulgaria, we're right in the centre (Tsentar) of Sunny Beach, a few minutes' walk from the beach. Open the address directly in Google Maps via the \"Find us\" link on this page for exact directions."
       },
       {
         "question": "When is the gym least busy?",
@@ -234,8 +234,6 @@
     "lawBody": "Bulgarian law governs these terms. The Bulgarian text prevails over any translation."
   },
   "footer": {
-    "name": "Fitness Plamen GYM Sunny Beach",
-    "address": "Tsentar, Sunny Beach 8240, Nesebar, Bulgaria",
     "languageLabel": "Language",
     "copyright": "© {year} {name}",
     "logoAlt": "Fitness Plamen GYM logo",

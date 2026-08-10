@@ -4,20 +4,20 @@ import Container from "@/components/ui/Container";
 import Eyebrow from "@/components/ui/Eyebrow";
 import Button from "@/components/ui/Button";
 import FacebookIcon from "@/components/FacebookIcon";
+import { business } from "@/config/business";
 
 const FACEBOOK_HREF = "https://www.facebook.com/FITNESSMERCURYSUNNYBEACH/";
-const GOOGLE_REVIEW_HREF =
-  "https://search.google.com/local/writereview?placeid=ChIJIxshlPafpkARpBnO0sV6nrc";
+const GOOGLE_REVIEW_HREF = `https://search.google.com/local/writereview?placeid=${business.placeId}`;
 
 /**
  * Its own section rather than a Footer afterthought, per direct feedback:
  * "follow us on facebook with the facebook icon and leave a review on
  * google" as an explicit numbered step in the requested page order. The
  * Google review link uses Google's own documented write-review deep link
- * built from the real Place ID (src/config lives in CLAUDE.md's THE
- * BUSINESS section) — a real, functional CTA, not a placeholder. Facebook
- * icon is monochrome (currentColor), matching the palette rule everywhere
- * outside Flags.tsx's narrow exception.
+ * built from the real Place ID (src/config/business.ts — the single
+ * source of truth as of Phase 4.6) — a real, functional CTA, not a
+ * placeholder. Facebook icon is monochrome (currentColor), matching the
+ * palette rule everywhere outside Flags.tsx's narrow exception.
  */
 export default async function FollowUs() {
   const t = await getTranslations("followUs");

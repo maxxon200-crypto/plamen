@@ -1,13 +1,13 @@
 {
   "meta": {
-    "title": "Fitnessstudio Sonnenstrand — Fitness Plamen GYM | Geöffnet 09:00–21:00 Uhr",
-    "description": "Old-School-Eisenstudio im Zentrum von Sonnenstrand. Kurzhanteln bis 55 kg, Calisthenics-Bereich, Boxbereich und Klimaanlage. Tages-, Wochen- und Monatskarten — anrufen oder einfach vorbeikommen."
+    "title": "Fitnessstudio Sonnenstrand | Fitness Plamen GYM",
+    "description": "Old-School-Fitnessstudio im Zentrum von Sonnenstrand. Tageskarte, Wochenkarte oder Monatskarte — anrufen oder einfach vorbeikommen, keine Buchung nötig."
   },
   "hero": {
-    "eyebrow": "Old-School-Eisenstudio",
+    "eyebrow": "Old-School-Eisenstudio in Sonnenstrand",
     "headingPlain": "Eiserner",
     "headingAccent": "Tempel",
-    "claim": "Sonnenstrands ältestes und meistbewertetes Fitnessstudio",
+    "claim": "Das älteste und meistbewertete Fitnessstudio in Sonnenstrand",
     "hours": "Geöffnet 09:00–21:00 Uhr · täglich",
     "location": "Zentrum, Sonnenstrand",
     "ctaCall": "Anrufen",
@@ -133,11 +133,11 @@
     "items": [
       {
         "question": "Gibt es ein Fitnessstudio in Sonnenstrand?",
-        "answer": "Ja, das Fitness Plamen GYM liegt im Zentrum von Sonnenstrand. Es ist ein Old-School-Eisenstudio mit Langhanteln, Kurzhanteln und vom Inhaber selbst gebauten Geräten — täglich von 09:00 bis 21:00 Uhr geöffnet."
+        "answer": "Ja — wer ein Fitnessstudio Sonnenstrand sucht, wird beim Fitness Plamen GYM im Zentrum fündig. Es ist ein Old-School-Eisenstudio mit Langhanteln, Kurzhanteln und vom Inhaber selbst gebauten Geräten — täglich von 09:00 bis 21:00 Uhr geöffnet."
       },
       {
         "question": "Verkaufen Sie Tageskarten?",
-        "answer": "Ja, es gibt Tages-, Wochen- und Monatskarten. Rufen Sie die unten stehende Nummer an oder kommen Sie einfach vorbei — wir erklären Ihnen vor Ort alles zu den Karten, ganz ohne Buchung oder Papierkram."
+        "answer": "Ja, bei uns gibt es die Tageskarte, die Wochenkarte und die Monatskarte. Rufen Sie die unten stehende Nummer an oder kommen Sie einfach vorbei — wir erklären Ihnen vor Ort alles zu den Karten, ganz ohne Buchung oder Papierkram."
       },
       {
         "question": "Wie sind die Öffnungszeiten?",
@@ -145,7 +145,7 @@
       },
       {
         "question": "Wo genau liegt das Studio?",
-        "answer": "Das Studio liegt im Zentrum von Sonnenstrand, nur wenige Gehminuten vom Strand entfernt. Öffnen Sie die Adresse direkt über den Link „Anfahrt“ auf dieser Seite in Google Maps für die genaue Route."
+        "answer": "Unser Gym Sonnenstrand liegt im Zentrum, nur wenige Gehminuten vom Strand entfernt. Öffnen Sie die Adresse direkt über den Link „Anfahrt“ auf dieser Seite in Google Maps für die genaue Route."
       },
       {
         "question": "Wann ist im Studio am wenigsten los?",
@@ -234,8 +234,6 @@
     "lawBody": "Es gilt bulgarisches Recht. Der bulgarische Text hat Vorrang vor jeder Übersetzung."
   },
   "footer": {
-    "name": "Fitness Plamen GYM Sunny Beach",
-    "address": "Zentrum, Sonnenstrand 8240, Nessebar, Bulgarien",
     "languageLabel": "Sprache",
     "copyright": "© {year} {name}",
     "logoAlt": "Logo von Fitness Plamen GYM",

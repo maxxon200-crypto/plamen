@@ -3,15 +3,25 @@ import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
 import Eyebrow from "@/components/ui/Eyebrow";
 import HeroBackground from "@/components/HeroBackground";
+import { telHref, mapsUrl } from "@/config/business";
 
-const TEL_HREF = "tel:+359878821115";
-const MAPS_HREF =
-  "https://www.google.com/maps/search/?api=1&query=Fitness+Plamen+GYM&query_place_id=ChIJIxshlPafpkARpBnO0sV6nrc";
+const TEL_HREF = telHref();
+const MAPS_HREF = mapsUrl();
 
 /**
  * Full-bleed hero. First real gym photo landed here in Phase 8 (owner-
  * supplied); CLAUDE.md's Outstanding Decision #2 (min. 10 real shots) is
  * still open — this is one of a handful received so far, not the full set.
+ *
+ * Phase 4.6: the strap-line claim moved from a sibling <p> into the <h1>
+ * itself (as a block-level <span>, same classes as before — zero visual
+ * change) so the page's one H1 actually carries the primary search
+ * keyword. Previously the H1 was just the brand line ("Iron Temple"),
+ * with the keyword-bearing claim living in an adjacent paragraph the H1
+ * tag itself didn't cover — technically failing "one H1 carrying the
+ * primary keyword." `hero.claim` was also reworded per locale (see
+ * messages/{locale}.json) to naturally contain the target phrase instead
+ * of only implying it.
  */
 export default async function Hero() {
   const t = await getTranslations("hero");
@@ -29,10 +39,8 @@ export default async function Hero() {
         <h1 className="mt-3 font-condensed text-display uppercase text-white">
           {t("headingPlain")}{" "}
           <span className="bg-blood px-2 text-white">{t("headingAccent")}</span>
+          <span className="mt-3 block text-h3 text-white">{t("claim")}</span>
         </h1>
-        <p className="mt-3 font-condensed text-h3 uppercase text-white">
-          {t("claim")}
-        </p>
         <div className="mt-6 space-y-1 font-sans text-body text-steel">
           <p>{t("hours")}</p>
           <p>{t("location")}</p>

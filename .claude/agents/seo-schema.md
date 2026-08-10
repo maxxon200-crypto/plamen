@@ -5,6 +5,11 @@ tools: Read, Write, Edit, Bash, WebFetch
 ---
 You own technical discoverability.
 
+All NAP/GBP facts (name, address, phone, coordinates, Place ID, hours)
+come from `src/config/business.ts` — never hardcode them anywhere else.
+Google Maps links use `business.ts`'s `mapsUrl()`
+(`maps/place/?q=place_id:...`), never an embedded iframe.
+
 Required:
 - Per-locale generateMetadata: title, description, canonical (self-referencing),
   openGraph, alternates.languages for bg/en/ru/de PLUS x-default → /bg

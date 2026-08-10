@@ -72,7 +72,29 @@ testimonials applies to excerpting too). A new `FollowUs` section
 `Footer`. `Hero`'s background photo crop was fixed (see **Photography**),
 and every real photo actually in use was reprocessed for sharpness — see
 **Photography** for what that can and can't fix.
-See `PHASES.md` for the full per-phase runbook including all seven
+**Phase 4.6 — extending Phase 4's SEO work — is also done**:
+`src/config/business.ts` is now the single source of truth for the NAP
+(name/address/phone) and every other Google-Business-Profile fact
+(coordinates, Place ID, hours) — `Footer`, `Hero`, `FindUs`, `Passes`,
+`FollowUs`, and `schema.ts` all read from it instead of scattering their
+own hardcoded copies. The footer NAP renders as real, selectable HTML
+text (never an image, never JSON-LD-only) and keeps "Център, Слънчев
+бряг" in Cyrillic on **every** locale, with a parenthetical Latin
+transliteration on the non-Bulgarian ones. Per-locale `meta.title` now
+follows an exact `[keyword] | Fitness Plamen GYM` format and
+`meta.description` was rewritten per locale (not translated) to mention
+passes and location, never a price. The page's one `<h1>` was
+restructured (semantic-only, zero visual change — `Hero`'s existing
+strap-line moved from a sibling `<p>` into the `<h1>` itself) so it
+actually carries the primary search keyword, and `hero.claim`/
+`hero.eyebrow` were reworded per locale to contain that phrase naturally
+without changing the underlying 23-years/177-reviews claim. Every Google
+Maps link across the site now uses the same `place/?q=place_id:...`
+format via `business.ts`'s `mapsUrl()`. `schema.ts`'s `areaServed` gained
+Burgas Province. See **SEO and discoverability (Phase 4.6)** below for
+the full breakdown, including what's still blocked on a real production
+domain.
+See `PHASES.md` for the full per-phase runbook including all eight
 post-launch passes.
 
 `SITE_URL` in `src/lib/site.ts` may still be a placeholder domain depending
@@ -694,6 +716,92 @@ See each agent's file for its full brief and hard prohibitions.
   owner/maintainer to decide when to take that upgrade.
 - No secrets in the repo (verified): no `.env*` committed, `.gitignore`
   already covered it, no API keys/tokens found in tracked source.
+
+## SEO and discoverability (Phase 4.6)
+- `src/config/business.ts` — single source of truth for the gym's NAP and
+  every other GBP fact: `name`, `street`, `city`, `postalCode`, `country`,
+  `phone`, `phoneDisplay`, `lat`, `lng`, `placeId`, `hours`. If the GBP
+  listing ever changes, this file changes in the same commit — nothing
+  else should hardcode any of these values again. Also exports
+  `formatNapAddress(locale)`, `mapsUrl()`, and `telHref()`, now used by
+  `Footer`, `Hero`, `FindUs`, `Passes`, `FollowUs`, and `schema.ts`.
+- **Footer NAP** — real, selectable HTML text (never an image, never
+  JSON-LD-only), byte-identical `name`/`phone` across all four locales.
+  `formatNapAddress()` keeps "Център, Слънчев бряг" in Cyrillic on every
+  locale — it has to match the Google Business Profile character for
+  character so a tourist can show the screen to a taxi driver — and adds
+  a parenthetical Latin transliteration ("Tsentar, Slanchev bryag") on
+  the three non-Bulgarian locales purely for the reader's own
+  pronunciation, never a translation of the place name itself.
+  `messages/{locale}.json`'s old `footer.name`/`footer.address` keys were
+  removed since the Footer no longer reads them — a translated JSON
+  string can't guarantee an exact GBP match, only a shared constant can.
+- **Per-locale `meta.title`** now follows an exact `[primary keyword] |
+  Fitness Plamen GYM` format (dropped the old "| Open 09:00–21:00"
+  suffix): bg "Фитнес зала Слънчев бряг", en "Gym in Sunny Beach", ru
+  "Тренажерный зал Солнечный берег", de "Fitnessstudio Sonnenstrand".
+  `meta.description` was rewritten per locale (not translated from each
+  other) to mention the pass options and the location, never a price.
+- **The page's one `<h1>` now actually carries the primary keyword.**
+  Previously the H1 was just the brand line ("Iron Temple" / "Железен
+  Храм" / etc.) with zero keyword content, and the keyword-adjacent
+  strap-line (`hero.claim`) lived in a sibling `<p>` the H1 tag itself
+  didn't cover — technically failing "one H1 carrying the primary
+  keyword" even though the visible copy looked fine. Fixed by nesting
+  that strap-line inside the `<h1>` as a block-level `<span>` with the
+  exact same classes the old `<p>` had — **zero visual change**, purely a
+  semantic-HTML fix (verified via screenshot comparison). `hero.claim`
+  and `hero.eyebrow` were also reworded per locale (via the
+  `copy-localizer` agent) to naturally contain the target keyword phrase
+  — same 23-years/177-reviews claim, no new facts, just phrased so the
+  phrase is a real substring instead of only implied.
+- **FAQ copy** (`messages/{locale}.json` → `faq.items[].answer`) also got
+  a light keyword pass for when/if that section is re-enabled — see
+  Phase 12's note that `FAQ.tsx` is currently unimported from `page.tsx`
+  at the user's explicit direction. Updating invisible copy has zero SEO
+  effect on its own; this only matters if the section comes back.
+- **Google Maps links standardized** to
+  `https://www.google.com/maps/place/?q=place_id:{placeId}` everywhere
+  (`Hero`, `FindUs`, `schema.ts`'s `hasMap`) via `business.ts`'s
+  `mapsUrl()` — previously `Hero`/`FindUs`/`schema.ts` used an older
+  `maps/search/?api=1&query=...` format while `/styleguide` already used
+  the new one; now there's exactly one format and one source. **Confirmed
+  zero `<iframe>` elements anywhere in the codebase** — the map has
+  always been a real outbound link, never an embed, so there was nothing
+  to replace; an embed would load third-party cookies and force a
+  consent banner onto a site that currently needs none.
+- **Schema additions**: `areaServed` gained `"Burgas Province"` (alongside
+  the existing `"Sunny Beach"`/`"Nesebar"`). `hasMap`, `sameAs`
+  (Facebook only), and the four `amenityFeature` entries (air
+  conditioning, free weights, calisthenics park, boxing area) were
+  already present from an earlier pass — just re-sourced from
+  `business.ts` instead of local hardcoded constants. **Still no
+  `aggregateRating`, ever** — that Phase 4 hard prohibition stands,
+  verified again this phase by inspecting the actual rendered JSON-LD.
+- **hreflang/canonical verified, not assumed**: printed the real rendered
+  `<head>` for all four locales after a production build. Every locale
+  self-canonicals to its own URL, every locale carries reciprocal
+  `hreflang` alternates for all four locales plus `x-default` → `/bg`,
+  and none canonicals to English. `robots.txt` and `sitemap.xml` were
+  already correct from Phase 4 (AI-crawler allowances, all four locale
+  homepages with hreflang) — confirmed unchanged, no accidental
+  `noindex` anywhere in the codebase.
+- **GSC / Bing Webmaster Tools submission — blocked on the real domain.**
+  `SITE_URL` (`src/lib/site.ts`) is still the placeholder
+  `https://fitnessplamen.bg` — no production domain is live yet (see
+  Outstanding decisions). Once the real domain is live: submit
+  `https://<realdomain>/sitemap.xml` to both Google Search Console and
+  Bing Webmaster Tools. Verification method for each, once there's a
+  real domain to verify: **Google Search Console** — a DNS TXT record at
+  the domain registrar is the most robust option (survives a hosting
+  migration, works for the whole domain including subdomains); the HTML
+  meta-tag method is the lower-friction alternative and would go in
+  `generateMetadata()`'s `verification.google` field in
+  `src/app/[locale]/layout.tsx` once Google issues a real code — never
+  invent a placeholder code. **Bing Webmaster Tools** — easiest path is
+  importing the site directly from an already-verified Google Search
+  Console property (Bing supports this natively, no separate DNS/meta-tag
+  step needed); the fallback is the same DNS TXT or meta-tag pattern.
 
 ## Marketing — the part that actually moves rankings
 For a single-location local business the Google Business Profile is the
