@@ -1,28 +1,126 @@
 # PROJECT: Fitness Plamen GYM Sunny Beach
 
 ## Repository state (read this first)
-**Phases 0–5 (scaffold, design foundation, Bulgarian MVP, i18n, SEO/schema,
-motion) are done.** Phase 6 (verification and deploy) is not — the site
-hasn't shipped anywhere yet, `SITE_URL` is still a placeholder domain. Treat
-the rest of this file as the spec the remaining phase must be built to
-conform to. Do not jump ahead and start Phase 6 work unprompted. See
-`PHASES.md` for the full per-phase runbook.
+**Phases 0–6 (scaffold through verification) are done and live in
+production** (merged to `main`, deployed to Vercel). **Phase 7 — a
+stakeholder revision pass on the live site — is also done**: typography
+swap (Sofia Sans Condensed → Oswald for display), Equipment section
+redesigned as expandable pill chips, FAQ trimmed 7→5 and converted to a real
+accordion, language switcher moved from the footer to a persistent top bar,
+and ProofBar/Reviews rebuilt for much more visual prominence. **Phase 8 —
+first real content — is also done**: the 23-year founding claim is now
+owner-verified and live (leads `ProofBar`), and the first three real assets
+(a Hero background photo, an owner portrait, the owner's logo) are
+committed and wired in — see **Photography** below for exactly what's in,
+what's still missing, and why some chat-shared photos didn't make it.
+**Phase 9 — a second, more direct revision round — is also done**: the
+display typeface changed twice more in quick succession (Oswald → Russo
+One → PT Sans, see Typography below for why), the language switcher is
+now flags-only with text kept `sr-only`, `TheGym`'s heading accent moved
+to its own line to stop the red chip splitting across a wrapped line
+break, `TheGym`'s paragraphs were tightened further, and the English
+"Call" CTA became "Call us". **Phase 10 — a third revision round — is
+also done**: the review count was corrected to the owner-verified 177
+(up from the previously-documented ~149) and the site now also claims
+"most reviewed gym in Sunny Beach" alongside the existing "oldest gym"
+claim (both `ProofBar`'s copy and CLAUDE.md's Positioning/THE BUSINESS
+sections); Equipment's default view tightened from 8 highlight chips to
+4 (all 16 real items still present, just 12 behind the expand instead of
+8) and its expand toggle restyled from an underlined text link to a real
+bordered button; Reviews' quote text shrunk from `text-h3` to `text-body`
+(it was overpowering the card at large sizes); and ProofBar's
+dumbbells/AC secondary stats moved from plain caption text to the same
+`rounded-full` oval-chip treatment Equipment uses, scoped for the black
+background. The day/week passes were also renamed to "1 Day Pass"/"7 Day
+Pass" (all four locales) per the same feedback round. **Phase 4.5 — legal
+pages and security hardening — is also done**: `/privacy` and `/terms`
+routes (all four locales), a `src/config/legal.ts` single source of truth
+for the entity's legal identity (still mostly `TODO_OWNER` — see
+**Outstanding decisions** below), and a full security-headers pass
+(HSTS, CSP, X-Frame-Options, Permissions-Policy, `poweredByHeader: false`,
+no prod source maps, `/.well-known/security.txt`). See **Legal pages and
+security** below for what's live and what's still blocked on the owner.
+**Phase 11 — real photography finally landed in volume, and social proof
+got louder — is also done**: the owner uploaded 8 photos directly to
+GitHub (the first upload path that actually worked), yielding 5 genuinely
+new real photos including two previously marked "lost" (the entrance
+mural, the "20+ YEARS" t-shirt mockup). `Hero`'s background swapped from
+a tight dumbbell-rack crop to the entrance mural (stronger, more
+distinctive "old-school iron gym" impression at full-bleed size — verified
+by comparing both side-by-side); a new `Gallery` section (four real
+training-floor photos) was added between `Equipment` and `Passes` to
+visually back up the gym's claims instead of just asserting them; and
+both `Hero` and `ProofBar` gained an explicit "oldest & most-reviewed gym
+in Sunny Beach" claim in copy (a strap-line under Hero's H1, a bold
+heading above ProofBar's numerals) so the site states the competitive
+positioning outright rather than leaving a visitor to infer it from three
+numbers. See **Photography** below for the full per-file breakdown,
+including what's still excluded pending owner confirmation.
+**Phase 12 — page reorganized around social proof, is also done**: direct
+feedback that the page read as "scattered" led to a full section reorder
+— `Hero → ProofBar → Reviews → TheGym → Passes → FindUs → Gallery →
+FollowUs → Footer` — with `ProofBar` and `Reviews` now placed back-to-back
+as one continuous "proof" block and both centered (not left-aligned) for
+billboard-style impact; **Equipment and FAQ were removed from the live
+page entirely** at the user's explicit direction ("nobody cares, if they
+have a question they can call") — the component files still exist under
+`_sections/` but are unimported, not deleted, in case that decision
+reverses. Reviews' three quotes were shortened by verbatim truncation
+(never reworded — see **Real reviews** below, the rule against fake
+testimonials applies to excerpting too). A new `FollowUs` section
+(Facebook + a real Google "leave a review" deep link) was added before
+`Footer`. `Hero`'s background photo crop was fixed (see **Photography**),
+and every real photo actually in use was reprocessed for sharpness — see
+**Photography** for what that can and can't fix.
+**Phase 4.6 — extending Phase 4's SEO work — is also done**:
+`src/config/business.ts` is now the single source of truth for the NAP
+(name/address/phone) and every other Google-Business-Profile fact
+(coordinates, Place ID, hours) — `Footer`, `Hero`, `FindUs`, `Passes`,
+`FollowUs`, and `schema.ts` all read from it instead of scattering their
+own hardcoded copies. The footer NAP renders as real, selectable HTML
+text (never an image, never JSON-LD-only) and keeps "Център, Слънчев
+бряг" in Cyrillic on **every** locale, with a parenthetical Latin
+transliteration on the non-Bulgarian ones. Per-locale `meta.title` now
+follows an exact `[keyword] | Fitness Plamen GYM` format and
+`meta.description` was rewritten per locale (not translated) to mention
+passes and location, never a price. The page's one `<h1>` was
+restructured (semantic-only, zero visual change — `Hero`'s existing
+strap-line moved from a sibling `<p>` into the `<h1>` itself) so it
+actually carries the primary search keyword, and `hero.claim`/
+`hero.eyebrow` were reworded per locale to contain that phrase naturally
+without changing the underlying 23-years/177-reviews claim. Every Google
+Maps link across the site now uses the same `place/?q=place_id:...`
+format via `business.ts`'s `mapsUrl()`. `schema.ts`'s `areaServed` gained
+Burgas Province. See **SEO and discoverability (Phase 4.6)** below for
+the full breakdown, including what's still blocked on a real production
+domain.
+See `PHASES.md` for the full per-phase runbook including all eight
+post-launch passes.
+
+`SITE_URL` in `src/lib/site.ts` may still be a placeholder domain depending
+on whether the real domain has been swapped in yet — check that file before
+assuming canonical/OG/sitemap URLs are live-correct.
 
 What exists right now:
 - Next.js 15 (App Router) + TypeScript + Tailwind CSS v3 + ESLint, scaffolded
   into `src/`, no Turbopack.
 - `src/app/[locale]/layout.tsx` — sets `<html lang>` per locale, wraps
-  children in `NextIntlClientProvider`, loads the Sofia Sans / Sofia Sans
-  Condensed font variables, and exports `generateMetadata()` (Phase 4 —
-  see below).
+  children in `NextIntlClientProvider`, mounts `TopBar` before `children`,
+  loads the Sofia Sans / Oswald font variables, and exports
+  `generateMetadata()` (Phase 4 — see below).
 - `src/i18n/routing.ts` — next-intl `defineRouting`, locales
   `['bg','en','ru','de']`, default `bg`.
 - `src/i18n/request.ts` — next-intl `getRequestConfig`, loads
   `messages/{locale}.json`.
 - `src/middleware.ts` — next-intl middleware, locale detection +
   `NEXT_LOCALE` cookie persistence, matcher excludes `api`/`_next`/files.
-- `src/lib/fonts.ts` — `next/font/google` for Sofia Sans (400/600) and Sofia
-  Sans Condensed (800), latin + cyrillic subsets, self-hosted at build time.
+- `src/lib/fonts.ts` — `next/font/google` for Sofia Sans (400/600, body) and
+  PT Sans (700, display — exported as `displayFont`, mapped to the same
+  `--font-display` CSS variable and `font-condensed` Tailwind class the
+  codebase already uses everywhere, so no component markup had to change
+  across any of the display-typeface swaps: Sofia Sans Condensed → Oswald
+  → Russo One → PT Sans), latin + cyrillic subsets, self-hosted at build
+  time.
 - `messages/{bg,en,ru,de}.json` — real, structurally-identical copy under
   nine namespaces (`hero`, `proofBar`, `theGym`, `equipment`, `passes`,
   `reviews`, `findUs`, `footer`, `languages`). `bg.json` is the source of
@@ -32,8 +130,9 @@ What exists right now:
   review quotes are never translated — only `.meta`'s date format adapts).
 - `tailwind.config.ts` — palette tokens (`ink`, `black`, `charcoal`, `steel`,
   `bone`, `white`, `blood`, `blood.hi`) and `font-sans`/`font-condensed`
-  mapped to the Sofia Sans CSS variables, plus a `fontSize` scale
-  (`display`/`h2`/`h3`/`body`/`caption`) for the condensed-caps type system.
+  mapped to the Sofia Sans / PT Sans CSS variables, plus a `fontSize`
+  scale (`display`/`h2`/`h3`/`body`/`caption`, weight 700 to match PT
+  Sans's loaded Bold weight) for the condensed-caps type system.
   Tailwind v3 (config-file-based), not v4 — chosen so the palette lives in
   one typed `tailwind.config.ts` rather than a CSS `@theme` block.
 - `src/app/globals.css` — the same palette tokens mirrored as CSS custom
@@ -51,25 +150,75 @@ What exists right now:
 - `public/` is currently empty — the default create-next-app SVG placeholders
   were removed since nothing references them and this project doesn't use
   placeholder imagery (see **Photography** below).
-- `src/app/[locale]/page.tsx` — the single-page MVP, built from eight
-  section components under `src/app/[locale]/_sections/`, each an `async`
-  Server Component pulling its copy via `getTranslations` (next-intl/server):
-  `Hero` (labelled `TODO` photo slot, no real photography yet, hours/
-  location/tel+maps CTAs above the fold), `ProofBar` (rating/review count/
-  proof points — no "20 години" claim, that founding year is still
-  unverified per **Outstanding decisions**), `TheGym`, `Equipment` (all 16
-  items verbatim per locale), `Passes` (day/week/month, no prices),
-  `Reviews` (three of the five approved quotes, verbatim/untranslated in
-  every locale), `FindUs`, `Footer` (NAP block, Facebook link, real
-  `LanguageSwitcher`). No animation, no `'use client'` in any section —
-  fully static Server Components; only the switcher is a client component.
+- `src/app/[locale]/page.tsx` — the single-page MVP, built from nine live
+  section components under `src/app/[locale]/_sections/` (Phase 12
+  reordered and trimmed this from ten — see below), each an `async` Server
+  Component pulling its copy via `getTranslations` (next-intl/server), in
+  page order: `Hero` (real B&W-treated photo background, `public/photos/
+  entrance-mural.jpg` via `HeroBackground` — `object-top` crop so the
+  hand-painted "GYM" lettering survives the portrait-photo-in-a-wide-slot
+  crop instead of being cut off, fixed Phase 12; a strap-line claim
+  ("oldest & most-reviewed gym in Sunny Beach") under the H1;
+  hours/location/tel+maps CTAs above the fold), `ProofBar` (Phase 12:
+  centered, not left-aligned, for billboard-style impact — a bold claim
+  heading + a short blood-fill underline above three large numerals —
+  years/rating/review count, years leading — plus a decorative
+  `StarRating`; the "23 години" founding claim is real and owner-verified,
+  see **THE BUSINESS**), `Reviews` (Phase 12: moved directly under
+  `ProofBar` with no divider between them so the two read as one
+  continuous "proof" block, per explicit feedback; centered heading; three
+  of the five approved quotes, each shortened by verbatim truncation —
+  never reworded, see **Real reviews** below — verbatim/untranslated in
+  every locale, each with a `StarRating`), `TheGym` (owner-portrait photo
+  alongside the two-paragraph story), `Passes` (day/week/month, no
+  prices), `FindUs`, `Gallery` (four real training-floor photos, same B&W
+  treatment, added Phase 11 to visually back up the site's claims),
+  `FollowUs` (Phase 12: a new section — real Facebook link with a
+  monochrome `FacebookIcon` plus a real Google "leave a review" deep link
+  built from the Place ID — no brand-blue, palette-compliant), `Footer`
+  (NAP block, the owner's logo in a white badge card — no longer holds the
+  Facebook link, which moved to `FollowUs`, and no longer the language
+  switcher either, see `TopBar` below). No animation beyond the existing
+  scroll-reveal, no `'use client'` in any section — fully static Server
+  Components; only `LanguageSwitcher` is a client component.
+  **`Equipment` and `FAQ` still exist as component files under
+  `_sections/` but are not imported by `page.tsx`** — removed from the
+  live page at the user's explicit direction (Phase 12), not deleted, in
+  case that decision reverses. `FAQ.tsx`'s `FAQPage` JSON-LD block is
+  self-contained inside that component, so removing the import also
+  removed the schema — correct, since Google's guidance is against
+  markup for content that isn't visibly on the page.
 - `src/i18n/navigation.ts` — next-intl `createNavigation(routing)`,
   exporting locale-aware `Link`/`usePathname`/`useRouter`/`getPathname`.
+- `src/components/TopBar.tsx` — slim `fixed` bar pinned above `Hero` in the
+  locale layout, holding `LanguageSwitcher`. Moved here from the footer
+  after live feedback that it needed to be reachable at any scroll position,
+  not just once at the bottom.
 - `src/components/LanguageSwitcher.tsx` — client component, real working
-  links to all four locales (own-script labels: Български/English/Русский/
-  Deutsch), `aria-current` on the active locale, persists via the existing
-  middleware's `NEXT_LOCALE` cookie handling (no extra client-side cookie
-  code needed).
+  links to all four locales, styled as `rounded-full` pill badges (one of
+  the two explicit border-radius exceptions), `aria-current` on the active
+  locale, persists via the existing middleware's `NEXT_LOCALE` cookie
+  handling (no extra client-side cookie code needed). Each badge shows a
+  flag icon from `src/components/Flags.tsx` only — stakeholder explicitly
+  confirmed wanting flags despite the palette conflict, so national flag
+  colours are a narrow, explicit exception scoped to exactly that one file
+  (see Palette below), and later asked for flags-only with the own-script
+  text label (Български/English/Русский/Deutsch) removed visually — it's
+  kept as `sr-only` so the accessible name survives. English is
+  represented by the UK flag — a judgement call, nothing in CLAUDE.md
+  picked UK vs. US.
+- `src/components/StarRating.tsx` — decorative 5-star SVG row (not the
+  Unicode ★ glyph, so partial fill works), `aria-hidden` since the adjacent
+  numeral/label already carries the accessible rating info. Filled portion
+  is a `fill-blood` shape (sanctioned use of red — a fill, not text-on-
+  black), empty stars are `stroke-steel`. Uses React's `useId()` for unique
+  `clipPath` ids since it renders more than once per page (ProofBar +
+  once per Reviews card) — duplicate SVG ids across instances would corrupt
+  each other's clip regions.
+- `src/lib/site.ts` also exports `GOOGLE_RATING` (the numeric `4.4`) as the
+  single source of truth `StarRating` reads for the fill amount, kept
+  separate from the localized display strings in `messages/*.json` — if the
+  real rating ever changes, update both, don't let them drift apart.
 - `src/lib/site.ts` — `SITE_URL` is a **placeholder domain**
   (`https://fitnessplamen.bg`) since no real production domain is
   configured yet; every canonical/OG/sitemap/robots URL derives from this
@@ -77,7 +226,7 @@ What exists right now:
   and locale-URL/OG-locale helpers.
 - `src/lib/schema.ts` — `buildExerciseGymSchema()` and `buildFaqSchema()`
   JSON-LD builders. **No `aggregateRating` field, ever** — hard prohibition,
-  the ~4.4–4.5/~149 rating stays visible text only in `ProofBar`. `image` is
+  the ~4.4–4.5/177 rating stays visible text only in `ProofBar`. `image` is
   intentionally omitted (no real photography yet).
 - `messages/{bg,en,ru,de}.json` also carry two more namespaces since Phase
   4: `meta` (per-locale title/description targeting real search phrasing)
@@ -99,7 +248,7 @@ What exists right now:
   before ever constructing a Lenis instance (the CSS kill-switch alone
   doesn't stop Lenis's JS scroll hijacking).
 - `src/components/Reveal.tsx` — the one scroll fade+rise, wrapping
-  `ProofBar`/`TheGym`/`Equipment`/`Passes`/`Reviews`/`FindUs`/`FAQ` in
+  `ProofBar`/`Reviews`/`TheGym`/`Passes`/`FindUs`/`Gallery`/`FollowUs` in
   `page.tsx` (`Hero` and `Footer` excluded). **The GSAP-visibility-without-
   JS guarantee, load-bearing for CLAUDE.md's motion hard rule:** the
   server-rendered wrapper `<div>` carries zero className/style — a no-JS
@@ -156,20 +305,32 @@ now, and they can walk in today. Everything else is secondary.
 - Coordinates: 42.690716, 27.707864
 - Google Place ID: ChIJIxshlPafpkARpBnO0sV6nrc
 - Facebook: https://www.facebook.com/FITNESSMERCURYSUNNYBEACH/
-- Google rating: ~4.4–4.5, ~149 reviews
+- Google rating: ~4.4–4.5, **177 reviews — the most of any gym in Sunny
+  Beach.** Owner-verified (was previously documented as an unverified
+  ~149; corrected and the "most reviewed" claim added this pass — do not
+  revert to the old figure).
 - Owner: Plamen. Builds many of the machines by hand.
 - Passes: day, week, month. **NO PRICES ANYWHERE ON THE SITE.**
 - No Instagram account exists. Do not link one.
+- **Founded 23 years ago — the oldest continuously-operating gym in Sunny
+  Beach.** Owner-verified (was previously unverified — see history below).
+  This is a real competitive claim: use it, don't soften it.
 
 Open blockers from the owner (do not fabricate substitutes — see
-**Outstanding decisions** below): the "20 years" founding claim is
-unverified; real gym photos are not yet supplied; the "Fitness Mercury"
-history and an Instagram decision are unresolved.
+**Outstanding decisions** below): real gym photos are being supplied
+incrementally (see **Photography** below for current status); the "Fitness
+Mercury" history and an Instagram decision are unresolved.
 
 ## Positioning
 The only hardcore old-school bodybuilding and powerlifting gym in Sunny
-Beach. Competitors are combat-sports centres (Max Fight) or modern chains
-(Pulse). Nobody else owns "iron temple." Lean into it completely.
+Beach — and, now verified, both the oldest and the most-reviewed one: 23
+years running (longer than any other gym in town) and 177 Google reviews
+(more than any other gym in town). Competitors are combat-sports centres
+(Max Fight) or modern chains (Pulse), none of which can claim either
+tenure or review volume. Nobody else owns "iron temple." Lean into all
+three claims completely — "old-school" is no longer just an aesthetic
+choice, it's literally true, and it's also the gym most people have
+actually reviewed.
 
 Reframe the two recurring criticisms instead of hiding them:
 - "equipment is old" → owner-built, maintained, and it works. That is the point.
@@ -183,7 +344,28 @@ One elbow-style pec dec, one extended-arm pec dec with rear delt.
 One travelling smith machine, one standard smith machine.
 Dumbbells up to 55 kg. Air conditioning.
 
+**Display treatment (post-launch revision):** the full 16-item list above is
+still the complete, real inventory — nothing here was deleted or fabricated.
+After live feedback that the equipment section was eating half the page, the
+site now shows it as pill/tag chips split into `equipment.highlights` (8
+items, the ones a tourist actually searches for — free weights, cables,
+calisthenics, boxing, AC) and `equipment.more` (the remaining 8, behind a
+native `<details>`/`<summary>` expand). See `messages/{locale}.json` →
+`equipment` for the exact current split. If the owner ever wants specific
+items removed from the site entirely (not just tucked behind the expand),
+that requires an explicit confirmed list from them — don't guess which ones.
+
 ## Real reviews — quote only these, verbatim. Never write a fake testimonial.
+This is the full master list — the source of truth. `Reviews.tsx` shows
+three of these five, and as of Phase 12 shows **shortened excerpts**, not
+the full text, for the three it uses (Zara P, R D, Kevin S) — direct
+feedback that the full quotes ran too long. Shortening means truncating a
+contiguous run of the reviewer's own words (optionally down to just the
+first sentence or two); it never means paraphrasing, reordering, or
+substituting different wording — the truncated version must still be a
+literal substring of what's below, or it's a fake testimonial by
+CLAUDE.md's own rule. See `messages/{locale}.json` → `reviews.items` for
+the exact excerpt currently live.
 - Zara P, 5★, Jun 2025: "such a lovely & friendly training environment. This gym
   has everything and more than you could ever need for training not to mention
   that the owner built all of the machinery by hand which is crazy cool.
@@ -224,12 +406,53 @@ Red rules: never set body copy in red; never set red text on black. `#B10000`
 passes AAA on white → safe for large headings and CTA fills. `#FF0000` is
 banned — it reads "sale sticker," not "blood."
 
+**Palette exception — flag icons only.** `src/components/Flags.tsx`, used
+inside `LanguageSwitcher`, uses real national flag colours (Bulgaria/UK/
+Russia/Germany) outside the 8-token set above — stakeholder explicitly
+confirmed wanting flags despite the conflict. Scope is exactly that one
+file. No other component may introduce a hex value outside the palette
+table, flags or otherwise.
+
+### Layout / alignment
+Sections default to left-aligned content (`TheGym`, `Passes`, `FindUs`,
+`Gallery`, `Footer`) — that's still the baseline, not something to
+change without reason. Two categories get centered content instead, by
+deliberate exception, not accident: **proof sections** (`ProofBar`,
+`Reviews` — center-aligned as of Phase 12, per explicit feedback to make
+the "best gym in Sunny Beach" claim read as a billboard statement) and
+**the closing CTA section** (`FollowUs` — centered because a small,
+final action block reads better centered than pinned to one edge,
+independent of the proof-section rationale). If a new section needs
+centering, it should fall into one of those two categories with a stated
+reason in its own file comment — don't add centering piecemeal.
+
 ### Typography
-Sofia Sans Condensed — display, ALL CAPS, tight tracking (`-0.02em`), weight
-800. Sofia Sans — body, weight 400/600. Both from Google Fonts via
-`next/font`; self-host the subset. Sofia Sans renders native Bulgarian
-Cyrillic — that is why it was chosen. Set `<html lang>` per locale so
-Bulgarian letterforms shape correctly. No other typefaces. No serifs.
+PT Sans Bold — display, ALL CAPS. Sofia Sans — body, weight 400/600. Both
+from Google Fonts via `next/font`; self-host the subset. Both render
+native Bulgarian and Russian Cyrillic — that is a hard requirement, not a
+nice-to-have, since Bulgarian is the default locale and Russian is one of
+the four. Set `<html lang>` per locale so Cyrillic letterforms shape
+correctly. No other typefaces. No serifs.
+
+Display typeface history, three swaps so far, each a direct response to
+live-site feedback: Sofia Sans Condensed (original) → Oswald (Sofia Sans
+Condensed read as "wrong personality," too plain/corporate) → Russo One
+(Oswald still read as generic/"AI-safe" display-font-of-the-week) → **PT
+Sans Bold (current)**, after Russo One was rejected outright ("0/10").
+The pattern across all three complaints: a display/poster-genre face
+(Oswald, Russo One) reads as a trendy pick, not a real brand's typeface.
+PT Sans breaks that pattern deliberately — it's a serious, workhorse
+sans-serif (Paratype, built for a Russian government Cyrillic-
+modernization project) that real companies use for actual identity work,
+not a novelty display face. If this gets rejected too, the next
+candidate should stay in that same "quality workhorse grotesque" register
+(e.g. Golos Text, PT Sans Caption) rather than swinging back toward
+another display/poster face — that whole genre has now been tried twice
+and rejected twice. Always verify Cyrillic support before reaching for
+anything: rejected for missing Cyrillic entirely (do not reach for these):
+Bebas Neue, Anton, Fjalla One, Staatliches, Six Caps, Archivo Black
+(confirmed via `next/font/google`'s own TypeScript types refusing a
+`cyrillic` subset for Archivo Black).
 
 ### Photography
 Real photos of this gym only. High-contrast black and white with grain, or
@@ -237,6 +460,85 @@ duotone `#0A0A0A → #B10000`. Never colour-corrected stock. **Zero
 AI-generated imagery.** If a photo is missing, leave a labelled empty slot in
 the code with a `TODO` comment — do not fill it with a placeholder from an
 image service.
+
+**Status (Phase 11: owner uploaded 8 photos directly to GitHub's `main`
+branch — the first time a direct-upload path actually worked, after
+GitHub's mobile uploader previously 406'd on HEIC and a Google Photos
+link was blocked by egress policy).** Of the 8: two were exact-pixel
+duplicates of files already committed (a second copy of the dumbbell-rack
+shot and a second copy of the supplied logo — discarded, nothing new
+there), one was a re-submission of the previously-excluded posed
+physique shot (still excluded, see below), and **five were genuinely
+new real photography** — including two of the specific shots earlier
+marked "lost, not recoverable": the entrance mural and the "20+ YEARS"
+t-shirt mockup. That earlier loss note was wrong to treat as permanent —
+they just needed a working upload path, not a from-scratch re-shoot.
+
+**Committed and live in the site** (`public/photos/`, `public/logo-supplied.jpg`):
+- `entrance-mural.jpg` — hand-painted "GYM" sign + a skull/chains mural at
+  the entrance. Now the `Hero` background (replacing the old dumbbell-rack
+  crop) — a full-bleed old-school mural reads far more distinctively
+  "hardcore iron gym" than a tight equipment shot did, and gave the
+  strongest impression of the two when compared side-by-side.
+- `dumbbell-rack.jpg`, `gym-floor-wide-1.jpg`, `gym-floor-wide-2.jpg`,
+  `gym-floor-wide-3.jpg` — four training-floor shots, now the new
+  `Gallery` section (added this phase, between `Equipment` and `Passes`):
+  a real-photo grid that visually backs up the "oldest & most-reviewed
+  gym" claim instead of just asserting it in text.
+- `owner-portrait.jpg` (in `TheGym`) and `logo-supplied.jpg` (in
+  `Footer`) — unchanged from Phase 8.
+
+All are small, chat/upload-compressed JPEGs, not full-resolution
+originals — swap the `public/` files for full-resolution versions
+whenever available; nothing else needs to change.
+
+**Phase 12 fixes — real quality ceiling, addressed honestly:** direct
+feedback called the photos "low quality" and said the Hero photo "has
+been cropped." Both were real, diagnosed issues, not vague complaints:
+- **Crop bug (fixed):** `entrance-mural.jpg` is portrait (335×597,
+  aspect ≈0.56); `Hero`'s background slot is wide and short. `object-cover`
+  at the default `center` position was cropping so aggressively on wide
+  viewports that the "GYM" lettering — the entire reason that photo was
+  picked — was cut off the top of the frame and invisible. Confirmed via
+  real screenshots at 1440px before and after. Fixed with `object-top`
+  (`HeroBackground.tsx`) — mobile is nearly unaffected (its viewport
+  aspect is already close to the photo's), desktop now shows the full
+  "GYM" sign and skull mural dramatically instead of an unrecognizable
+  cropped sliver.
+- **Perceived quality (improved, not solved):** every real photo in
+  active use (`entrance-mural`, `dumbbell-rack`, the three
+  `gym-floor-wide` shots, `owner-portrait`) was reprocessed with `sharp`
+  — Lanczos3 upscale (2–2.5×), a mild pre-sharpen blur to soften JPEG
+  block edges, then a real unsharp mask, re-encoded at quality 92. This
+  is a real, honest improvement (visibly less blocky/soft at display
+  size) but it is **not** a substitute for higher-resolution source
+  files — it cannot invent detail that was never captured. The actual
+  ceiling here is that every source photo is a small, phone/chat-
+  compressed JPEG (194–335px on the long edge before reprocessing). If
+  the owner can supply full-resolution originals, that's the real fix;
+  reprocessing narrows the gap in the meantime.
+
+**Committed but not yet placed:** `public/photos/calisthenics-kid.jpg` (a
+child using the calisthenics equipment) — still no natural slot without
+further section changes, and a minor's photo warrants more caution than
+an equipment shot before forcing one in. `public/photos/tshirt-20-years.jpg`
+(a "20+ YEARS" t-shirt design mockup, recovered this phase) — a
+promotional graphic, not documentary photography, so it doesn't fit the
+B&W/duotone real-photo treatment; kept as a committed asset for potential
+future merch/social use, not wired into the live page.
+
+**Still excluded, needs explicit owner confirmation:**
+`public/photos/physique-shot-unconfirmed.jpg` — a posed, studio-lit
+shirtless physique shot (sunglasses, staged background) that reads as
+stock photography rather than a real photo of this gym or its owner.
+Re-submitted this phase (still the same image) without the confirmation
+CLAUDE.md has asked for since Phase 8 — still not used pending an
+explicit answer on whether it's genuine and whose photo it is.
+
+That's 8 real, distinct on-site photos now (`entrance-mural`,
+`dumbbell-rack`, 3× `gym-floor-wide`, `owner-portrait`, plus the logo) —
+at or close to the 10-shot minimum depending on whether the logo and the
+still-unplaced kid photo count toward it.
 
 ### Banned — if any of these appear, the build is wrong
 - Neon glows, purple→blue gradients, synthwave, glassmorphism
@@ -246,7 +548,14 @@ image service.
 - Buttons or links that do nothing. Every interactive element works or is cut.
 - Emoji in UI
 - Numbered 01 / 02 / 03 section markers
-- Drop shadows. Border radius above 4px.
+- Drop shadows. Border radius above 4px — **one narrow exception:**
+  `rounded-full` pill/tag chips, scoped to exactly three places: the
+  Equipment section's tag chips, the language-switcher badges, and
+  ProofBar's secondary stat chips (dumbbells/AC — added Phase 10, this
+  formal exception list just hadn't been updated to name it until a
+  design-critic audit caught the gap in Phase 12). No other component may
+  use any border-radius above 4px, including anything that looks like a
+  pill but isn't one of those three.
 - Low-contrast grey body text
 - Prices
 
@@ -302,6 +611,37 @@ document — summary of the sequence:
 - **Phase 6 — Verification and deploy.** Full QA checklist, then Vercel
   deploy, verify all locales + hreflang live, submit sitemap to Search
   Console, run Rich Results Test.
+- **Phase 7 — Stakeholder revision pass (post-launch).** Live-site feedback
+  addressed: display typeface swapped (Sofia Sans Condensed → Oswald,
+  Cyrillic verified), Equipment condensed into expandable pill chips,
+  FAQ trimmed 7→5 and converted to a real accordion, language switcher
+  relocated to a persistent top bar (no flags — palette conflict, flagged
+  as an open decision), ProofBar and Reviews rebuilt with real visual
+  weight (large numerals, star icons) instead of thin strips. Same
+  discipline as every other phase: build must pass, `design-critic` audit
+  before commit, exact same verified facts (no new numbers invented).
+- **Phase 8 — First real content (post-launch).** The founding-year
+  claim moved from unverified placeholder to owner-verified fact: 23
+  years, oldest gym in Sunny Beach, now leading `ProofBar` and opening
+  `TheGym`'s story. First real photography and the owner's logo landed —
+  recovered from this session's own chat transcript after both direct
+  upload paths (GitHub mobile, a Google Photos link) failed, rather than
+  blocking on a third attempt. See **Photography** in the Design system
+  section for exactly what's live, what's saved-but-unplaced, and what
+  didn't survive to be committed.
+- **Phase 9 — second direct revision round (post-launch).** More live
+  feedback, addressed fast: display face swapped twice more (Oswald →
+  Russo One → PT Sans Bold — see Typography's swap history, both
+  Cyrillic-verified via the generated `@font-face` `unicode-range` before
+  shipping), language switcher stripped to flags-only (text kept
+  `sr-only` for accessibility), `TheGym`'s heading accent chip moved onto
+  its own line (the real bug behind a "text overlapping" report — an
+  inline accent phrase let the browser break the line inside the red
+  chip, not the copy length), `TheGym`'s paragraphs tightened again, and
+  English's "Call" CTA became "Call us". Same discipline held under
+  pressure: every change still build-verified and screenshotted at
+  375-390px in a real headless browser before being reported as fixed,
+  not just claimed.
 
 ## Sub-agents
 This project uses narrow, single-purpose agents defined in
@@ -318,6 +658,151 @@ general-purpose implementation:
 
 See each agent's file for its full brief and hard prohibitions.
 
+## Legal pages and security (Phase 4.5)
+- `src/config/legal.ts` — single source of truth for the entity's legal
+  identity. Every field the owner hasn't supplied yet is the literal
+  string `"TODO_OWNER"` (never an invented value) — currently that's
+  `legalEntityName`, `eik`, `registeredAddress`, `contactEmail`.
+  `contactPhone` and `lastUpdated` are filled. `src/components/
+  LegalTodoWarning.tsx` renders a visible dev-only banner on `/privacy`
+  listing exactly which fields are still missing, so a half-filled legal
+  page can't ship unnoticed — verified it fires in `next dev` and is
+  absent from a production build.
+- `/[locale]/privacy` — GDPR + Bulgarian Personal Data Protection Act
+  policy, all four locales, Bulgarian marked as the authoritative version
+  in the other three. Covers what's collected (server logs + the
+  `NEXT_LOCALE` cookie, nothing else — no forms, no accounts, no
+  analytics), legal basis per item, retention (still `TODO_OWNER` —
+  pending the host's confirmed log-retention window), who data is shared
+  with (Vercel Inc. as processor), GDPR rights incl. the right to
+  complain to the КЗЛД, and a cookie table. No cookie consent banner —
+  deliberate: the only cookie is strictly necessary, so there's nothing
+  to ask consent for.
+- `/[locale]/terms` — informational-only site, no bookings/payments, no
+  prices (consistent with the existing no-prices rule), positively-framed
+  house rules, a training-risk disclaimer, Bulgarian law/text governs.
+- Both routes linked from `Footer` in all locales (`privacyLink`/
+  `termsLink`), nothing added to `TopBar`.
+- Security headers (`next.config.ts`): HSTS, `X-Content-Type-Options`,
+  `Referrer-Policy`, `X-Frame-Options: DENY`, a locked-down
+  `Permissions-Policy`, `poweredByHeader: false`, no production source
+  maps. **CSP is not in `next.config.ts`** — it needs a fresh nonce per
+  request (Next's App Router injects inline `<script>` tags for RSC
+  hydration payload on every render, which a static `script-src 'self'`
+  blocks outright, confirmed via a real headless-Chromium console check
+  across all 12 locale/page combinations), so it lives in
+  `src/middleware.ts` instead, composed with next-intl's own middleware
+  via Next's documented `x-middleware-override-headers` /
+  `x-middleware-request-*` mechanism. **Merge, don't overwrite** that
+  header — next-intl uses the same mechanism to forward the resolved
+  locale downstream, and a first attempt that overwrote it instead of
+  merging silently broke locale-aware `<Link>` prefetching (caught via a
+  fresh-browser-context check: prefetch requests 404'd against a
+  malformed path). No `'unsafe-eval'`, no wildcard, anywhere in the CSP —
+  `style-src` keeps `'unsafe-inline'` only because `next/font` ships its
+  generated `@font-face` rules as an inline `<style>` tag.
+- `/.well-known/security.txt` (RFC 9116) — a route handler, not a static
+  file, so `Contact`/`Expires` always derive from `legal.ts` and can never
+  drift from the real contact details. Currently shows `mailto:TODO_OWNER`
+  until the owner supplies `contactEmail`.
+- External links already carried `rel="noopener noreferrer"` before this
+  phase (Hero/FindUs maps links, Footer's Facebook link) — audited, no
+  fix needed.
+- No `<form>` element exists anywhere in the codebase (verified) — nothing
+  to worry about for `form-action 'none'`.
+- `npm audit`: 3 high-severity findings, all inherited transitively via
+  `next`'s own bundled `postcss`/`sharp` — fix requires a major Next.js
+  upgrade (`next@16.3.0`, breaking). Not auto-applied; flagged for the
+  owner/maintainer to decide when to take that upgrade.
+- No secrets in the repo (verified): no `.env*` committed, `.gitignore`
+  already covered it, no API keys/tokens found in tracked source.
+
+## SEO and discoverability (Phase 4.6)
+- `src/config/business.ts` — single source of truth for the gym's NAP and
+  every other GBP fact: `name`, `street`, `city`, `postalCode`, `country`,
+  `phone`, `phoneDisplay`, `lat`, `lng`, `placeId`, `hours`. If the GBP
+  listing ever changes, this file changes in the same commit — nothing
+  else should hardcode any of these values again. Also exports
+  `formatNapAddress(locale)`, `mapsUrl()`, and `telHref()`, now used by
+  `Footer`, `Hero`, `FindUs`, `Passes`, `FollowUs`, and `schema.ts`.
+- **Footer NAP** — real, selectable HTML text (never an image, never
+  JSON-LD-only), byte-identical `name`/`phone` across all four locales.
+  `formatNapAddress()` keeps "Център, Слънчев бряг" in Cyrillic on every
+  locale — it has to match the Google Business Profile character for
+  character so a tourist can show the screen to a taxi driver — and adds
+  a parenthetical Latin transliteration ("Tsentar, Slanchev bryag") on
+  the three non-Bulgarian locales purely for the reader's own
+  pronunciation, never a translation of the place name itself.
+  `messages/{locale}.json`'s old `footer.name`/`footer.address` keys were
+  removed since the Footer no longer reads them — a translated JSON
+  string can't guarantee an exact GBP match, only a shared constant can.
+- **Per-locale `meta.title`** now follows an exact `[primary keyword] |
+  Fitness Plamen GYM` format (dropped the old "| Open 09:00–21:00"
+  suffix): bg "Фитнес зала Слънчев бряг", en "Gym in Sunny Beach", ru
+  "Тренажерный зал Солнечный берег", de "Fitnessstudio Sonnenstrand".
+  `meta.description` was rewritten per locale (not translated from each
+  other) to mention the pass options and the location, never a price.
+- **The page's one `<h1>` now actually carries the primary keyword.**
+  Previously the H1 was just the brand line ("Iron Temple" / "Железен
+  Храм" / etc.) with zero keyword content, and the keyword-adjacent
+  strap-line (`hero.claim`) lived in a sibling `<p>` the H1 tag itself
+  didn't cover — technically failing "one H1 carrying the primary
+  keyword" even though the visible copy looked fine. Fixed by nesting
+  that strap-line inside the `<h1>` as a block-level `<span>` with the
+  exact same classes the old `<p>` had — **zero visual change**, purely a
+  semantic-HTML fix (verified via screenshot comparison). `hero.claim`
+  and `hero.eyebrow` were also reworded per locale (via the
+  `copy-localizer` agent) to naturally contain the target keyword phrase
+  — same 23-years/177-reviews claim, no new facts, just phrased so the
+  phrase is a real substring instead of only implied.
+- **FAQ copy** (`messages/{locale}.json` → `faq.items[].answer`) also got
+  a light keyword pass for when/if that section is re-enabled — see
+  Phase 12's note that `FAQ.tsx` is currently unimported from `page.tsx`
+  at the user's explicit direction. Updating invisible copy has zero SEO
+  effect on its own; this only matters if the section comes back.
+- **Google Maps links standardized** to
+  `https://www.google.com/maps/place/?q=place_id:{placeId}` everywhere
+  (`Hero`, `FindUs`, `schema.ts`'s `hasMap`) via `business.ts`'s
+  `mapsUrl()` — previously `Hero`/`FindUs`/`schema.ts` used an older
+  `maps/search/?api=1&query=...` format while `/styleguide` already used
+  the new one; now there's exactly one format and one source. **Confirmed
+  zero `<iframe>` elements anywhere in the codebase** — the map has
+  always been a real outbound link, never an embed, so there was nothing
+  to replace; an embed would load third-party cookies and force a
+  consent banner onto a site that currently needs none.
+- **Schema additions**: `areaServed` gained `"Burgas Province"` (alongside
+  the existing `"Sunny Beach"`/`"Nesebar"`). `hasMap`, `sameAs`
+  (Facebook only), and the four `amenityFeature` entries (air
+  conditioning, free weights, calisthenics park, boxing area) were
+  already present from an earlier pass — just re-sourced from
+  `business.ts` instead of local hardcoded constants. **Still no
+  `aggregateRating`, ever** — that Phase 4 hard prohibition stands,
+  verified again this phase by inspecting the actual rendered JSON-LD.
+- **hreflang/canonical verified, not assumed**: printed the real rendered
+  `<head>` for all four locales after a production build. Every locale
+  self-canonicals to its own URL, every locale carries reciprocal
+  `hreflang` alternates for all four locales plus `x-default` → `/bg`,
+  and none canonicals to English. `robots.txt` and `sitemap.xml` were
+  already correct from Phase 4 (AI-crawler allowances, all four locale
+  homepages with hreflang) — confirmed unchanged, no accidental
+  `noindex` anywhere in the codebase.
+- **GSC / Bing Webmaster Tools submission — blocked on the real domain.**
+  `SITE_URL` (`src/lib/site.ts`) is still the placeholder
+  `https://fitnessplamen.bg` — no production domain is live yet (see
+  Outstanding decisions). Once the real domain is live: submit
+  `https://<realdomain>/sitemap.xml` to both Google Search Console and
+  Bing Webmaster Tools. Verification method for each, once there's a
+  real domain to verify: **Google Search Console** — a DNS TXT record at
+  the domain registrar is the most robust option (survives a hosting
+  migration, works for the whole domain including subdomains); the HTML
+  meta-tag method is the lower-friction alternative and would go in
+  `generateMetadata()`'s `verification.google` field in
+  `src/app/[locale]/layout.tsx` once Google issues a real code — never
+  invent a placeholder code. **Bing Webmaster Tools** — easiest path is
+  importing the site directly from an already-verified Google Search
+  Console property (Bing supports this natively, no separate DNS/meta-tag
+  step needed); the fallback is the same DNS TXT or meta-tag pattern.
+
 ## Marketing — the part that actually moves rankings
 For a single-location local business the Google Business Profile is the
 lever, not the website. Priority order: (1) claim/verify the GBP with
@@ -332,12 +817,32 @@ tactic — it's unsupported by Google and unused by AI crawlers; clean
 semantic HTML and real FAQ content do the actual work.
 
 ## Outstanding decisions (blockers — do not paper over with invented content)
-1. Founding year for the "20 years" claim — unverified, do not ship as fact.
-2. Real gym photography (min. 10 shots) — required before the photography
-   sections can leave `TODO` placeholders.
-3. Whether/how to mention the "Fitness Mercury" history.
-4. Whether to create an Instagram account or omit it entirely.
-5. Whether the no-prices rule holds — the day rate is already public via a
+1. ~~Founding year~~ **RESOLVED.** Owner-verified: 23 years, oldest
+   continuously-operating gym in Sunny Beach. See **THE BUSINESS** and
+   **Positioning** above — this is now a real fact to market, not a
+   placeholder.
+2. Real gym photography (min. 10 shots) — **in progress, 3 live.** A Hero
+   background photo, an owner portrait, and one more saved-but-unplaced
+   shot are committed to the repo and (for the first two) wired into the
+   site — see **Photography** below for the full received/committed/used
+   breakdown, including which chat-shared photos didn't survive to be
+   committed and need re-sending. One submitted image (a posed,
+   studio-lit shirtless physique shot) reads as stock photography rather
+   than a real photo of this gym or its owner — excluded pending explicit
+   confirmation from the owner that it's genuine and who it is.
+3. Logo — **shipped as-supplied, redesign still open.** The owner's
+   existing logo mark (red fist/bicep icon + wordmark) is live in the
+   footer, used exactly as supplied rather than redesigned, because
+   shipping something real now beat blocking on a design decision. A
+   matching t-shirt design reading "20+ YEARS" was also supplied
+   (consistent with the now-confirmed 23-year history, likely just not
+   yet updated on the merch). Still undecided: leave the logo as-is, or
+   redesign it to match the site's exact palette (`#B10000` not whatever
+   red the supplied asset uses) and Oswald typography for visual
+   cohesion with the rest of the site.
+4. Whether/how to mention the "Fitness Mercury" history.
+5. Whether to create an Instagram account or omit it entirely.
+6. Whether the no-prices rule holds — the day rate is already public via a
    Google review, so omitting it on-site mainly adds friction. If the owner
    still declines, compensate by making the phone CTA prominent with
    "call for prices" in all four languages.

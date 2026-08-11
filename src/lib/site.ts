@@ -11,6 +11,15 @@ export const SITE_URL = "https://fitnessplamen.bg";
 
 export const SITE_NAME = "Fitness Plamen GYM Sunny Beach";
 
+/**
+ * Real, verified Google rating (see CLAUDE.md's business facts — ~4.4-4.5,
+ * ~149 reviews). Single numeric source of truth for the star-fill visuals
+ * in StarRating; the localized display strings (e.g. "4.4" / German
+ * "4,4") live in messages/{locale}.json — keep both in sync if this ever
+ * changes, never let the star fill drift from the number actually shown.
+ */
+export const GOOGLE_RATING = 4.4;
+
 export type Locale = (typeof routing.locales)[number];
 
 const OG_LOCALES: Record<Locale, string> = {

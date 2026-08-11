@@ -1,51 +1,62 @@
 {
   "meta": {
-    "title": "Gym in Sunny Beach — Fitness Plamen GYM | Open 09:00–21:00",
-    "description": "Old-school iron gym in the centre of Sunny Beach. Dumbbells up to 55 kg, a calisthenics park, a boxing area and air conditioning. Day, week and month passes — call or walk in."
+    "title": "Gym in Sunny Beach | Fitness Plamen GYM",
+    "description": "Old-school bodybuilding gym in the centre of Sunny Beach, Bulgaria. Day, week and month passes available — call or walk in, no booking needed."
   },
   "hero": {
-    "eyebrow": "Old-school iron gym",
+    "eyebrow": "Old-school iron gym in Sunny Beach",
     "headingPlain": "Iron",
     "headingAccent": "Temple",
+    "claim": "The Oldest & Most-Reviewed Gym In Sunny Beach",
     "hours": "Open 09:00–21:00 · every day",
     "location": "Tsentar, Sunny Beach",
-    "ctaCall": "Call",
-    "ctaFind": "Find us"
+    "ctaCall": "Call us",
+    "ctaFind": "Find us",
+    "imageAlt": "The entrance to Fitness Plamen GYM, marked by a hand-painted mural"
   },
   "proofBar": {
-    "rating": "4.4★ Google rating",
-    "reviewCount": "~149 reviews",
+    "claim": "The Best Gym In Sunny Beach — And The Numbers Prove It",
+    "yearsValue": "23",
+    "yearsLabel": "Years — oldest gym in town",
+    "ratingValue": "4.4",
+    "ratingLabel": "Google rating",
+    "reviewCountValue": "177",
+    "reviewCountLabel": "Reviews — most reviewed in town",
     "dumbbells": "Dumbbells up to 55 kg",
     "ac": "Air conditioning"
   },
   "theGym": {
     "eyebrow": "The gym",
     "headingPlain": "Built by hand,",
-    "headingAccent": "not bought off a shelf",
-    "paragraph1": "Plamen, the owner, built most of the machines in this gym with his own hands. Not because he couldn't buy new ones — he knows exactly how each one needs to work, and builds it to hold up.",
-    "paragraph2": "The iron here isn't shiny and it isn't new. We keep it maintained, oiled and fully working — that's the point of old school: not a showroom, a tool that does the job every day."
+    "headingAccent": "not bought",
+    "paragraph1": "Plamen, the owner, built most of the machines here with his own hands. Not because he couldn't buy new ones — he knows exactly how each one needs to work.",
+    "paragraph2": "23 years on, the iron here still isn't shiny or new — we keep it maintained and fully working, because that's the point of old school: a tool that does the job every day, not a showroom.",
+    "ownerPhotoAlt": "Plamen, the owner of Fitness Plamen GYM"
   },
   "equipment": {
     "eyebrow": "Equipment",
     "heading": "Everything you need",
-    "items": [
-      "Benches",
+    "highlights": [
+      "Dumbbells up to 55 kg",
+      "Boxing area",
+      "Calisthenics park",
+      "Cables"
+    ],
+    "more": [
       "Leg press",
       "Hack squat",
+      "All pulldown variations",
+      "Air conditioning",
+      "Benches",
       "Machine preacher curl + free preacher bench",
       "Leg curl",
       "Quad extension",
-      "Calisthenics park",
-      "Boxing area",
-      "Cables",
-      "All pulldown variations",
       "Dip machine",
       "Adductor + abductor",
       "Elbow-style pec dec and extended-arm pec dec with rear delt",
-      "Travelling smith machine and standard smith machine",
-      "Dumbbells up to 55 kg",
-      "Air conditioning"
-    ]
+      "Travelling smith machine and standard smith machine"
+    ],
+    "moreLabel": "See the full equipment list"
   },
   "passes": {
     "eyebrow": "Passes",
@@ -54,11 +65,11 @@
     "ctaCall": "Call about a pass",
     "items": [
       {
-        "name": "Day pass",
+        "name": "1 Day Pass",
         "desc": "For beach guests who want one serious training session, then back to the sea."
       },
       {
-        "name": "Week pass",
+        "name": "7 Day Pass",
         "desc": "For a week in Sunny Beach — train every day of your stay without breaking your routine."
       },
       {
@@ -67,23 +78,31 @@
       }
     ]
   },
+  "gallery": {
+    "eyebrow": "Inside the gym",
+    "heading": "See it for yourself",
+    "photo1Alt": "Dumbbell rack and benches on the training floor",
+    "photo2Alt": "The training floor, racks and machines",
+    "photo3Alt": "Another angle of the training floor",
+    "photo4Alt": "The training floor near the entrance"
+  },
   "reviews": {
     "eyebrow": "From Google reviews",
     "heading": "Don't just take our word for it",
     "sourceLabel": "Google review",
     "items": [
       {
-        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool. Everyone is so helpful and welcoming. Gym has amazing air conditioning not to mention how spotless this gym is.",
+        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool.",
         "author": "Zara P",
         "meta": "5★ · Jun 2025"
       },
       {
-        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines. A must visit if you are visiting sunny beach.",
+        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines.",
         "author": "R D",
         "meta": "5★ · Jun 2023"
       },
       {
-        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless. Owner is very nice",
+        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless.",
         "author": "Kevin S",
         "meta": "5★ · Aug 2025"
       }
@@ -100,7 +119,13 @@
     "walkingTime": "A few minutes' walk from the beach.",
     "houseRules": "One small request, so it stays good for everyone: rack your plates and dumbbells and wipe down the bench when you're done. Thanks.",
     "ctaMaps": "Open in Google Maps",
-    "ctaCall": "Call"
+    "ctaCall": "Call us"
+  },
+  "followUs": {
+    "eyebrow": "Stay connected",
+    "heading": "Follow Us & Leave A Review",
+    "facebookLabel": "Follow us on Facebook",
+    "googleLabel": "Leave us a review on Google"
   },
   "faq": {
     "eyebrow": "Questions",
@@ -108,11 +133,11 @@
     "items": [
       {
         "question": "Is there a gym in Sunny Beach?",
-        "answer": "Yes, Fitness Plamen GYM is in the centre of Sunny Beach. It's an old-school iron gym with barbells, dumbbells and owner-built machines, open every day from 09:00 to 21:00."
+        "answer": "Yes — Fitness Plamen GYM is the gym Sunny Beach visitors search for, right in the centre. It's an old-school iron gym with barbells, dumbbells and owner-built machines, open every day from 09:00 to 21:00."
       },
       {
         "question": "Do you sell day passes?",
-        "answer": "Yes, day, week and month passes are all available. Call the number below or come by in person — we'll walk you through the passes on the spot, no booking or paperwork needed."
+        "answer": "Yes — a gym day pass, a week pass and a month pass are all available. Call the number below or come by in person — we'll walk you through the passes on the spot, no booking or paperwork needed."
       },
       {
         "question": "What are the opening hours?",
@@ -120,15 +145,7 @@
       },
       {
         "question": "Where exactly is the gym?",
-        "answer": "The gym is in the centre (Tsentar) of Sunny Beach, a few minutes' walk from the beach. Open the address directly in Google Maps via the \"Find us\" link on this page for exact directions."
-      },
-      {
-        "question": "Do you have heavy dumbbells?",
-        "answer": "Yes, dumbbells go up to 55 kg. There's also a leg press, hack squat, cable machines and a full set of strength equipment — see the Equipment section above for the full list."
-      },
-      {
-        "question": "Is there air conditioning?",
-        "answer": "Yes, the gym has air conditioning. Guests regularly mention how clean and comfortable the air feels inside, even during the hottest summer months."
+        "answer": "As a bodybuilding gym in Bulgaria, we're right in the centre (Tsentar) of Sunny Beach, a few minutes' walk from the beach. Open the address directly in Google Maps via the \"Find us\" link on this page for exact directions."
       },
       {
         "question": "When is the gym least busy?",
@@ -136,12 +153,92 @@
       }
     ]
   },
+  "privacy": {
+    "eyebrow": "Legal",
+    "heading": "Privacy Policy",
+    "authorityNote": "The Bulgarian version of this policy is the legally authoritative one. This English version is provided for convenience — if the two differ, the Bulgarian text governs.",
+    "lastUpdatedLabel": "Last updated:",
+    "s1Heading": "Who we are",
+    "s1Body": "The data controller is the company operating Fitness Plamen GYM, listed below.",
+    "controllerNameLabel": "Company:",
+    "controllerEikLabel": "Company number (EIK):",
+    "controllerAddressLabel": "Registered address:",
+    "controllerEmailLabel": "Email:",
+    "controllerPhoneLabel": "Phone:",
+    "s2Heading": "What we collect",
+    "s2Intro": "We collect very little — only what the site actually needs to run:",
+    "s2Log": "Server log data: IP address, browser user agent, requested URL and timestamp. Collected automatically by our hosting provider.",
+    "s2Cookie": "Language preference, stored in a cookie named NEXT_LOCALE.",
+    "s2None": "Nothing else. We have no contact form, no account system, no newsletter, and no advertising or analytics trackers.",
+    "s2Phone": "If you call us, we keep no recording and no written record of the call.",
+    "s3Heading": "Why we process it, and on what legal basis",
+    "s3LogsHeading": "Server logs",
+    "s3LogsBody": "Processed under legitimate interest (Art. 6(1)(f) GDPR): site security, abuse prevention, and diagnosing faults.",
+    "s3CookieHeading": "Language cookie",
+    "s3CookieBody": "Strictly necessary for a service you've requested (Art. 6(1)(b) GDPR) — that's why we don't ask for consent.",
+    "s4Heading": "How long we keep it",
+    "s4Body": "Our hosting provider retains server logs for a short period and then deletes them. The exact retention period is still being confirmed with the host — TODO_OWNER.",
+    "s5Heading": "Who we share it with",
+    "s5Body": "We share data only with our hosting provider, Vercel Inc., acting as a processor on our instructions. Data may be processed outside the EEA under an EU adequacy decision or Standard Contractual Clauses. We never sell data, and we never share it with advertisers.",
+    "s6Heading": "Your rights under GDPR",
+    "s6Body": "You have the right to:",
+    "s6Rights": [
+      "access your data",
+      "have inaccurate data corrected",
+      "have your data erased",
+      "restrict processing",
+      "object to processing",
+      "data portability",
+      "lodge a complaint with the Bulgarian Commission for Personal Data Protection (КЗЛД), www.cpdp.bg, Sofia"
+    ],
+    "s6Contact": "To exercise any of these rights, contact us using the details above.",
+    "s6ResponseTime": "We respond within one month, as required by GDPR.",
+    "s7Heading": "Children",
+    "s7Body": "This site is not directed at children under 16, and we do not knowingly collect their data.",
+    "s8Heading": "External links",
+    "s8Body": "This site links to Google Maps and Facebook. Once you follow them, their own privacy policies apply — not ours.",
+    "s9Heading": "Changes to this policy",
+    "s9Body": "If this policy changes, we publish the updated version here with a new \"last updated\" date above.",
+    "cookiesHeading": "Cookies",
+    "cookieTableName": "Name",
+    "cookieTablePurpose": "Purpose",
+    "cookieTableType": "Type",
+    "cookieTableDuration": "Duration",
+    "cookieRowName": "NEXT_LOCALE",
+    "cookieRowPurpose": "Remembers your chosen language",
+    "cookieRowType": "Strictly necessary",
+    "cookieRowDuration": "1 year",
+    "cookieNote": "We use no analytics, advertising or third-party tracking cookies — that's why we don't ask for cookie consent.",
+    "cookieClear": "You can clear this cookie in your browser settings at any time — the site will still work, it will just forget your language choice."
+  },
+  "terms": {
+    "eyebrow": "Legal",
+    "heading": "Terms of Use",
+    "lastUpdatedLabel": "Last updated:",
+    "intro": "This site is informational only. No bookings or payments happen here.",
+    "s1Heading": "Informational only",
+    "s1Body": "Opening hours, availability and pass conditions may change. The gym itself is the authoritative source — call to confirm.",
+    "s2Heading": "No prices on this site",
+    "s2Body": "We deliberately don't quote prices here. Prices are given at the desk.",
+    "rulesHeading": "House rules",
+    "rules": [
+      "Re-rack your plates and dumbbells when you're done.",
+      "Wipe down benches and machines after use.",
+      "Return mats and collars to where they belong.",
+      "Respect other people's sets — share the equipment.",
+      "Closed-toe training shoes required."
+    ],
+    "riskHeading": "Training risk",
+    "riskBody": "Training with weights carries inherent physical risk. You train at your own responsibility, and should consult a doctor if you're unsure.",
+    "lawHeading": "Governing law",
+    "lawBody": "Bulgarian law governs these terms. The Bulgarian text prevails over any translation."
+  },
   "footer": {
-    "name": "Fitness Plamen GYM Sunny Beach",
-    "address": "Tsentar, Sunny Beach 8240, Nesebar, Bulgaria",
-    "facebook": "Facebook",
     "languageLabel": "Language",
-    "copyright": "© {year} {name}"
+    "copyright": "© {year} {name}",
+    "logoAlt": "Fitness Plamen GYM logo",
+    "privacyLink": "Privacy Policy",
+    "termsLink": "Terms of Use"
   },
   "languages": {
     "bg": "Български",

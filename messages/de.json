@@ -1,51 +1,62 @@
 {
   "meta": {
-    "title": "Fitnessstudio Sonnenstrand — Fitness Plamen GYM | Geöffnet 09:00–21:00 Uhr",
-    "description": "Old-School-Eisenstudio im Zentrum von Sonnenstrand. Kurzhanteln bis 55 kg, Calisthenics-Bereich, Boxbereich und Klimaanlage. Tages-, Wochen- und Monatskarten — anrufen oder einfach vorbeikommen."
+    "title": "Fitnessstudio Sonnenstrand | Fitness Plamen GYM",
+    "description": "Old-School-Fitnessstudio im Zentrum von Sonnenstrand. Tageskarte, Wochenkarte oder Monatskarte — anrufen oder einfach vorbeikommen, keine Buchung nötig."
   },
   "hero": {
-    "eyebrow": "Old-School-Eisenstudio",
+    "eyebrow": "Old-School-Eisenstudio in Sonnenstrand",
     "headingPlain": "Eiserner",
     "headingAccent": "Tempel",
+    "claim": "Das älteste und meistbewertete Fitnessstudio in Sonnenstrand",
     "hours": "Geöffnet 09:00–21:00 Uhr · täglich",
     "location": "Zentrum, Sonnenstrand",
     "ctaCall": "Anrufen",
-    "ctaFind": "Anfahrt"
+    "ctaFind": "Anfahrt",
+    "imageAlt": "Der Eingang zum Fitness Plamen GYM mit einem handgemalten Wandbild"
   },
   "proofBar": {
-    "rating": "4,4★ Google-Bewertung",
-    "reviewCount": "~149 Bewertungen",
+    "claim": "Das beste Fitnessstudio in Sonnenstrand — die Zahlen beweisen es",
+    "yearsValue": "23",
+    "yearsLabel": "Jahre — ältestes Studio am Ort",
+    "ratingValue": "4,4",
+    "ratingLabel": "Google-Bewertung",
+    "reviewCountValue": "177",
+    "reviewCountLabel": "Bewertungen — die meisten am Ort",
     "dumbbells": "Kurzhanteln bis 55 kg",
     "ac": "Klimaanlage"
   },
   "theGym": {
     "eyebrow": "Das Studio",
     "headingPlain": "Handgebaut,",
-    "headingAccent": "nicht von der Stange",
-    "paragraph1": "Plamen, der Inhaber, hat einen Großteil der Geräte in diesem Studio mit eigenen Händen gebaut. Nicht weil er sich keine neuen leisten könnte — er weiß genau, wie jedes Gerät funktionieren muss, und baut es entsprechend, damit es hält.",
-    "paragraph2": "Das Eisen hier ist nicht glänzend und nicht neu. Wir halten es gepflegt, geölt und voll funktionsfähig — genau darum geht es bei Old School: kein Schauraum, sondern ein Werkzeug, das jeden Tag seine Arbeit macht."
+    "headingAccent": "nicht gekauft",
+    "paragraph1": "Plamen, der Inhaber, hat einen Großteil der Geräte hier mit eigenen Händen gebaut. Nicht weil er sich keine neuen leisten könnte — er weiß genau, wie jedes Gerät funktionieren muss.",
+    "paragraph2": "23 Jahre später ist das Eisen hier immer noch nicht glänzend oder neu — wir halten es gepflegt und voll funktionsfähig, denn das ist der Sinn der alten Schule: ein Werkzeug, das jeden Tag seine Arbeit tut, kein Schaufenster.",
+    "ownerPhotoAlt": "Plamen, Inhaber von Fitness Plamen GYM"
   },
   "equipment": {
     "eyebrow": "Ausstattung",
     "heading": "Alles, was du brauchst",
-    "items": [
-      "Bänke",
+    "highlights": [
+      "Kurzhanteln bis 55 kg",
+      "Boxbereich",
+      "Calisthenics-Bereich",
+      "Kabelzüge"
+    ],
+    "more": [
       "Beinpresse",
       "Hackenschmidt-Maschine",
+      "Alle Latzug-Varianten",
+      "Klimaanlage",
+      "Bänke",
       "Scott-Curl-Maschine + freie Scott-Bank",
       "Beincurler",
       "Beinstrecker",
-      "Calisthenics-Bereich",
-      "Boxbereich",
-      "Kabelzüge",
-      "Alle Latzug-Varianten",
       "Dip-Maschine",
       "Adduktoren- und Abduktorenmaschine",
       "Butterfly mit Ellbogenauflage und Butterfly mit gestrecktem Arm und hinterer Schulter",
-      "Fahrbare Smith-Maschine und Standard-Smith-Maschine",
-      "Kurzhanteln bis 55 kg",
-      "Klimaanlage"
-    ]
+      "Fahrbare Smith-Maschine und Standard-Smith-Maschine"
+    ],
+    "moreLabel": "Komplette Ausstattung anzeigen"
   },
   "passes": {
     "eyebrow": "Karten",
@@ -54,11 +65,11 @@
     "ctaCall": "Karte erfragen",
     "items": [
       {
-        "name": "Tageskarte",
+        "name": "1-Tageskarte",
         "desc": "Für Strandurlauber, die eine ernsthafte Trainingseinheit wollen und danach zurück ans Meer."
       },
       {
-        "name": "Wochenkarte",
+        "name": "7-Tageskarte",
         "desc": "Für den Urlaub am Sonnenstrand — die ganze Woche trainieren, ohne die Routine zu unterbrechen."
       },
       {
@@ -67,23 +78,31 @@
       }
     ]
   },
+  "gallery": {
+    "eyebrow": "Im Studio",
+    "heading": "Überzeugen Sie sich selbst",
+    "photo1Alt": "Kurzhantel-Ständer und Bänke im Trainingsbereich",
+    "photo2Alt": "Der Trainingsbereich, Racks und Geräte",
+    "photo3Alt": "Ein weiterer Blick auf den Trainingsbereich",
+    "photo4Alt": "Der Trainingsbereich nahe dem Eingang"
+  },
   "reviews": {
     "eyebrow": "Aus Google-Bewertungen",
     "heading": "Das sagen nicht nur wir",
     "sourceLabel": "Google-Bewertung",
     "items": [
       {
-        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool. Everyone is so helpful and welcoming. Gym has amazing air conditioning not to mention how spotless this gym is.",
+        "quote": "such a lovely & friendly training environment. This gym has everything and more than you could ever need for training not to mention that the owner built all of the machinery by hand which is crazy cool.",
         "author": "Zara P",
         "meta": "5★ · Juni 2025"
       },
       {
-        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines. A must visit if you are visiting sunny beach.",
+        "quote": "A true hidden gem, great atmosphere!! and lots of (old school) machines.",
         "author": "R D",
         "meta": "5★ · Juni 2023"
       },
       {
-        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless. Owner is very nice",
+        "quote": "Best gym I've used in sunny beach. I come on holidays here every year and I always use this place. Great equipment and the place is spotless.",
         "author": "Kevin S",
         "meta": "5★ · Aug. 2025"
       }
@@ -102,17 +121,23 @@
     "ctaMaps": "In Google Maps öffnen",
     "ctaCall": "Anrufen"
   },
+  "followUs": {
+    "eyebrow": "Bleiben Sie in Kontakt",
+    "heading": "Folgen Sie uns & bewerten Sie uns",
+    "facebookLabel": "Folgen Sie uns auf Facebook",
+    "googleLabel": "Bewertung bei Google abgeben"
+  },
   "faq": {
     "eyebrow": "Fragen",
     "heading": "Häufig gestellte Fragen",
     "items": [
       {
         "question": "Gibt es ein Fitnessstudio in Sonnenstrand?",
-        "answer": "Ja, das Fitness Plamen GYM liegt im Zentrum von Sonnenstrand. Es ist ein Old-School-Eisenstudio mit Langhanteln, Kurzhanteln und vom Inhaber selbst gebauten Geräten — täglich von 09:00 bis 21:00 Uhr geöffnet."
+        "answer": "Ja — wer ein Fitnessstudio Sonnenstrand sucht, wird beim Fitness Plamen GYM im Zentrum fündig. Es ist ein Old-School-Eisenstudio mit Langhanteln, Kurzhanteln und vom Inhaber selbst gebauten Geräten — täglich von 09:00 bis 21:00 Uhr geöffnet."
       },
       {
         "question": "Verkaufen Sie Tageskarten?",
-        "answer": "Ja, es gibt Tages-, Wochen- und Monatskarten. Rufen Sie die unten stehende Nummer an oder kommen Sie einfach vorbei — wir erklären Ihnen vor Ort alles zu den Karten, ganz ohne Buchung oder Papierkram."
+        "answer": "Ja, bei uns gibt es die Tageskarte, die Wochenkarte und die Monatskarte. Rufen Sie die unten stehende Nummer an oder kommen Sie einfach vorbei — wir erklären Ihnen vor Ort alles zu den Karten, ganz ohne Buchung oder Papierkram."
       },
       {
         "question": "Wie sind die Öffnungszeiten?",
@@ -120,15 +145,7 @@
       },
       {
         "question": "Wo genau liegt das Studio?",
-        "answer": "Das Studio liegt im Zentrum von Sonnenstrand, nur wenige Gehminuten vom Strand entfernt. Öffnen Sie die Adresse direkt über den Link „Anfahrt“ auf dieser Seite in Google Maps für die genaue Route."
-      },
-      {
-        "question": "Gibt es schwere Kurzhanteln?",
-        "answer": "Ja, die Kurzhanteln gehen bis 55 kg. Außerdem gibt es eine Beinpresse, eine Hackenschmidt-Maschine, Kabelzüge und ein volles Krafttrainings-Sortiment — die vollständige Liste finden Sie oben im Abschnitt Ausstattung."
-      },
-      {
-        "question": "Gibt es eine Klimaanlage?",
-        "answer": "Ja, das Studio hat eine Klimaanlage. Gäste erwähnen regelmäßig, wie angenehm frisch die Luft selbst in den heißesten Sommermonaten ist."
+        "answer": "Unser Gym Sonnenstrand liegt im Zentrum, nur wenige Gehminuten vom Strand entfernt. Öffnen Sie die Adresse direkt über den Link „Anfahrt“ auf dieser Seite in Google Maps für die genaue Route."
       },
       {
         "question": "Wann ist im Studio am wenigsten los?",
@@ -136,12 +153,92 @@
       }
     ]
   },
+  "privacy": {
+    "eyebrow": "Rechtliches",
+    "heading": "Datenschutzerklärung",
+    "authorityNote": "Rechtlich verbindlich ist die bulgarische Fassung dieser Datenschutzerklärung. Diese deutsche Fassung dient nur der Verständlichkeit — bei Abweichungen gilt der bulgarische Text.",
+    "lastUpdatedLabel": "Zuletzt aktualisiert:",
+    "s1Heading": "Wer wir sind",
+    "s1Body": "Verantwortlicher im Sinne der DSGVO ist das Unternehmen, das Fitness Plamen GYM betreibt, siehe unten.",
+    "controllerNameLabel": "Unternehmen:",
+    "controllerEikLabel": "Handelsregisternummer (EIK):",
+    "controllerAddressLabel": "Eingetragener Sitz:",
+    "controllerEmailLabel": "E-Mail:",
+    "controllerPhoneLabel": "Telefon:",
+    "s2Heading": "Was wir erheben",
+    "s2Intro": "Wir erheben sehr wenig — nur das, was der Betrieb der Website tatsächlich braucht:",
+    "s2Log": "Server-Protokolldaten: IP-Adresse, User-Agent des Browsers, angefragte URL und Zeitstempel. Automatisch erhoben durch unseren Hosting-Anbieter.",
+    "s2Cookie": "Spracheinstellung, gespeichert in einem Cookie namens NEXT_LOCALE.",
+    "s2None": "Sonst nichts. Wir haben kein Kontaktformular, kein Konto-System, keinen Newsletter und keine Werbe- oder Analyse-Tracker.",
+    "s2Phone": "Wenn Sie uns anrufen, führen wir keine Aufzeichnung und keinen schriftlichen Vermerk über das Gespräch.",
+    "s3Heading": "Warum wir diese Daten verarbeiten und auf welcher Rechtsgrundlage",
+    "s3LogsHeading": "Server-Protokolle",
+    "s3LogsBody": "Verarbeitet auf Grundlage berechtigten Interesses (Art. 6 Abs. 1 lit. f DSGVO): Sicherheit der Website, Missbrauchsprävention und Fehlerdiagnose.",
+    "s3CookieHeading": "Sprach-Cookie",
+    "s3CookieBody": "Unbedingt erforderlich für einen von Ihnen angefragten Dienst (Art. 6 Abs. 1 lit. b DSGVO) — deshalb holen wir keine Einwilligung ein.",
+    "s4Heading": "Wie lange wir Daten speichern",
+    "s4Body": "Unser Hosting-Anbieter speichert Server-Protokolle für einen kurzen Zeitraum und löscht sie danach. Die genaue Aufbewahrungsdauer wird noch mit dem Anbieter geklärt — TODO_OWNER.",
+    "s5Heading": "Mit wem wir Daten teilen",
+    "s5Body": "Wir teilen Daten ausschließlich mit unserem Hosting-Anbieter, Vercel Inc., der als Auftragsverarbeiter nach unseren Weisungen handelt. Daten können außerhalb des EWR verarbeitet werden, auf Grundlage eines Angemessenheitsbeschlusses der EU oder Standardvertragsklauseln. Wir verkaufen keine Daten und geben sie nicht an Werbetreibende weiter.",
+    "s6Heading": "Ihre Rechte nach der DSGVO",
+    "s6Body": "Sie haben das Recht auf:",
+    "s6Rights": [
+      "Auskunft über Ihre Daten",
+      "Berichtigung unrichtiger Daten",
+      "Löschung Ihrer Daten",
+      "Einschränkung der Verarbeitung",
+      "Widerspruch gegen die Verarbeitung",
+      "Datenübertragbarkeit",
+      "Beschwerde bei der bulgarischen Kommission für den Schutz personenbezogener Daten (КЗЛД), www.cpdp.bg, Sofia"
+    ],
+    "s6Contact": "Um diese Rechte auszuüben, kontaktieren Sie uns über die oben genannten Kontaktdaten.",
+    "s6ResponseTime": "Wir antworten innerhalb eines Monats, wie von der DSGVO gefordert.",
+    "s7Heading": "Kinder",
+    "s7Body": "Diese Website richtet sich nicht an Kinder unter 16 Jahren, und wir erheben wissentlich keine Daten von ihnen.",
+    "s8Heading": "Externe Links",
+    "s8Body": "Diese Website verlinkt zu Google Maps und Facebook. Sobald Sie diesen Links folgen, gelten deren eigene Datenschutzerklärungen — nicht unsere.",
+    "s9Heading": "Änderungen dieser Erklärung",
+    "s9Body": "Bei Änderungen veröffentlichen wir hier die aktualisierte Fassung mit einem neuen Datum oben.",
+    "cookiesHeading": "Cookies",
+    "cookieTableName": "Name",
+    "cookieTablePurpose": "Zweck",
+    "cookieTableType": "Art",
+    "cookieTableDuration": "Dauer",
+    "cookieRowName": "NEXT_LOCALE",
+    "cookieRowPurpose": "Merkt sich Ihre gewählte Sprache",
+    "cookieRowType": "Unbedingt erforderlich",
+    "cookieRowDuration": "1 Jahr",
+    "cookieNote": "Wir verwenden keine Analyse-, Werbe- oder Tracking-Cookies von Drittanbietern — deshalb holen wir keine Cookie-Einwilligung ein.",
+    "cookieClear": "Sie können dieses Cookie jederzeit in Ihren Browser-Einstellungen löschen — die Website funktioniert weiterhin, vergisst dann nur Ihre Sprachwahl."
+  },
+  "terms": {
+    "eyebrow": "Rechtliches",
+    "heading": "Nutzungsbedingungen",
+    "lastUpdatedLabel": "Zuletzt aktualisiert:",
+    "intro": "Diese Website dient ausschließlich der Information. Buchungen oder Zahlungen finden hier nicht statt.",
+    "s1Heading": "Nur zur Information",
+    "s1Body": "Öffnungszeiten, Verfügbarkeit und Kartenbedingungen können sich ändern. Maßgeblich ist das Studio selbst — rufen Sie zur Bestätigung an.",
+    "s2Heading": "Keine Preise auf dieser Website",
+    "s2Body": "Wir nennen hier bewusst keine Preise. Preise erfahren Sie vor Ort.",
+    "rulesHeading": "Hausregeln",
+    "rules": [
+      "Räumen Sie Scheiben und Kurzhanteln nach Gebrauch zurück.",
+      "Wischen Sie Bänke und Geräte nach dem Training ab.",
+      "Legen Sie Matten und Verschlüsse zurück an ihren Platz.",
+      "Respektieren Sie die Sätze anderer — teilen Sie sich die Geräte.",
+      "Geschlossenes Trainingsschuhwerk ist Pflicht."
+    ],
+    "riskHeading": "Trainingsrisiko",
+    "riskBody": "Training mit Gewichten birgt ein natürliches körperliches Risiko. Sie trainieren in eigener Verantwortung und sollten im Zweifel einen Arzt konsultieren.",
+    "lawHeading": "Anwendbares Recht",
+    "lawBody": "Es gilt bulgarisches Recht. Der bulgarische Text hat Vorrang vor jeder Übersetzung."
+  },
   "footer": {
-    "name": "Fitness Plamen GYM Sunny Beach",
-    "address": "Zentrum, Sonnenstrand 8240, Nessebar, Bulgarien",
-    "facebook": "Facebook",
     "languageLabel": "Sprache",
-    "copyright": "© {year} {name}"
+    "copyright": "© {year} {name}",
+    "logoAlt": "Logo von Fitness Plamen GYM",
+    "privacyLink": "Datenschutz",
+    "termsLink": "Nutzungsbedingungen"
   },
   "languages": {
     "bg": "Български",

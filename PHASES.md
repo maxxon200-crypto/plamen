@@ -158,11 +158,288 @@ Console, run the live URL through Google's Rich Results Test.
 
 -----
 
+## PHASE 7 — Stakeholder revision pass (post-launch)
+
+Not part of the original 6-phase sequence — this is real feedback on the
+live, deployed site, addressed with the same discipline as every other
+phase (build must pass, design-critic audit before commit, no invented
+facts).
+
+What changed:
+
+- Display typeface swapped: Sofia Sans Condensed → Oswald (700), because
+  the original read as "wrong personality" for an old-school iron gym.
+  Cyrillic support verified before shipping (Bulgarian is the default
+  locale, Russian is one of the four — non-negotiable).
+- Equipment section condensed: still all 16 real items (nothing deleted,
+  nothing invented), now shown as pill/tag chips split into a curated
+  highlight set plus the rest behind a native `<details>` expand, instead
+  of one long bordered list eating half the page.
+- FAQ trimmed 7 → 5 (dropped the two most redundant with content already
+  shown in ProofBar/Equipment) and converted to a real accordion (one
+  `<details>` per question) instead of a static stacked list.
+- Language switcher moved off the footer into a persistent top bar so it's
+  reachable at any scroll position. Flag icons were requested but not
+  implemented — recognisable flags need national colours that don't exist
+  in the fixed palette; this needs an explicit stakeholder decision to
+  override the palette rule, not a guess.
+- ProofBar and Reviews rebuilt for real visual weight (large rating/review
+  numerals, a decorative star-rating row) — the old ProofBar was a thin
+  caption-sized strip that read as "practically inexistent" against real
+  numbers (~4.4★, ~149 reviews, unchanged from what CLAUDE.md documents —
+  only the presentation changed, not the facts).
+
+`rounded-full` is now a narrow, explicit exception to the border-radius
+ban, scoped to exactly two files (Equipment's chips, the language-switcher
+badges) — see CLAUDE.md's Design system section and
+`.claude/agents/design-critic.md` for the exact scope.
+
+-----
+
+## PHASE 9 — Second direct revision round (post-launch)
+
+More live feedback on Phase 7/8's output, addressed in the same session:
+
+- Display typeface swapped twice more: Oswald → Russo One → PT Sans Bold.
+  Both swaps Cyrillic-verified before shipping (grepped the generated
+  `@font-face` `unicode-range` for `U+0400-045F`, same method as every
+  prior font swap) — see CLAUDE.md's Typography section for the full
+  swap history and why the genre changed (display/poster face → serious
+  workhorse grotesque) after two poster-style picks both got rejected.
+- Language switcher stripped to flags-only — the own-script text label
+  (Български/English/Русский/Deutsch) is still in the DOM as `sr-only`
+  so the accessible name survives, it just doesn't render visually
+  anymore.
+- Fixed a real bug behind a "text overlapping" report: `TheGym`'s heading
+  accent ("not bought", etc.) was inline with the plain text before it,
+  so the browser was free to break the line *inside* the red chip,
+  producing a jagged multi-line red box. Moving the accent onto its own
+  line (block-level) fixed it regardless of copy length — shortening the
+  copy alone hadn't been enough.
+- `TheGym`'s paragraphs tightened further; English's "Call" CTA button
+  copy became "Call us".
+
+-----
+
+## PHASE 10 — Third revision round (post-launch)
+
+More live feedback, addressed in the same session:
+
+- Review count corrected: owner verified 177 Google reviews (the
+  previously-documented ~149 was stale) — the most of any gym in Sunny
+  Beach. Added as a second competitive claim alongside the existing
+  23-years/oldest-gym one, in both `ProofBar`'s copy (all four locales)
+  and CLAUDE.md's THE BUSINESS/Positioning sections.
+- Equipment's default view tightened again: 8 highlight chips → 4 (the
+  categories a tourist actually searches for — dumbbells, boxing,
+  calisthenics, cables), the other 12 moved behind the existing
+  `<details>` expand. Same 16 real items, nothing added or removed. The
+  expand toggle itself restyled from an underlined text link to a real
+  bordered button, per explicit feedback to "put a button to see more."
+- Reviews' quote text shrunk from `text-h3` (clamp 1.5rem→2.25rem) to
+  `text-body` (1rem) — it was overpowering the review card at large
+  viewport sizes.
+- ProofBar's secondary stats (`dumbbells`, `ac`) restyled from plain
+  caption-sized text into `rounded-full` oval chips matching Equipment's
+  pill treatment, scoped for the black background (steel border/white
+  text instead of Equipment's ink-on-bone).
+
+-----
+
+## PHASE 4.5 — Legal pages and security hardening
+
+Not part of the original 6-phase sequence — real compliance/security work,
+same discipline as every other phase (build must pass, design-critic audit
+before commit, no invented facts).
+
+- `src/config/legal.ts`: single source of truth for the entity's legal
+  identity. Fields the owner hasn't supplied are the literal string
+  `TODO_OWNER`, never an invented value — currently `legalEntityName`,
+  `eik`, `registeredAddress`, `contactEmail`. A dev-only warning
+  (`src/components/LegalTodoWarning.tsx`) lists exactly which fields are
+  still missing on `/privacy`, so this can't ship half-filled unnoticed —
+  verified it fires in `next dev` and is silent in a production build.
+- `/[locale]/privacy` (all four locales): GDPR + Bulgarian Personal Data
+  Protection Act policy. Bulgarian is authoritative, the other three say
+  so explicitly. Covers what's collected (server logs + the `NEXT_LOCALE`
+  cookie only — no forms, accounts, or analytics), legal basis per item,
+  retention (still `TODO_OWNER`, pending the host's confirmed window),
+  who data is shared with (Vercel Inc. as processor), GDPR rights incl.
+  the right to complain to the КЗЛД, and a cookie table. No consent
+  banner — deliberate, since the only cookie is strictly necessary.
+- `/[locale]/terms` (all four locales): informational-only site, no
+  bookings/payments, no prices, positively-framed house rules, a
+  training-risk disclaimer, Bulgarian law/text governs.
+- Both linked from `Footer` in all locales, nothing added to `TopBar`.
+- Security headers via `next.config.ts`: HSTS, `X-Content-Type-Options`,
+  `Referrer-Policy`, `X-Frame-Options: DENY`, a locked-down
+  `Permissions-Policy`, `poweredByHeader: false`, no production source
+  maps.
+- CSP required a nonce-based implementation in `src/middleware.ts` instead
+  of a static header in `next.config.ts` — a real headless-Chromium
+  console check across all 12 locale/page combinations caught a static
+  `script-src 'self'` blocking Next's own RSC-hydration inline scripts on
+  every page. Composed with next-intl's own middleware via Next's
+  documented request-header-override mechanism; a first attempt that
+  overwrote next-intl's own override list instead of merging into it
+  silently broke locale-aware `<Link>` prefetching (caught the same way —
+  fresh-browser-context checks, not assumption). No `'unsafe-eval'`, no
+  wildcard, anywhere in the final CSP.
+- `/.well-known/security.txt`: a route handler (not a static file) so
+  `Contact`/`Expires` always derive from `legal.ts`.
+- Audited: external links already had `rel="noopener noreferrer"`, no
+  `<form>` exists anywhere in the codebase, no secrets committed,
+  robots.txt's AI-crawler allowances untouched. `npm audit`: 3 high
+  findings, all transitively inherited via `next`'s own bundled
+  `postcss`/`sharp`, fix requires a breaking major Next.js upgrade — not
+  auto-applied, flagged for the owner/maintainer to schedule.
+
+-----
+
+## PHASE 11 — Real photography lands in volume, social proof gets louder
+
+Owner uploaded 8 photos directly to GitHub's `main` branch — the first
+upload path that actually worked (mobile GitHub uploader had 406'd on
+HEIC before; a Google Photos link was blocked by egress policy). Of the
+8: two were exact-pixel duplicates of already-committed files, one was a
+re-submission of the previously-excluded posed physique shot (still
+excluded — see CLAUDE.md's Photography section), and five were genuinely
+new — including two shots earlier marked "lost, not recoverable" (the
+entrance mural, the "20+ YEARS" t-shirt mockup). That "lost" note turned
+out to just mean "needs a working upload path," not "gone."
+
+- `Hero`'s background swapped from a tight dumbbell-rack crop to the
+  entrance mural (hand-painted "GYM" sign + a skull/chains mural) — a
+  side-by-side comparison showed the mural reads far more distinctively
+  "old-school iron gym" at full-bleed hero size. Text contrast over the
+  new, visibly brighter photo was measured, not assumed: sampled pixel
+  luminance behind the new claim text across all four locales and down to
+  a 320px viewport (German's claim text is the longest and wraps
+  furthest) — worst case 13.84:1, typical case ~17:1, both far above the
+  4.5:1 body-text / 7:1 AAA bar. The existing `bg-ink/70` scrim turned out
+  to already be sufficient.
+- New `Gallery` section (four real training-floor photos, same
+  grayscale+contrast+grain treatment as every other real photo on the
+  site) added between `Equipment` and `Passes` — the dumbbell-rack shot
+  moved here instead of being dropped when `Hero` changed.
+- Both `Hero` and `ProofBar` gained an explicit competitive claim in copy
+  instead of leaving a visitor to infer it from three numbers: a
+  strap-line under `Hero`'s H1 ("Sunny Beach's Oldest & Most-Reviewed
+  Gym") and a bold heading above `ProofBar`'s numeral grid ("The Best Gym
+  In Sunny Beach — And The Numbers Prove It"), both translated
+  per-locale, both grounded in the two already-verified facts (23 years,
+  177 reviews) — no new numbers invented.
+- design-critic audit run before commit; its one real flag (Hero's
+  brighter replacement photo needing an actual contrast check, not an
+  assumption) was independently measured and resolved as above rather
+  than skipped.
+
+-----
+
+## PHASE 12 — Page reorganized around social proof
+
+Direct feedback that the page felt "scattered" and photos looked "low
+quality," plus an explicit requested section order. Addressed in the
+same session, with the same discipline: build/lint clean, real-browser
+screenshots at multiple viewports and locales, design-critic audit
+before commit, one clarifying question asked (and answered) before
+touching structure, since the requested order didn't mention two
+existing sections.
+
+- **Page reorder**, confirmed with the user first: `Hero → ProofBar →
+  Reviews → TheGym → Passes → FindUs → Gallery → FollowUs → Footer`.
+  `Equipment` and `FAQ` were dropped from the live page entirely at the
+  user's explicit direction — component files still exist under
+  `_sections/`, just unimported, in case that reverses.
+- `ProofBar` and `Reviews` now sit back-to-back with no divider between
+  them, reading as one continuous "proof" block, and both are centered
+  (not left-aligned) — "center highlight" the best-gym claim, per direct
+  feedback. A short blood-fill underline was added beneath ProofBar's
+  claim heading for more visual weight. See CLAUDE.md's new "Layout /
+  alignment" note for the stated rule this now falls under, so it reads
+  as a system rather than three uncoordinated one-off asks.
+- Reviews' three quotes shortened by **verbatim truncation only** — never
+  reworded, since CLAUDE.md's fake-testimonial rule applies to excerpting
+  too. See CLAUDE.md's "Real reviews" section for the full master quotes
+  and the exact excerpting rule.
+- New `FollowUs` section added before `Footer`: a real Facebook link with
+  a new monochrome `FacebookIcon` component (no brand blue — stays inside
+  the 8-token palette), and a real Google "leave a review" deep link
+  built from the Place ID, not a placeholder.
+- **Hero photo crop fixed:** `entrance-mural.jpg` is portrait
+  (335×597) forced into Hero's wide/short slot — `object-cover` at the
+  default center position was cropping so hard on wide viewports that
+  the "GYM" lettering (the whole reason that photo was picked) was
+  invisible. Confirmed via real screenshots before/after at 1440px, fixed
+  with `object-top`.
+- **Photo quality improved, ceiling documented honestly:** every real
+  photo in active use was reprocessed with `sharp` (Lanczos3 upscale,
+  mild pre-sharpen blur + real unsharp mask, re-encode at quality 92).
+  Visibly better at display size, but CLAUDE.md is explicit this isn't a
+  substitute for full-resolution originals — it narrows the gap, it
+  doesn't close it.
+- design-critic audit caught a real documentation gap from Phase 10:
+  ProofBar's secondary stat chips have used `rounded-full` since Phase
+  10, but CLAUDE.md's formal Banned-list exception still only named two
+  places. Fixed by updating the exception list to a third named place
+  (`.claude/agents/design-critic.md` updated to match) rather than
+  ripping out an already-shipped, already-requested design.
+
+-----
+
+## PHASE 4.6 — Extending Phase 4's SEO work
+
+Not part of the original 6-phase sequence — real discoverability work,
+same discipline as every other phase (build must pass, verified not
+assumed, no invented facts).
+
+- New `src/config/business.ts`: single source of truth for the NAP and
+  every other GBP fact. `Footer`, `Hero`, `FindUs`, `Passes`, `FollowUs`,
+  and `schema.ts` all consolidated onto it instead of each hardcoding
+  their own copy of the phone number / coordinates / Place ID.
+- Footer NAP now renders as real HTML text (not an image, not
+  JSON-LD-only), byte-identical name/phone across all four locales,
+  "Център, Слънчев бряг" kept in Cyrillic everywhere with a parenthetical
+  Latin transliteration on the three non-Bulgarian locales only.
+- `meta.title` switched to an exact `[keyword] | Fitness Plamen GYM`
+  format per locale; `meta.description` rewritten per locale (not
+  translated), mentions passes + location, never a price.
+- Fixed a real, previously-unnoticed SEO gap: the page's one `<h1>`
+  carried zero keyword content (it was just the brand line, with the
+  keyword-adjacent strap-line living in a sibling paragraph the H1 tag
+  didn't cover). Fixed with a semantic-only change — nested the existing
+  strap-line inside the `<h1>` as a block-level span with the exact same
+  classes — zero visual change, confirmed via screenshot. `hero.claim`/
+  `hero.eyebrow` reworded per locale (via `copy-localizer`) to naturally
+  contain the target keyword phrase, same underlying claim, no new facts.
+- Google Maps links standardized to one exact URL format
+  (`maps/place/?q=place_id:...`) everywhere via `business.ts`.
+- `schema.ts`'s `areaServed` gained Burgas Province. `hasMap`/`sameAs`/
+  `amenityFeature` were already present from an earlier pass — just
+  re-sourced from `business.ts`. Confirmed again: no `aggregateRating`
+  anywhere.
+- hreflang/canonical verified, not assumed: printed the real rendered
+  `<head>` for all four locales post-build. Every locale self-canonicals,
+  every locale carries reciprocal hreflang alternates + x-default → /bg,
+  none canonicals to English. robots.txt/sitemap.xml confirmed unchanged
+  and already correct; confirmed zero accidental `noindex` anywhere.
+  Confirmed zero `<iframe>` elements anywhere in the codebase — the map
+  was already a real outbound link, nothing to replace.
+- GSC/Bing submission is blocked on a real production domain (`SITE_URL`
+  is still the placeholder `fitnessplamen.bg`) — verification method
+  guidance recorded in CLAUDE.md's new "SEO and discoverability" section
+  for whenever the real domain lands.
+
+-----
+
 ## BLOCKED UNTIL THE OWNER PROVIDES
 
-- Founding year (the "20 YEARS" claim is unverified — do not ship a guess)
-- At least 10 real photos: floor, owner-built machines, the 55 kg dumbbells,
-  calisthenics park, boxing area, changing rooms, Plamen himself
+- ~~Founding year~~ **RESOLVED as of Phase 8** — owner-verified 23 years,
+  oldest gym in Sunny Beach. See CLAUDE.md's THE BUSINESS section.
+- Photography — 8 real distinct photos live on-site as of Phase 11, at
+  or close to the 10-shot minimum. See CLAUDE.md's Photography section
+  for the current committed/unplaced/
+  lost breakdown.
 - Decision on whether to mention the former "Fitness Mercury" name
 - Decision on Instagram: create the account or omit it entirely
 

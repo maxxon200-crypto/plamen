@@ -2,18 +2,23 @@ import { getTranslations } from "next-intl/server";
 import Section from "@/components/ui/Section";
 import Container from "@/components/ui/Container";
 import Button from "@/components/ui/Button";
+import { business, telHref, mapsUrl } from "@/config/business";
 
-const TEL_HREF = "tel:+359878821115";
-const TEL_DISPLAY = "+359 87 882 1115";
-const MAPS_HREF =
-  "https://www.google.com/maps/search/?api=1&query=Fitness+Plamen+GYM&query_place_id=ChIJIxshlPafpkARpBnO0sV6nrc";
+const TEL_HREF = telHref();
+const TEL_DISPLAY = business.phoneDisplay;
+const MAPS_HREF = mapsUrl();
 
 /**
- * The map is a direct link/CTA block rather than an embedded iframe. An
- * embedded Google Maps iframe needs a Maps Embed API key that isn't
- * provisioned for this project yet, and CLAUDE.md's phase brief only asks
- * for a link to the Place ID pin — a keyless iframe would either fail
- * silently or ship a broken embed, so a real link is the honest choice here.
+ * The map is a direct link/CTA block rather than an embedded iframe —
+ * confirmed again in Phase 4.6 (zero iframes anywhere in the codebase).
+ * An embedded Google Maps iframe would load third-party cookies and force
+ * a consent banner onto a site that currently needs none (see /privacy's
+ * cookie table), on top of needing a Maps Embed API key this project
+ * doesn't have. A real outbound link to the Place ID is the honest,
+ * frictionless choice. URL format standardized Phase 4.6 to
+ * `maps/place/?q=place_id:...` via src/config/business.ts's `mapsUrl()` —
+ * the same helper Hero.tsx and schema.ts's `hasMap` now use, so there's
+ * one place to update if the Place ID ever changes.
  */
 export default async function FindUs() {
   const t = await getTranslations("findUs");

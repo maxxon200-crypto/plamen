@@ -8,11 +8,11 @@ import type { Locale } from "@/lib/site";
 import Hero from "./_sections/Hero";
 import ProofBar from "./_sections/ProofBar";
 import TheGym from "./_sections/TheGym";
-import Equipment from "./_sections/Equipment";
+import Gallery from "./_sections/Gallery";
 import Passes from "./_sections/Passes";
 import Reviews from "./_sections/Reviews";
 import FindUs from "./_sections/FindUs";
-import FAQ from "./_sections/FAQ";
+import FollowUs from "./_sections/FollowUs";
 import Footer from "./_sections/Footer";
 
 /**
@@ -49,17 +49,14 @@ export default async function Home({
           <ProofBar />
         </Reveal>
         <Reveal>
-          <TheGym />
+          <Reviews />
         </Reveal>
         <Rule />
         <Reveal>
-          <Equipment />
+          <TheGym />
         </Reveal>
         <Reveal>
           <Passes />
-        </Reveal>
-        <Reveal>
-          <Reviews />
         </Reveal>
         <Rule />
         <Reveal>
@@ -67,7 +64,10 @@ export default async function Home({
         </Reveal>
         <Rule />
         <Reveal>
-          <FAQ />
+          <Gallery />
+        </Reveal>
+        <Reveal>
+          <FollowUs />
         </Reveal>
       </main>
       <Footer />

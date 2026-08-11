@@ -1,23 +1,33 @@
 "use client";
 
 import { useEffect, useRef } from "react";
+import Image from "next/image";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 
+interface HeroBackgroundProps {
+  alt: string;
+}
+
 /**
- * Hero background photo-slot. Per PHASES.md Phase 5: subtle scale tied to
- * scroll on the background only, no text animation. Renders the same plain,
- * fully-visible `<div>` (the grain-textured placeholder from Phase 2/4) with
- * or without JS — the scale starts at 1 (its natural, un-animated CSS
- * state) and is only ever nudged by GSAP after this component mounts, so a
- * no-JS visitor sees the untransformed placeholder, not a hidden one.
+ * Hero background — real gym photo. B&W + grain per CLAUDE.md's
+ * Photography rule (grayscale + contrast filter, texture-grain overlay),
+ * not colour-corrected stock. Per PHASES.md Phase 5's motion contract:
+ * subtle scale tied to scroll on the background only, no text animation,
+ * and the scale starts at 1 (its natural, un-animated CSS state) and is
+ * only ever nudged by GSAP after this component mounts, so a no-JS visitor
+ * sees the untransformed photo, not a hidden one.
  *
- * TODO(photography): replace the inner div with a real <Image> of the gym
- * floor (B&W + grain, or duotone-blood) once the owner supplies photography.
- * Do not fill it with a stock/AI placeholder in the meantime — CLAUDE.md
- * bans both.
+ * Phase 11: swapped from the close dumbbell-rack crop to the entrance
+ * mural shot — a hand-painted "GYM" sign plus a skull/chains mural reads
+ * as far more distinctively "old-school iron gym" at full-bleed hero size
+ * than a tight equipment crop did, and it's real, owner-supplied
+ * photography either way. The dumbbell-rack shot moved to the new Gallery
+ * section instead of being dropped. Still a small, chat-compressed JPEG,
+ * not a full-resolution original — swap `public/photos/entrance-mural.jpg`
+ * the moment a higher-res version is available; nothing else here changes.
  */
-export default function HeroBackground() {
+export default function HeroBackground({ alt }: HeroBackgroundProps) {
   const ref = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -48,5 +58,16 @@ export default function HeroBackground() {
     return () => ctx.revert();
   }, []);
 
-  return <div ref={ref} className="h-full w-full bg-charcoal texture-grain" />;
+  return (
+    <div ref={ref} className="relative h-full w-full texture-grain">
+      <Image
+        src="/photos/entrance-mural.jpg"
+        alt={alt}
+        fill
+        priority
+        sizes="100vw"
+        className="object-cover object-top grayscale contrast-125"
+      />
+    </div>
+  );
 }
